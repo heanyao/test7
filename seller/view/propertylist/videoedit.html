@@ -45,7 +45,9 @@
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="" method="post" >
+                    <!-- <form class="form-horizontal" role="form" action="" method="post" > -->
+
+                    <form class="form-horizontal" role="form" action="/seller/propertylist/newedit" method="post" onsubmit="return check();" >
                         <input type="hidden" name="id" value="{$video.id}">
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">上传所要更换的视频</label>
@@ -63,14 +65,37 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">更改封面图片</label>
                             <div class="col-sm-6">
-                                <input style="float:left;"  placeholder="" name="img" type="file">
+                                <!-- <input style="float:left;"  placeholder="" name="img" type="file"> -->
+                                <!-- {if condition="$video['img'] neq ''"}
+                                <img id="dataimg" style="float:left;" src="{$video.img}" width="100">
+                                {else /}
+                                暂无缩略图
+                                {/if} -->
+                                <button type="button" class="layui-btn layui-btn-normal" id="test1">
+                                  上传图片
+                                </button>
+
+                                
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>  
+                        <!-- <div class="form-group">
+                            <input id="image" type="hidden" name="image">
+                            <label class="col-sm-2 control-label no-padding-right"></label>
+                            <div class="col-sm-6">
                                 {if condition="$video['img'] neq ''"}
-                                <img style="float:left;" src="{$video.img}" width="100">
+                                <img id="dataimg" style="float:left;" src="{$video.img}" width="100">
                                 {else /}
                                 暂无缩略图
                                 {/if}
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>   -->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right"></label>
+                            <div class="col-sm-6" id="showimg" {if ($video['img']=='')}style="display: none;"{/if}>
+                                <img style=" width: 300px" src="{$video.img}">
+                                <input type="hidden" name="imgurl" value="{$video.img}">
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -126,7 +151,14 @@
         get.cate=function(){
             fang.img=$("input[name='img']").val()
         }
+        
+{if condition="$video['link'] neq ''"}
+       $("#addvideo").css("display", "block")                         
+{/if}
 
+{if condition="$video['img'] neq ''"}
+       $("#showimg").css("display", "block")                         
+{/if}
     </script>
 
     
@@ -152,4 +184,51 @@
         });
     </script>
 
+
+    <script type="text/javascript">
+        layui.use('upload', function(){
+          var upload = layui.upload;
+           
+          //执行实例
+          var uploadInst = upload.render({
+            elem: '#test1' //绑定元素
+            ,url: '/seller/upload/upload' //上传接口
+              ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+              }
+            ,done: function(res){
+              //上传完毕回调
+              console.log(res)
+              $("#image").val(res.data.savefile)
+              $("#showimg").css("display", "block")
+              $("#dataimg").css("display", "none")
+              $("#showimg img").attr("src", "/uploads/"+res.data.savefile)
+              $("input[name=imgurl]").val("/uploads/"+res.data.savefile)
+              layer.closeAll('loading'); //关闭loading
+
+            }
+            ,error: function(){
+              //请求异常回调
+              $("#image").val('')
+              $("#showimg").css("display", "none")
+              $("#showimg img").attr("src", "")
+              layer.closeAll('loading'); //关闭loading
+            }
+          });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        function check(){
+            var videourl = $("#videourl").val();
+            var img = $("input[name=imgurl]").val();
+            if(videourl == '' || img == ''){
+                layer.msg('视频或者图片不能为空')
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
 </body></html>

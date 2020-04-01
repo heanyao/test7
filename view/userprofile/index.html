@@ -39,7 +39,7 @@
         <div class="b_content">
             <div class="b_left">
                 <div class="b_avatar">
-                    <img v-clock class="b_in_avatar" :src="imgToUrl(userInfo.head_img_url)" alt="avatar" />
+                    <img v-clock :src="imgToUrl(userInfo.head_img_url)" class="b_in_avatar" alt="avatar" />
                     <img v-clock v-if="userInfo.is_shang == 1" class="b_shop" src="__INDEX__/images/Businesses.png" alt="">
                 </div>
                 <div class="b_name">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="b_logo">
                 <a :href="'/companyprofile/' + userInfo.company_id">
-                    <img v-clock :src="imgToUrl(userInfo.logo_url)" alt="logo">
+                    <img v-clock v-if="userInfo.logo_url != undefined" :src="imgToUrl(userInfo.logo_url)" alt="logo">
                 </a>
                 </div>
                 <div class="b_visit">
@@ -169,7 +169,7 @@
                                     <div class="b_bt_box">
                                         <span class="b_title">{{item.ding_sum}}</span>
                                         <img v-show="imgActive == 0" @mouseenter="showActive(1)" @mouseleave="showActive(0)" src="__INDEX__/images/ding@2x.png" alt="dinged">
-                                        <img v-show="imgActive == 1"  @mouseenter="showActive(1)" @mouseleave="showActive(0)" src="__INDEX__/images/dinged@2x.png" alt="dinged">
+                                        <img v-show="imgActive == 1" @mouseenter="showActive(1)" @mouseleave="showActive(0)" src="__INDEX__/images/dinged@2x.png" alt="dinged">
                                     </div>
                                 </div>
                                 <div class="b_txt_time">

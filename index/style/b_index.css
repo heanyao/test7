@@ -662,7 +662,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     align-items: center;
 }
 .b_content .b_right .b_box_middle .b_txt_box .b_layout .b_bt_box {
-    display: flex;
+    display: block;
     flex-direction: row;
     align-items: center;
 }

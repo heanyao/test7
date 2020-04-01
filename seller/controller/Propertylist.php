@@ -292,7 +292,7 @@ class Propertylist extends Common
 
         if(request()->isPost()){
             $data=input('post.');
-            // dump($data);die;
+            // // dump($data);die;
             $article=new PropertylistModel;
             if($_FILES['url']['tmp_name']){
                $data=$article->change_pics($data);
@@ -362,6 +362,7 @@ class Propertylist extends Common
         // dump($data);die;
         if(request()->isPost()){
             $data=input('post.');
+			dump($data);die;
             $article=new PropertylistModel;
             if($_FILES['url']['tmp_name']){
                $data=$article->change_pics($data);
@@ -400,24 +401,28 @@ class Propertylist extends Common
             $this->error('删除失败！');
         }
     }
+	
+	
+	/*
+	* @30324143
+	*/
+	public function newadd(){
+		if(request()->isPost()){
+			dump(request()->post());
+		}
+	}
+	
+	/*
+	* @30324143
+	*/
+	public function newedit(){
+		$id = input('id');
+		$id = abs(intval($id));
+		if(request()->isPost() && $id>0){
+			dump(request()->post());
+		}
+	}
 
 
  
-
-
-   
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
 }

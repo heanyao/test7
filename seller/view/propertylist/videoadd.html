@@ -48,7 +48,7 @@
             <div class="widget-body">
                 <div id="horizontal-form">
                  <!--    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" > -->
-                    <form class="form-horizontal" role="form" action="" method="post" >
+                    <form class="form-horizontal" role="form" action="/seller/propertylist/newadd" method="post" onsubmit="return check();">
                     <input type="hidden" name="belongs" value="{$id}">
 
                         <div class="form-group">
@@ -60,13 +60,21 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">视频封面图片</label>
                             <div class="col-sm-6">
-                                <input style="float:left;"  placeholder="" name="img" type="file">
+                                <!-- <input style="float:left;"  placeholder="" name="img" type="file"> -->
+                                <button type="button" class="layui-btn layui-btn-normal" id="test1">
+                                  上传图片
+                                </button>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>  
+                        <div class="form-group">
+                            <input type="hidden" name="imgurl">
+                            <label class="col-sm-2 control-label no-padding-right"></label>
+                            <div id="showimg" style="display: none;"><img style=" width: 300px" src=""></div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="button" class="btn btn-primary" id="submit">确定提交</button>
+                                <button type="submit" class="btn btn-primary" id="submit">确定提交</button>
                             </div>
                         </div>
                     </form>
@@ -97,7 +105,51 @@
     <!--我把datepicker-extra.js放到 select2.js里面了 日期及下拉共用之js-->
     <script src="__ADMIN__/style/select2.js"></script>
     <!--上传视频添加-->
-  
+    <script type="text/javascript">
+        layui.use('upload', function(){
+          var upload = layui.upload;
+           
+          //执行实例
+          var uploadInst = upload.render({
+            elem: '#test1' //绑定元素
+            ,url: '/seller/upload/upload' //上传接口
+              ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+              }
+            ,done: function(res){
+              //上传完毕回调
+              console.log(res)
+              $("#image").val(res.data.savefile)
+              $("#showimg").css("display", "block")
+              $("#showimg img").attr("src", "/uploads/"+res.data.savefile)
+              $("input[name=imgurl]").val("/uploads/"+res.data.savefile)
+              layer.closeAll('loading'); //关闭loading
 
+            }
+            ,error: function(){
+              //请求异常回调
+              $("#image").val('')
+              $("#showimg").css("display", "none")
+              $("#showimg img").attr("src", "")
+              layer.closeAll('loading'); //关闭loading
+            }
+          });
+        });
+    </script>
 
+    <script type="text/javascript">
+        function check(){
+        // $("#submit").on("click",function(){
+            var videourl = $("#videourl").val();
+            var img = $("input[name=imgurl]").val();
+            if(videourl == '' || img == '' || img == undefined){
+                layer.msg('视频或者图片不能为空')
+                return false;
+            }else{
+                return true;
+                // $('form').submit()
+            }
+        // })
+        }
+    </script>
 </body></html>
