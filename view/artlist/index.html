@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<script src="__INDEX__/style/jquery-1.8.3.min.js"></script>
+		<script src="__INDEX__/style/bootstrap.js"></script>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/style/e_article.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__/style/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__/style/header_footer.css" />
+		<title>article</title>
+		<script>
+			var apiAddress = '__ROOTURL__';
+			var picAddress = '__INDEX__';
+		</script>
+	</head>
+	<body onload="init()">
+		<!-- 头部 -->
+    {include file="public/header"}
+		<!--内容-->
+		<div class="article_content">
+			<!-- 导航 -->
+			<div class="article_top">
+				<div class="top_menu">
+					<a href="javascript:;" name="top_type_0" onclick="top_type(0)" class="menu_selected">所有</a>
+					<label class="menu_line"></label>
+					<a name="top_type_1" onclick="top_type(1)"  href="javascript:;">房产置业</a>
+					<label class="menu_line"></label>
+					<a name="top_type_2" onclick="top_type(2)"  href="javascript:;">海外留学</a>
+					<label class="menu_line"></label>
+					<a name="top_type_3" onclick="top_type(3)"  href="javascript:;">海外生活</a>
+					<label class="menu_line"></label>
+					<a name="top_type_4" onclick="top_type(4)"  href="javascript:;">移民政策</a>
+					<label class="menu_line"></label>
+					<a name="top_type_5" onclick="top_type(5)"  href="javascript:;">海外金融</a>
+					<label class="menu_line"></label>
+					<a name="top_type_6" onclick="top_type(6)"  href="javascript:;">其他相关</a>
+				</div>
+			</div>
+			<div class="article_top_hide">
+				<div class="top_menu">
+					<a href="javascript:;" name="top_type_0" onclick="top_type(0)" class="menu_selected">所有</a>
+					<label class="menu_line"></label>
+					<a name="top_type_1" onclick="top_type(1)"  href="javascript:;">房产置业</a>
+					<label class="menu_line"></label>
+					<a name="top_type_2" onclick="top_type(2)"  href="javascript:;">海外留学</a>
+					<label class="menu_line"></label>
+					<a name="top_type_3" onclick="top_type(3)"  href="javascript:;">海外生活</a>
+					<label class="menu_line"></label>
+					<a name="top_type_4" onclick="top_type(4)"  href="javascript:;">移民政策</a>
+					<label class="menu_line"></label>
+					<a name="top_type_5" onclick="top_type(5)"  href="javascript:;">海外金融</a>
+					<label class="menu_line"></label>
+					<a name="top_type_6" onclick="top_type(6)"  href="javascript:;">其他相关</a>
+				</div>
+			</div>
+			
+			<!-- 主体内容 -->
+			<div class="content">
+				<!-- 图片区域 -->
+				<div class="top_img e_row">
+					<div><a href="article/{$artres[0]['id']}">
+						<img class="img_one" src="{$artres[0]['thumb']}" alt="">
+						<p class="img_p">{$artres[0]['title']}</p>
+					</div>
+					<div class="e_col" style="margin-left: 20px;">
+					<a href="article/{$artres[1]['id']}">
+						<div>
+							<img src="{$artres[1]['thumb']}" alt="" class="img_two">
+							<p class="img_p" style="font-size:20px;">{$artres[1]['title']}</p>
+						</div>
+					</a>
+					
+						<div>
+						<a href="article/{$artres[2]['id']}">
+							<img src="{$artres[2]['thumb']}" style="margin-top: 20px;" alt="" class="img_two">
+							<p class="img_p" style="font-size:20px;">{$artres[2]['title']}</p>
+						</a>	
+						</div>
+					
+					</div>
+				</div>
+				<!-- 内容区域	 -->
+				<div class="e_row" style="margin-top: 10px;">
+					<!-- 左边文章区域 -->
+					<div class="left">
+						<!-- 左边顶部 -->
+						<div class="content_top e_row">
+							<div class="e_row">
+								<a class="article_tab tab_selected" href="javascript:;" onclick="articleHot()">热门游记</a>
+								<button class="select_list e_row e_show">
+									筛选
+									<img src="__INDEX__/images/down_2.png" name="down" alt="">
+								</button>
+								<a class="article_tab" href="javascript:;" onclick="articleNew()">最新发表</a>
+								<div class="country_list">
+									<label onclick="articleByCountry(0)" class="country_item country_selected">
+										全部
+									</label>
+									<label onclick="articleByCountry(2)" class="country_item ">
+										中国
+									</label>
+									<label onclick="articleByCountry(9)" class="country_item ">
+										日本
+									</label>
+									
+									
+								</div>
+							</div>
+							<div>
+								<button class="write_btn" onclick="toAdd()">
+									<img src="__INDEX__/images/draw.png" alt="">
+									写文章
+								</button>
+							</div>
+						</div>
+						<!-- 左边主体 -->
+						<div id="article_list" class="article_list">
+						</div>	
+					</div>
+					<!-- 右边排行榜区域 -->
+					<div class="right">
+						<!-- 右边顶部 -->
+						<div class="content_top e_row">
+							<div>
+								<span class="list_title">
+									排行榜
+								</span>
+							</div>
+							<div>
+								<ul class="date_select e_row">
+									<a onclick="getCharts_list(1)" class="selected_date" href="javascript:;" >今日</a>
+									<li>|</li>
+									<a onclick="getCharts_list(2)" href="javascript:;">本周</a>
+									<li>|</li>
+									<a onclick="getCharts_list(3)" href="javascript:;">本月</a>
+								</ul>
+							</div>
+						</div>
+						<!-- 右边主体 -->
+						<div class="charts_list e_row">
+							<div class="charts_icon e_col">
+								<div><img src="__INDEX__/images/NO.1.png"></div>
+								<div><img src="__INDEX__/images/NO.2.png"></div>
+								<div><img src="__INDEX__/images/NO.3.png"></div>
+								<div><label>NO.4</label></div>
+								<div><label>NO.5</label></div>
+								<div><label>NO.6</label></div>
+								<div><label>NO.7</label></div>
+								<div><label>NO.8</label></div>
+								<div><label>NO.9</label></div>
+								<div><label>NO.10</label></div>
+							</div>
+							<div id="charts_items" class="charts_items e_col">
+								<!-- 循环显示排行列表 -->
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>	
+			
+			</div>
+		</div>
+		<!-- footer -->
+	    {include file="public/footer"}	
+<script src="__INDEX__/style/d_jquery.page.js"></script>
+<script>
+    
+</script>
+		<script src="__INDEX__/style/header_footer.js"></script>
+		<script src="__INDEX__/style/e_article.js"></script>
+		<script src="__INDEX__/style/MiniDialog-es5.min.js"></script>
+	</body>
+</html>

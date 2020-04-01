@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>ThinkPHP5.0</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="public/top" /} 
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+         
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content" style="margin-left:6px">
+                <!-- Page Breadcrumb -->
+
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加栏目" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('add')}'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <form action="" method="post">
+                        <table class="table table-bordered table-hover">
+                            <thead class="">
+                                <tr>
+                                    <th class="text-center" width="3%">ID</th>
+                                    <th class="text-center">项目名字</th>
+                                    <th class="text-center">项目总价格</th>
+                                    <th class="text-center">每平米单价</th>
+                                    <th class="text-center">所属国家及城市</th>
+                                    <th class="text-center">房源新旧</th>
+                                    <th class="text-center">房源类型</th>
+                                    <th class="text-center">房子面积</th>
+                                    <th class="text-center">交房时间</th>
+                                    <th class="text-center">产权情况</th>
+                                    <th class="text-center">装修情况</th>
+                                    <th class="text-center">房子首付</th>
+                                    <th class="text-center">房子属性</th>
+                                    <th class="text-center">图片数量</th>
+                                    <th class="text-center">视频数量</th>
+                                  <!--   <th class="text-center">房源图片</th> -->
+                                    <th class="text-center" width="10%">操作</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    {volist name="artres" id="art" key="k"}
+                                    <tr>
+                                        <td align="center">{$art.id}</td>
+                                        <td align="center"><?php echo mb_substr($art['project_name'], 0,9,'utf-8'); if(strlen($art['project_name'])>9){echo '...';}?></td>
+                                        <td align="center">{$art.project_price}万元</td>
+                                        <td align="center">{$art.price_per_meter}元/平米</td>
+                                        <td align="center">{$art.project_location}</td>
+                                        <td align="center">
+                                        {if condition="$art['new_or_old'] eq 1"}
+                                        新房
+                                        {elseif condition="$art['new_or_old'] eq 2"/}
+                                        二手房
+                                        {/if}
+                                        </td>
+                                        <td align="center">
+                                        {if condition="$art['property_type'] eq 1"}
+                                        住宅
+                                        {elseif condition="$art['property_type'] eq 2"/}
+                                        公寓
+                                        {elseif condition="$art['property_type'] eq 3"/}
+                                        写字楼
+                                        {elseif condition="$art['property_type'] eq 4"/}
+                                        地皮
+                                        {/if}
+                                        </td>
+                                        <td align="center">{$art.square_meter}平方米</td>
+                                        <td align="center">{$art.property_built_time|date="Y-m-d",###}</td>
+                                        <td align="center">{$art.years_for_hold}</td>
+                                        <td align="center">
+                                        {if condition="$art['decoration'] eq 1"}
+                                        精装修
+                                        {elseif condition="$art['decoration'] eq 2"/}
+                                        毛坯
+                                        {/if}
+                                        </td>
+                                        <td align="center">{$art.down_payment}%</td>
+                                        <td align="center">{$art.property_usage}</td>
+                                        <td align="center">{$art.property_pics_url}</td>
+                                        <td align="center">{$art.property_video}</td>
+
+                             
+                                        <td align="center">
+                                            <a href="{:url('edit',array('id'=>$art['id']))}" class="btn btn-primary btn-sm shiny">
+                                                <i class="fa fa-edit"></i> 编辑
+                                            </a>
+                                            <a href="{:url('pics',array('id'=>$art['id']))}" class="btn btn-primary btn-sm shiny">
+                                                <i class="fa fa-edit"></i> 图片
+                                            </a>
+                                            <a href="{:url('video',array('id'=>$art['id']))}" class="btn btn-primary btn-sm shiny">
+                                                <i class="fa fa-edit"></i> 视频
+                                            </a>
+                                            <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$art['id']))}')" class="btn btn-danger btn-sm shiny">
+                                                <i class="fa fa-trash-o"></i> 删除
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div style="padding-top:10px;">
+                    {$artres->render()}
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

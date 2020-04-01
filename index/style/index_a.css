@@ -1,0 +1,1387 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+.index_body_a {
+    background: #F9F9F9;
+    position: relative;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+.index_body_a::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.index_body_a::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+.index_body_a::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container_a {
+    width: 100%;
+    min-width: 1200px;
+}
+
+/*轮播*/
+.rollBox {
+    min-width: 1200px;
+    width: 100%;
+    height: 580px;
+    max-width: 1920px;
+    position: relative;
+    overflow: hidden;
+}
+
+.rollContent {
+    height: 580px;
+    width: 500%;
+    transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari 和 Chrome */
+    -o-transition: all 1s; /* Opera */
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: nowrap;
+}
+
+.rollImageItem {
+    height: 580px;
+    width: 20%;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 580px;
+    min-width: 20%;
+}
+
+.rollImageItem img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.switchBtnContent {
+    position: absolute;
+    bottom: 64px;
+    left: 50%;
+    margin-left: -76px;
+}
+
+.switchBtn {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.40);
+    bottom: 0;
+    font-size: 13px;
+    color: #ffffff;
+    display: block;
+    line-height: 20px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+}
+
+.switchBtn:not(:last-child) {
+    margin-right: 13px;
+}
+
+.selectedSwitchBtn {
+    background: #42306A;
+}
+
+/*国家*/
+.countryHouseContainer {
+    height: 436px;
+    position: absolute;
+    left: 50%;
+    margin-left: -600px;
+    top: 40px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+}
+
+.countryList {
+    width: 280px;
+    padding-top: 8px;
+    height: 428px;
+    background: rgba(0, 0, 0, 0.71);
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.countryList ul {
+    list-style: none;
+}
+
+.countryList ul li {
+    display: block;
+    line-height: 60px;
+    padding: 0 16.5px 0 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+.hoverCountry {
+    background: #42306A;
+    box-shadow: inset 3px 0 0 0 #CAB6F0;
+    opacity: 1;
+}
+
+.countryFlag_a {
+    width: 40px;
+    height: 26px;
+    border-width: 0;
+    vertical-align: middle;
+}
+
+.countryMsgCon {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 12px;
+}
+
+.countryName {
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 14px;
+    margin-bottom: 5px;
+}
+
+.countryCityName {
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #B0B0B0;
+    line-height: 17px;
+}
+
+.countryArrow {
+    content: "";
+    height: 0;
+    width: 0;
+    border-top: 9px solid transparent;
+    border-right: 12px solid rgba(0, 0, 0, 0.71);
+    border-bottom: 9px solid transparent;
+    border-left: 12px solid transparent;
+    position: absolute;
+    right: -20px;
+    top: 22px;
+}
+
+.thisCountryHouseCon {
+    height: 436px;
+    width: 809px;
+    position: relative;
+    margin-left: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: none;
+}
+
+.thisCountryHouseDetail {
+    height: 436px;
+    background-color: rgba(0, 0, 0, 0.71);
+    border-radius: 6px;
+    font-size: 0;
+    width: 809px;
+    position: absolute;
+    left: -809px;
+}
+
+.tableCountryTitle {
+    width: 100%;
+    line-height: 70px;
+    text-align: left;
+    font-size: 0;
+    height: 70px;
+}
+
+.tableHeadTitle {
+    display: inline-block;
+    line-height: 16px;
+    vertical-align: top;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    width: 130px;
+    text-align: center;
+}
+
+.textTitle {
+    display: inline-block;
+    margin-left: -6px;
+}
+
+.textTitle p {
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #999999;
+    line-height: 20px;
+}
+
+.titleGap {
+    display: inline-block;
+    height: 0;
+    border: 1px solid #999999;
+    width: 36px;
+    transform: rotate(121deg);
+    -o-transform: rotate(121deg);
+    -moz-transform: rotate(121deg);
+    -webkit-transform: rotate(121deg);
+    position: relative;
+    top: -14px;
+    margin-left: -8px;
+    marign-right: -51px;
+}
+
+.countryTitle {
+    display: inline-block;
+    width: 113px;
+    font-family: PingFangSC-Medium;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: text-bottom;
+    line-height: 38px;
+    position: relative;
+    top: 32px;
+    cursor: pointer;
+    border-bottom: 1px solid #616161;
+    color: #999999;
+}
+
+.countryTitle:hover {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.moreCountryOrCity {
+    display: inline-block;
+    width: 113px;
+    font-family: PingFangSC-Medium;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: text-bottom;
+    line-height: 38px;
+    position: relative;
+    top: 32px;
+    cursor: pointer;
+    border-bottom: 1px solid #616161;
+    color: #999999;
+}
+
+.selectedCountry {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.firstColumn {
+    font-size: 0;
+    height: 366px;
+    width: 127px;
+    display: inline-block;
+}
+
+.priceFirstRow {
+    font-size: 12px;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 17px;
+    text-align: center;
+    margin-top: 24px;
+}
+
+.secondColumn {
+    font-size: 0;
+    width: 629px;
+    border-top: 1px solid #616161;
+    border-left: 1px solid #616161;
+    float: right;
+    height: 309px;
+    padding-top: 23px;
+    padding-left: 25px;
+    padding-right: 24px;
+    padding-bottom: 37px;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.moreCountryOrCity2 {
+    display: inline-block;
+    content: "更多>>";
+    font-family: PingFangSC-Medium;
+    font-size: 16px;
+    color: #999999;
+    position: absolute;
+    bottom: 17px;
+    right: 44px;
+    cursor: pointer;
+}
+
+.firstColumn ul {
+    list-style: none;
+}
+
+.firstColumn ul .priceRange {
+    display: block;
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    color: #999999;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.selectedHousePrice {
+    color: #ffffff !important;
+}
+
+.tableContentItem {
+    width: 173px;
+    height: 79px;
+    background: rgba(151, 151, 151, 0.55);
+    line-height: 79px;
+    padding-left: 10px;
+}
+
+.tableContentItem:hover {
+    background: rgba(151, 151, 151, 0.9);
+}
+
+.theCountryHouseItem {
+    width: 200px;
+    height: 144px;
+    position: relative;
+}
+
+.theCountryHouseItem img {
+    height: 100%;
+    width: 100%;
+}
+
+.theHouseMsg {
+    position: absolute;
+    width: 200px;
+    height: 28px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+    bottom: 0;
+    overflow: hidden;
+}
+
+.theHousePrice {
+    width: 54px;
+    height: 25px;
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFangSC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 28px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+
+}
+
+.houseDetailAddress {
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    float: right;
+    line-height: 28px;
+    margin-right: 5px;
+}
+
+.typeHouse1 {
+    width: 52px;
+    height: 20px;
+    background: rgba(247, 181, 0, 1);
+    border-radius: 2px 0px 2px 2px;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 3px;
+}
+
+.typeHouse2 {
+    background: #7ED321;
+    border-radius: 2px 0 2px 2px;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 3px;
+}
+
+.tableContentItem img {
+    width: 62px;
+    height: 39px;
+    vertical-align: middle;
+}
+
+.countryNameContent {
+    font-family: PingFangSC-Semibold;
+    font-size: 13px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+    margin-left: 11px;
+}
+
+.chineseText {
+    font-size: 13px;
+    font-family: PingFangSC-Semibold, PingFangSC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 18px;
+    -webkit-background-clip: text;
+
+}
+
+.englishText {
+    font-size: 13px;
+    font-family: PingFangSC-Semibold, PingFangSC;
+    font-weight: 600;
+    color: rgba(221, 214, 214, 1);
+    line-height: 18px;
+    -webkit-background-clip: text;
+}
+
+/*搜索容器*/
+.searchContainer {
+    height: 108px;
+    width: 100%;
+    min-width: 1200px;
+    background-color: #37255D;
+    position: relative;
+}
+
+.searchInputContent {
+    width: 994px;
+    position: absolute;
+    left: 50%;
+    margin-left: -497px;
+    top: -41px;
+}
+
+.searchInput_a {
+    height: 60px;
+    width: 994px;
+    top: -41px;
+    background: #ffffff;
+    box-shadow: 0 0 60px 0 #170A32;
+    border-radius: 4px;
+}
+
+.conditionSelect {
+    display: inline-block;
+    height: 60px;
+    width: 166px;
+    border-right: 1px solid #cdcdcd;
+    line-height: 60px;
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+    float: left;
+}
+
+.conditionSelect input {
+    display: none;
+}
+
+.conditionSelect label {
+    position: relative;
+    cursor: pointer;
+}
+
+.conditionSelect label:first-child {
+    margin-right: 10px;
+}
+
+.conditionSelect label::before {
+    display: inline-block;
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #333333;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.conditionSelect > input:checked + label::after {
+    display: inline-block;
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    top: 8px;
+    left: 5px;
+}
+
+.hotKeyInput {
+    float: left;
+    width: 515px;
+    height: 60px;
+    border-width: 0;
+    border-right: 1px solid #cdcdcd;
+    padding-left: 16px;
+}
+
+.hotKeyInput::-webkit-input-placeholder { /* WebKit browsers */
+    font-size: 14px;
+    color: #999999;
+    text-align: justify;
+}
+
+.hotKeyInput:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-size: 14px;
+    color: #999999;
+    text-align: justify;
+}
+
+.hotKeyInput::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-size: 14px;
+    color: #999999;
+    text-align: justify;
+}
+
+.hotKeyInput:-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-size: 14px;
+    color: #999999;
+    text-align: justify;
+}
+
+.moreCondition {
+    height: 60px;
+    width: 123px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+}
+
+.moreCondition img {
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.searchBtn_a {
+    background-image: linear-gradient(180deg, #926DD7 0%, #6943B1 100%);
+    border-radius: 0 4px 4px 0;
+    width: 172px;
+    height: 60px;
+    font-size: 18px;
+    color: #ffffff;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+}
+
+.hotKey {
+    font-size: 14px;
+    color: #ffffff;
+    padding-left: 185px;
+    margin-top: 24px;
+}
+
+.keyItem {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.keyItem:hover {
+    color: #1683E2;
+}
+
+.listContainer {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #F9F9F9;
+    padding-top: 54px;
+}
+
+.list_a {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pageChangeCon {
+    width: 1200px;
+    overflow: hidden;
+}
+
+.gapTitle {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.titleDesc {
+    font-family: PingFangSC-Medium;
+    font-size: 21px;
+    color: #42306A;
+    line-height: 24px;
+    padding-left: 2px;
+}
+
+.titleDesc:before {
+    display: inline-block;
+    content: "";
+    height: 24px;
+    width: 4px;
+    background-color: #42306a;
+    position: relative;
+    top: 4px;
+    margin-right: 6px;
+}
+
+.moreDetail {
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #999999;
+    float: right;
+}
+
+.moreDetailIcon {
+    display: inline-block;
+    content: "";
+    background: url("../images/right.png") no-repeat;
+    width: 7px;
+    height: 12px;
+}
+
+.listContent {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: nowrap;
+    position: relative;
+    justify-content: space-between;
+    left: 0;
+    margin-bottom: 15px;
+}
+
+.prePageBtn {
+    width: 88px;
+    height: 88px;
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
+    left: -178px;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.85);
+    opacity: 0.1;
+    cursor: pointer;
+    line-height: 88px;
+    text-align: center;
+}
+
+.nextPageBtn {
+    line-height: 88px;
+    width: 88px;
+    height: 88px;
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
+    right: -178px;
+    z-index: 2;
+    cursor: pointer;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.85);
+    opacity: 0.1;
+}
+
+.nextPageBtn img, .prePageBtn img {
+    vertical-align: middle;
+    height: 54px;
+}
+
+.nextPageBtn:hover, .prePageBtn:hover {
+    opacity: 0.5;
+}
+
+.lastOnlineHouse .nextPageBtn, .lastOnlineHouse .prePageBtn {
+    margin-top: 42px;
+}
+
+.listItem_a {
+    min-width: 358px;
+    height: 394px;
+    background: #ffffff;
+    border: 1px solid #F0F0F1;
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+
+.listItem_a:hover {
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.10);
+}
+
+.recommendVideo .listItem_a {
+    min-width: 358px;
+    height: 256px;
+    background: #ffffff;
+    border: 1px solid #F0F0F1;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.listItem_a:not(:last-child) {
+    margin-right: 60px;
+}
+
+.recommendVideo {
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 54px;
+    padding-top: 54px;
+    padding-bottom: 54px;
+}
+
+/*更多筛选条件*/
+.moreCondition_pop {
+    width: 994px;
+    border: 1px solid rgba(221, 221, 221, 1);
+    font-size: 0;
+    background: #ffffff;
+}
+
+.conditionItem {
+    display: flex;
+    display: -webkit-flex;
+    width: 994px;
+    border-bottom: 1px solid rgba(221, 221, 221, 1);
+    align-items: center;
+    padding: 13px 0 11px 0;
+}
+
+.conditionName {
+    width: 75px;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium, PingFang-SC;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 20px;
+    text-align: right;
+}
+
+.conditionDesc {
+    display: flex;
+    display: -webkit-flex;
+    width: 919px;
+}
+
+.countryList_a {
+    width: 807px;
+}
+
+.countryItem_a {
+    display: flex;
+    display: -webkit-flex;
+    line-height: 22px;
+}
+
+.keyItem_a {
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.countryItem_a:not(:last-child) {
+    padding-bottom: 6px;
+}
+
+.unSelected {
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
+    line-height: 20px;
+    padding-left: 54px;
+    padding-right: 30px;
+}
+
+.unSelected a {
+    color: rgba(208, 2, 27, 1);
+}
+
+.countryPositionIcon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url("../images/countryPosition.png") no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    margin-right: 5px;
+    min-width: 18px;
+    min-height: 18px;
+}
+
+.countryArea {
+    font-size: 14px;
+    font-family: PingFang-SC-Medium, PingFang-SC;
+    font-weight: 500;
+    color: rgba(66, 48, 106, 1);
+    line-height: 20px;
+    margin-right: 36px;
+    white-space: nowrap;
+}
+
+.countryNameList {
+    display: inline-block;
+    word-break: keep-all;
+}
+
+.countryName_con {
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.selectedCondition {
+    background: rgba(168, 160, 184, 1);
+    border-radius: 2px;
+    padding: 4px 6px;
+    color: #ffffff;
+
+}
+
+.btnContainer {
+    text-align: center;
+    position: relative;
+}
+
+.submitBtn {
+    background: rgba(66, 48, 106, 1);
+    border-radius: 0 4px 4px 0;
+    color: #ffffff;
+    text-align: center;
+    border-width: 0;
+    padding: 15px 45px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 26px;
+}
+
+.moreConditionBtn {
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 20px;
+    position: relative;
+    top: -1px;
+    padding: 7px 27px 7px 30px;
+}
+
+.moreConditionIcon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("../images/downBlack.png") no-repeat;
+    background-size: 100% 100%;
+    vertical-align: middle;
+}
+
+.resetBtn {
+    background: rgba(221, 221, 221, 1);
+    border-radius: 1px;
+    text-align: center;
+    font-size: 16px;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 22px;
+    border-width: 1px;
+    padding: 9px 11px 9px 8px;
+    position: absolute;
+    top: 13px;
+    right: 61px;
+}
+
+.deleteIcon {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background: url("../images/deleteIcon.png") no-repeat;
+    background-size: 100% 100%;
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.moreCondition button {
+    outline: none;
+}
+
+.moreCondition a {
+    text-decoration: none;
+}
+
+.more_hide {
+
+}
+
+.popupContainer {
+    position: fixed;
+    top: 10px;
+    height: 584px;
+    left: 50%;
+    margin-left: -600px;
+    overflow-y: scroll;
+    display: none;
+    z-index: 999;
+}
+
+/*推荐房源*/
+.houseThumbnail_a {
+    width: 100%;
+    height: 256px;
+    position: relative;
+    display: block;
+}
+
+.houseThumbnail_a img {
+    height: 100%;
+    width: 100%;
+    border-width: 0;
+}
+
+.houseIconList {
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    color: #ffffff;
+    display: inline-block;
+    float: right;
+}
+
+.houseThumbnail_a .videoThumbnail {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.houseDynamicMsg {
+    position: absolute;
+    bottom: 0;
+    height: 45px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.60);
+    line-height: 45px;
+    padding: 0 16px;
+}
+
+.houseName_a {
+    font-family: PingFangSC-Semibold;
+    font-size: 18px;
+    color: #000000;
+    letter-spacing: 0;
+    display: inline-block;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.housePrice_a {
+    font-family: PingFangSC-Regular;
+    font-size: 21px;
+    color: #D0021B;
+    letter-spacing: 0;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.houseAddress_a {
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    color: #999999;
+    letter-spacing: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 200px;
+}
+
+.positionIcon {
+    display: inline-block;
+    content: "";
+    height: 20px;
+    width: 20px;
+    background: url("../images/location2.png") no-repeat;
+    background-size: 100%;
+    vertical-align: text-bottom;
+}
+
+.houseShortMsg {
+    padding: 24px 16px;
+}
+
+.companyLogo {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.companyLogo img {
+    width: 100%;
+    height: 100%;
+}
+
+.textMsg {
+    float: left;
+}
+
+.logoMsg {
+    float: right;
+    text-align: center;
+}
+
+.logoMsg object {
+    display: block;
+}
+
+.detailAddress {
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    color: #999999;
+    width: 109px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.houseFlag_new {
+    background: #f7B500;
+    border-radius: 2px;
+    font-family: PingFangSC-Semibold;
+    font-size: 10px;
+    color: #FFFFFF;
+    text-align: justify;
+    line-height: 20px;
+    padding: 3px 9px;
+    margin: 13px 16px 0 0;
+}
+
+.houseFlag_hot {
+    background: #d0021B;
+    border-radius: 2px;
+    font-family: PingFangSC-Semibold;
+    font-size: 10px;
+    color: #FFFFFF;
+    text-align: justify;
+    line-height: 20px;
+    padding: 3px 9px;
+    margin: 13px 16px 0 0;
+}
+
+/*推荐房源视频*/
+.houseVideoThumbnail_a {
+    width: 100%;
+    height: 256px;
+    position: relative;
+    display: block;
+}
+
+.runVideoImg {
+    background: rgba(0, 0, 0, 0.60);
+    line-height: 100%;
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    top: 50%;
+    left: 50%;
+    margin-top: -44px;
+    margin-left: -44px;
+    border-radius: 50%;
+}
+
+.houseVideoName_a {
+    font-family: PingFangSC-Semibold;
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    position: absolute;
+    bottom: 35px;
+    left: 16px;
+    line-height: 25px;
+}
+
+.houseVideoPrice_a {
+    font-family: PingFangSC-Regular;
+    font-size: 21px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    line-height: 29px;
+}
+
+.houseVideoThumbnail_a .videoThumbnail {
+    height: 100%;
+    width: 100%;
+}
+
+/*热门资讯*/
+.hotNew {
+    width: 100%;
+    background-color: #f9f9f9;
+    margin-top: 54px;
+    padding-top: 54px;
+    padding-bottom: 54px;
+}
+
+.hotNew .gapTitle {
+    width: 833px;
+}
+
+.hotNewType1 {
+    width: 419px;
+    height: 256px;
+    border-radius: 6px;
+    display: block;
+}
+
+.hotNewType1 img {
+    width: 100%;
+    height: 100%;
+}
+
+.hotNewType2 {
+    width: 360px;
+    height: 256px;
+}
+
+.hotNewType1 .newDesc {
+    width: 407px;
+    height: 45px;
+    line-height: 45px;
+    background: rgba(0, 0, 0, 0.30);
+    font-family: PingFangSC-Regular;
+    font-size: 21px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    position: absolute;
+    bottom: 1px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 0 0 6px 6px;
+    padding: 0 5px;
+}
+
+.hotNewType2 {
+    width: 360px;
+    height: 256px;
+
+}
+
+.hotNewThumbnail {
+    width: 90px;
+    height: 52px;
+}
+
+.hotNewList {
+    height: 52px;
+    display: block;
+    color: #333333;
+}
+
+.hotNewList:hover {
+    color: #1683E2;
+}
+
+.hotNewDesc {
+    width: 262px;
+    height: 40px;
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    display: inline-block;
+    position: relative;
+    top: -9px;
+}
+
+.textHotNewDesc {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.hotNewList:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.adPicture {
+    width: 302px;
+    height: 256px;
+    background-color: white;
+}
+
+.adPicture img {
+    height: 100%;
+    width: 100%;
+}
+
+/*common*/
+.mr10 {
+    margin-right: 10px;
+}
+
+.marTop108 {
+    margin-top: 93px;
+}
+
+.marTop54 {
+    margin-top: 54px;
+}
+
+.fright {
+    float: right;
+}
+
+.clearFix::before,
+.clearFix::after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.wrapBackground {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.downArrowIcon {
+    content: "";
+    height: 10px;
+    width: 20px;
+    background-size: 100%;
+    background-position: center;
+    background-image: url("../images/down.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s; /* Firefox 4 */
+    -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+    -o-transition: all 0.5s; /* Opera */
+}
+
+.rightArrIcon {
+    content: "";
+    height: 14px;
+    width: 24px;
+    background-size: 100%;
+    background-position: center;
+    background-image: url("../images/rightArr.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    right: -36px;
+}
+
+.moreIcon {
+    content: "";
+    height: 7px;
+    width: 12px;
+    background-size: 100%;
+    background-position: center;
+    background-image: url("../images/more.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.sofaIcon {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-size: 100%;
+    background-position: center;
+    background-image: url("../images/bed.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.sofa2Icon {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-size: 100%;
+    background-position: center;
+    background-image: url("../images/livingroom.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.bathIcon {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-size: 100%;
+    background-position: center;
+    background-image: url("../images/bath.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+/*返回数据为空时的样式*/
+.resultNullTip {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}

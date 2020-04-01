@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="__INDEX__/style/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__INDEX__/style/iview.css">
+    <link rel="stylesheet" type="text/css" href="__INDEX__/style/b_index.css">
+    <style>
+        [v-clock]{
+		    display:none;
+		}
+    </style>
+
+    <script src="__INDEX__/style/bootstrap.js"></script>
+
+</head>
+
+<body>
+{include file="public/header"}
+    <div class="b_container" id="b_container">
+        <!-- banner -->
+        <div class="b_banner">
+            <img src="__INDEX__/images/banner.png" alt="banner" />
+        </div>
+        <!-- tab -->
+        <div class="b_tab">
+            <div class="b_item">
+                <span class="b_txt" id="b_shop">TA的文章</span>
+                <span class="b_txt" id="b_paly">TA的商店</span>
+                <span class="b_txt" id="b_questions">TA的问答</span>
+            </div>
+        </div>
+        <!-- content -->
+        <template>
+        <div class="b_content">
+            <div class="b_left">
+                <div class="b_avatar">
+                    <img v-clock class="b_in_avatar" :src="imgToUrl(userInfo.head_img_url)" alt="avatar" />
+                    <img v-clock v-if="userInfo.is_shang == 1" class="b_shop" src="__INDEX__/images/Businesses.png" alt="">
+                </div>
+                <div class="b_name">
+                    <span v-clock>{{userInfo.name}}</span>
+                    <img v-clock v-if="userInfo.user_sex == 1" src="__INDEX__/images/nan@2x.png" alt="nan">
+                    <img v-clock v-if="userInfo.user_sex == 0" src="__INDEX__/images/nv@2x.png" alt="nv"/>
+                </div>
+                <div class="b_rating">
+                    <span>总评分</span>
+                    <img v-for="(item, index) in xingList" :key="index" :src="stard" alt="star" />
+                </div>
+                <div class="b_logo">
+                <a :href="'/companyprofile/' + userInfo.company_id">
+                    <img v-clock :src="imgToUrl(userInfo.logo_url)" alt="logo">
+                </a>
+                </div>
+                <div class="b_visit">
+                    <a @click="b_guanzhu" class="b_v_add b_guanzhu" >
+                       <!--  <img src="__INDEX__/images/add.png" alt=""> -->
+                        <span ref="ghtmls" class="">{{ghtml}}</span>
+                    </a>
+                    <a class="b_xin">私信</a>
+                </div>
+                <div class="b_desc">
+                    <span v-clock v-if="userInfo.user_mood != null">“{{userInfo.user_mood}}”</span>
+                    <span v-clock v-else>TA还没有留下心情</span>
+                </div>
+                <div class="b_box">
+                    <div class="b_item">
+                        <span class="b_txt1">{{follow.ifollowerRes > 0 ? follow.ifollowerRes : 0}}</span>
+                        <span class="b_txt2">关注</span>
+                    </div>
+                    <div class="b_item">
+                        <span class="b_txt1">{{follow.followerRes > 0 ? follow.ifollowerRes : 0}}</span>
+                        <span class="b_txt2">粉丝</span>
+                    </div>
+                    <div class="b_item">
+                        <img src="__INDEX__/images/write.png" alt="">
+                        <span class="b_txt2">发表文章</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="MGuestbook" id="_j_msgboard_wrap">
+                        <div class="MGuestTitle">留言板
+                                </div>
+                        <div class="MGuestInput">
+                            <textarea class="b_textarea" placeholder="给楼主留个脚印，说点什么..."></textarea>
+                            <div class="b_ratings">
+                                <span class="b_s_txt">对他的评价</span>
+                                <img v-for="(item, index) in xingList" :key="index" :src="xing > index ? stard : stara" alt="star" @click="clickStars(index)" />
+                            </div>
+                            <a @click="b_submit" role="button" class="MGuestBtn" title="留言" id="_j_msgboard_submit">留言</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="b_rating_list">
+                    <div class="b_rating_item" v-for="(item, index) in messageList" :key="index">
+                        <div class="b_rating_top">
+                            <div class="b_rt_avatar">
+                                <img :src="imgToUrl(item.head_img_url)" alt="avatar" />
+                            </div>
+                            <div class="b_rt_box">
+                                <div class="b_rt_name">
+                                    <span class="b_rt_txt">{{item.name}}</span>
+                                    <div>
+                                        <img  v-for="items in parseInt(item.star)" src="__INDEX__/images/started@2x.png" alt="star" />
+                                    </div>
+                                </div>
+                                <span class="b_rt_txt">{{item.create_time | formatDate}}</span>
+                            </div>
+                        </div>
+                        <div class="b_rating_bottom">
+                            <div class="b_rbt_txt">
+                                <div class="b_message_content">
+                                    <span v-if="activeIndex != index">{{ getMsg(item.msg) }}<img v-if="item.msg.length > 45"  @click="showOpenCli(index)" style="width: 14px;height: 8px;margin-left: 6px;" src="__INDEX__/images/open@2x.png" alt=""></span>
+                                    <span v-if="activeIndex == index">{{item.msg}}<img style="width: 14px;height: 8px;margin-left: 6px;"  @click="showUpCli()" src="__INDEX__/images/up@2x.png" alt=""></span>
+                                    <!-- <a class="b_rb_span">回复</a>
+                                    <a>举报</a> -->
+                                </div>
+                                <!-- <div class="b_rating_bao">
+                                    <a class="b_rb_span">回复</a>
+                                    <a>举报</a>
+                                </div> -->
+                            </div>
+                            <!-- <div class="MGuestReplyText">
+                                <textarea class="_j_reply_con" placeholder="回复将军.cult：" data-active="0"></textarea>
+                                <div class="MGuestReplyBtn clearfix">
+                                    <a class="link_s _j_publish_reply" title="提交" data-name="李将军.cult">提交</a>
+                                    <a class="link_s link_cancel _j_reply_cancel" title="取消">取消</a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="b_left_right_btn">
+                        <!-- <img src="__INDEX__/images/light@2x.png" alt="left">
+                        <img src="__INDEX__/images/right@2x.png" alt="right"> -->
+                        <Page :page-size="newListNum" @on-change="changepage4" :total="newListTotal" prev-text="<" next-text=">" />
+                    </div>
+                </div>
+            </div>
+            <div class="b_right">
+                
+                <div id="b_artical">
+                    <div class="common_title clearfix">
+                        <div class="MAvaMore clearfix">
+                            <div class="MAvaNums">
+                                <strong v-clock>{{count.article_sum}}</strong>
+                                <p>文章</p>
+                            </div>
+                            <div class="MAvaNums">
+                                <strong v-clock>{{count.comments_sum}}</strong>
+                                <p>回复</p>
+                            </div>
+                            <div class="MAvaNums last">
+                                <strong v-clock>{{count.clicks_sum}}</strong>
+                                <p>阅读</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b_box_middle" v-for="(item, index) in articleList.data">
+                            <a :href="'/article/' + item.id">
+                            <img :src="imgToUrl(item.thumb)" alt=""/>
+                            </a>
+                            <div class="b_txt_box">
+                                <div class="b_layout">
+                                    <a :href="'/article/' + item.id" class="b_title">{{item.title}}</a>
+                                    <div class="b_bt_box">
+                                        <span class="b_title">{{item.ding_sum}}</span>
+                                        <img v-show="imgActive == 0" @mouseenter="showActive(1)" @mouseleave="showActive(0)" src="__INDEX__/images/ding@2x.png" alt="dinged">
+                                        <img v-show="imgActive == 1"  @mouseenter="showActive(1)" @mouseleave="showActive(0)" src="__INDEX__/images/dinged@2x.png" alt="dinged">
+                                    </div>
+                                </div>
+                                <div class="b_txt_time">
+                                    <img src="__INDEX__/images/yanjing@2x.png" style="margin-right: 4px;" alt="kan">
+                                    <span class="b_amount">{{item.views}}</span>
+                                    <img class="b_s_img" src="__INDEX__/images/shoucang@2x.png" alt="shoucang">
+                                    <span class="b_amount b_s_right">{{item.keep_sum}}</span>
+                                    <span class="b_amount">{{item.time | formatDate}}</span>
+                                </div>
+                                <span class="b_dec" v-html="item.content"></span>
+                            </div>
+                        </div>
+                        <Page styles="border-color: rgba(255,168,0,1);" :total="totalPage3" :page-size="perNum3" @on-change="changepage" class="b_navigate3" prev-text="上一页" next-text="下一页" />
+                </div>
+                <!-- question -->
+                <div id="b_question" style="display: none;" class="b_question">
+                    <div class="b_q_top">
+                        <span class="b_qt_txt" id="b_qtt_active1">TA的回答</span>
+                        <span class="b_qt_txt" id="b_qtt_active2">TA的提问</span>
+                    </div>
+                    <div class="b_q_list" v-for="(item, index) in answersList.data" :key="index">
+                        <div class="b_ql_box">
+                            <div class="b_l_box">
+                                <img src="__INDEX__/images/dingweiweizhi@2x.png" alt="dingweiweizhi">
+                                <div>
+                                    <a href="#" class="b_ql_txt">{{item.location}}</a>
+                                    <a href="#" class="b_ql_txt b_ql_txt1">{{item.title.length > 30 ? item.title.substr(0, 30) + "..." : item.title}}</a>
+                                </div>
+                            </div>
+                            <div class="b_ql_layout">
+                                <img :src="imgToUrl(item.thumb)" alt="pic">
+                                <div class="b_ql_desc">
+                                    <span class="b_qld_desc">
+                                        {{item.content}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+                                <div class="b_qls_box">
+                                    <img src="__INDEX__/images/ding@2x.png" alt="ding">
+                                    <span class="b_ql_explam">{{item.ding}}</span>
+                                </div>
+                                <div class="b_qls_box">
+                                    <span class="b_ql_explams" style="margin-right: 5px;">{{item.count}}评论</span>
+                                    <span class="b_ql_explams">{{item.create_time | formatDate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <Page :total="totalPage2" :page-size="perNum2" @on-change="changepage2" class="b_navigate3 b_navigate" prev-text="上一页" next-text="下一页" />
+                </div>
+                <!-- host -->
+                <div id="b_host"  style="display: none;" class="b_host">
+                    <div class="b_h_top">
+                        <span class="b_ht_txt1">{{userInfo.name}}</span>
+                        <span class="b_ht_txt2">共代理房产{{shopList.total}}套</span>
+                    </div>
+                    <div class="b_h_list">
+                        <div style="width: 100%;padding: 0 8px;display: flex;flex-direction: row;justify-content: space-between;flex-wrap: wrap;">
+                            <div class="b_hl_box" v-for="(item, index) in shopList.data" :key="index">
+                                <div class="b_hl_img">
+                                <a :href="'/propertydetail/' + item.id">
+                                    <img :src="imgToUrls(item.property_pics_url)" alt="host">
+                                 </a>
+                                </div>
+                                <div class="b_hl_desc">
+                                    <div class="b_hld_top">
+                                    <a :href="'/propertydetail/' + item.id">
+                                        <div class="b_hldt_box">
+                                            <span class="b_hldt_txt1">{{item.location2}}</span>
+                                            <span style="font-size: 20px;">.</span>
+                                            <span class="b_hldt_txt1">{{item.location3}}</span> - 
+                                            <span class="b_hldt_txt1">{{item.project_name}}</span>
+                                        </div>  
+                                        </a>                                     
+                                        <div class="b_hldt_txt2">￥{{item.project_price}}  万</div>
+                                    </div>
+                                    <div class="b_hld_bottom">
+                                        <div class="b_hldb_box">
+                                            <img src="__INDEX__/images/seat@2x.png" alt="seat">
+                                            <span class="b_hldb_txt1">{{item.location2}} · {{item.location3}} · {{item.location4}}</span>
+                                        </div>
+                                        <a class="b_hldb_txt2" :href="'/propertydetail/' + item.id">查看更多 ></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <Page :total="totalPage1" :page-size="perNum1" @on-change="changepage1" class="b_navigate3" prev-text="上一页" next-text="下一页" />
+                </div>
+            </div>
+        </div>
+        </template>
+    </div>
+    {include file="public/footer"}
+</body>
+<script src="__INDEX__/style/vue.min.js"></script>
+<script src="__INDEX__/style/b_index.js"></script>
+<script type="text/javascript" src="http://unpkg.com/view-design/dist/iview.min.js"></script>
+<script src="__INDEX__/style/MiniDialog-es5.min.js"></script>
+<script>
+
+$(function() {
+    var vm = new Vue({
+        el: '#b_container',
+        data() {
+            return {
+                ghtml:"+ 关注",
+                imgActive: 0,
+                count: {},
+                userInfo: {},
+                follow: {},
+                follows: {},
+                messageList: [],
+                articleList: [],
+                shopList: [],
+                answersList: [],
+                totalPage1: 0,
+                totalPage2: 0,
+                totalPage3: 0,
+                newListTotal: 0,
+                perNum1: 6,
+                currentPage1: 1,
+                perNum2: 5,
+                currentPage2: 1,
+                perNum3: 3,
+                currentPage3: 1,
+                currentPage: 1,
+                newListNum: 5,
+                stara: '__INDEX__/images/start@2x.png',
+                stard: '__INDEX__/images/started@2x.png',
+                xing: 0,
+                xingList: [0, 1, 2, 3, 4],
+                showUp: false,
+                showOpen: true,
+                activeIndex: -1,
+                userid:{$userid},
+                netizenid:{$netizenid},
+                // httproot:"http://fin110.com/",
+                // imgurl:"http://fin110.com/public/",
+                httproot:getApi()+'/',
+                //imgurl:"http://bick2.io/public/",
+                imgurl:getApi()+'/',
+            }
+        },
+        mounted: function() {
+            this._getUserInfo()
+            this._getFollows()
+            this._getCount()
+            this._getArticleList()
+            this._getShopList()
+            this._getMessageList()
+            this._getAnswersList()
+        },
+        computed: {
+            imgToUrls: function(urls) {
+                return function(urls) {
+                    return this.imgurl + urls[0]
+                }
+            },
+            imgToUrl: function(url) {
+                return function(url) {      
+                    return this.imgurl + url 
+                }
+            },
+            getMsg(msg) {
+                return function(msg) {
+                    return msg.length > 45 ? msg.substr(0, 45) + "..." : msg
+                }
+            }
+        },
+        filters:{
+            formatDate:function (val) {
+                var value=new Date(val*1000);
+                var year=value.getFullYear();
+                var month=(value.getMonth()+1) < 10 ? '0'+(value.getMonth()+1) : (value.getMonth()+1);
+                var day=value.getDate() < 10 ? '0' + value.getDate() : value.getDate();
+                var hour=value.getHours() < 10 ? '0' + value.getHours() : value.getHours();
+                var minutes=value.getMinutes() < 10 ? '0' + value.getMinutes() : value.getMinutes();
+                var second = value.getSeconds() < 10 ? '0' + value.getSeconds() : value.getSeconds();
+                return year+'-'+month+'-'+day+' '+hour+':'+minutes +':'+second;
+    
+            }
+        },
+        // watch:{
+        //     // 当 props.value 发生改变时 更新 div 中的值
+        //     ghtml(val) {
+        //       this.setVal(this.ghtml)
+        //     }
+        //   },
+        methods: {
+            showUpCli() {
+                this.activeIndex = -1
+            },
+            showOpenCli(index) {
+                this.activeIndex = index
+            },
+            clickStars: function(index) {
+                this.xing = index+1
+            },
+            b_submit: function() {
+                var str = $('.b_textarea').val()
+                if(str.trim().length == 0) {
+                   Dialog.warn("提示", '请填写内容后再提交');
+                $('.mini-dialog-footer').css('height','64px');
+                } else {
+                    this._submitMessage(str)
+                }
+            },
+            b_guanzhu: function() {
+                    this._submitGuanzhu()
+            },
+            // setVal(val) {
+            //  this.$refs.ghtmls.innerHTML = val
+            // },
+            changepage4: function(index) {
+                this.currentPage = index
+                this._getMessageList()
+            },
+            changepage: function(index) {
+                this.currentPage3 = index
+                this._getArticleList();
+            },
+            changepage1: function(index) {
+                this.currentPage1 = index
+                this._getShopList();
+            },
+            changepage2: function(index) {
+                this.currentPage2 = index
+                this._getAnswersList();
+            },
+            showActive: function(index) {
+                this.imgActive = index
+            },
+            // 获取个人基本信息
+            _getUserInfo: function() {
+                var that = this
+                $.ajax({
+                    type: 'get',
+                    url: that.httproot+'userprofile/'+that.userid,
+                    success: function(res) {
+                        if(res.code == 200) {
+                            that.userInfo = res.data
+                        }
+                    }
+                })
+            },
+            // 关注与粉丝
+            _getFollows: function() {
+                var that = this
+                // console.log(that.userid);
+                $.ajax({
+                    type: 'get',
+                    url: that.httproot+'followers/'+that.userid,
+                    success: function(res) {
+                        if(res.code == 200) {
+                            that.follow = res.data
+                        }
+                    }
+                })
+            },
+            // 留言列表
+            _getMessageList: function() {
+                var that = this
+                $.ajax({
+                    type: 'get',
+                    url: that.httproot+'leavemessages/'+that.userid+'/'+that.newListNum+'/'+that.currentPage,
+                    success: function(res) {
+                        if(res.code == 200) {
+                            that.messageList = res.data.leavemsg
+
+                            that.newListTotal = res.data.total_num
+                        }
+                    }
+                })
+            },
+            // 提交留言
+            _submitMessage: function(str) {
+                var that = this
+                $.ajax({
+                    type: 'post',
+                    url: that.httproot+'leavemessages',
+                    data: {
+                        userid: that.userid,
+                        netizenid: that.netizenid,
+                        msg: str,
+                        star: this.xing
+                    },
+                    success: function(res) {
+                        if(res.code == 200) {
+                  Dialog.warn("提示", res.msg);
+                $('.mini-dialog-footer').css('height','64px');
+                            that.xing=0
+                            $('.b_textarea').val('')
+                        }else{
+                  Dialog.warn("提示", res.msg);
+                $('.mini-dialog-footer').css('height','64px');
+                             }
+                    }
+                })
+            },
+            // 提交关注
+            _submitGuanzhu: function() {
+                var that = this
+                $.ajax({
+                    type: 'post',
+                    url: that.httproot+'index/userprofile/follow',
+                    data: {
+                        userid: that.userid,
+                        type:1
+                    },
+                    success: function(res) {
+                        console.log(res);
+                        if(res.code == "add200"){
+                            that.ghtml ='已关注';
+							Dialog.warn("提示", res.msg);
+							$('.mini-dialog-footer').css('height','64px');
+                        }else if(res.code == 4000)
+                        {
+                            that.ghtml ='已关注';
+							Dialog.warn("提示", res.msg);
+							$('.mini-dialog-footer').css('height','64px');
+                        }
+                        else{
+							Dialog.warn("提示", res.msg);
+							$('.mini-dialog-footer').css('height','64px');
+                        }
+                    }
+                })
+            },
+            // 文章统计
+            _getCount: function() {
+                var that = this
+                $.ajax({
+                    type: 'get',
+                    url: that.httproot+'articleinfo/'+that.userid,
+                    success: function(res) {
+                        if(res.code == 200) {
+                            that.count = res.data
+                        }
+                    }
+                })
+            },
+            // 文章列表展示
+            _getArticleList: function() {
+                var that = this
+                $.ajax({
+                    type: 'get',
+                    url: that.httproot+'articlelist/'+that.userid+'/'+that.perNum3+'/'+that.currentPage3,
+                    success: function(res) {
+                        if(res.code == 200) {
+                            that.articleList = res.data
+                            that.totalPage3 = res.data.total
+                        }
+                    }
+                })
+            },
+            // 我的房源商店
+            _getShopList: function() {
+                var that = this
+                $.ajax({
+                    type: 'get',
+                    url:that.httproot+ 'myshop/'+that.userid+'/'+that.perNum1+'/'+that.currentPage1,
+                    success: function(res) {
+                        if(res.code == 200) {
+                            that.shopList = res.data
+                            that.totalPage1 = res.data.total
+                        }
+                    }
+                })
+            },
+            // 我的问答
+            _getAnswersList: function() {
+                var that = this
+                $.ajax({
+                    type: 'get',
+                    url: that.httproot+'answers/3/'+that.perNum2+'/'+that.currentPage2,
+                    success: function(res) {
+                        if(res.code == 200) {
+                            that.answersList = res.data
+                            that.totalPage2 = res.data.total
+                        }
+                    }
+                })
+            }
+        }
+    })
+       
+    $('#b_shop').addClass('b_active')
+    $('#b_qtt_active1').addClass('b_qt_active')
+    $('#b_qtt_active1').hover(function() {
+        $('#b_qtt_active1').addClass('b_qt_active')
+        $('#b_qtt_active2').removeClass('b_qt_active')
+    })
+    $('#b_qtt_active2').hover(function() {
+        $('#b_qtt_active2').addClass('b_qt_active')
+        $('#b_qtt_active1').removeClass('b_qt_active')
+    })
+    $('#b_shop').hover(function() {
+        $('#b_shop').addClass('b_active')
+        $('#b_paly').removeClass('b_active')
+        $('#b_questions').removeClass('b_active')
+        $('#b_artical').show();
+        $('#b_host').hide();
+        $('#b_question').hide();
+    })
+    $('#b_paly').hover(function() {
+        $('#b_shop').removeClass('b_active')
+        $('#b_questions').removeClass('b_active')
+        $('#b_paly').addClass('b_active')
+        $('#b_host').show();
+        $('#b_artical').hide();
+        $('#b_question').hide();
+    })
+    $('#b_questions').hover(function() {
+        $('#b_shop').removeClass('b_active')
+        $('#b_paly').removeClass('b_active')
+        $('#b_questions').addClass('b_active')
+        $('#b_question').show();
+        $('#b_artical').hide();
+        $('#b_host').hide();
+    })
+})
+
+</script>
+</html>

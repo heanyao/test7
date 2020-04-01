@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>房源列表</title>
+    <link rel="stylesheet" type="text/css" href="__INDEX__/style/lanHu.css">
+    <script src="__INDEX__/style/jquery-1.8.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="box">
+    <div class="header_null"></div>
+    <div class="header">
+        <img src="">
+
+        </div>
+    </div>
+
+    <div class="search">
+        <div class="search_hader">
+            <div class="anniu"><a target="_blank" href="javascript:void(0)"><input type="radio" name="fangyu" checked>
+            </a> <a
+                    href="javascript:void(0)">房源</a></div>
+            <div class="anniu"><a target="_blank" href="javascript:void(0)"> <input type="radio" name="fangyu"> </a> <a
+                    href="javascript:void(0)">资讯</a></div>
+        </div>
+        <div class="search_search">
+            <input type="text" placeholder="请输入国家/城市/项目名/学校名 找房">
+        </div>
+        <div class="search_condition">
+            <div class="search_condition_s">
+                <a target="_blank" href="javascript:void(0)"><img src="__INDEX__/images/分组.png"></a>
+            </div>
+            <input class="search_s" onmouseover="this.style.cursor='hand'" type="button" value="搜索">
+            <a target="_blank" class="search_ss" href="javascript:void(0)">
+                <div></div>
+            </a>
+        </div>
+    </div>
+<!--    筛选-->
+   <div class="shizhoulist">
+        <!--            -->
+        <div class="diqulistt">
+            <div class="shizhouboxs">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">国家</span></div>
+            <a target="_blank" href="javascript:void(0)">不限</a>
+            <div class="guojiabox">
+
+
+                <div class="guojia">
+                    <img src="__INDEX__/images/筛选-位置.png"><span>美洲</span>
+                    <div class="guojia_contes">
+                        <span><a target="_blank" href="javascript:void(0)">美国</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">加拿大</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">尼加拉瓜</a></span>
+                    </div>
+                </div>
+                <div class="guojias">
+                    <img src="__INDEX__/images/筛选-位置.png"><span>欧洲</span>
+                    <div class="guojia_contess">
+                        <span><a target="_blank" href="javascript:void(0)">西班牙</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">塞浦路斯</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">希腊</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">意大利</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">俄罗斯</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">捷克</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">保加利亚</a></span>
+                    </div>
+                </div>
+                <div class="guojia">
+                    <img src="__INDEX__/images/筛选-位置.png"><span>大洋州</span>
+                    <div class="guojia_contese">
+                        <span><a target="_blank" href="javascript:void(0)">澳大利亚</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">新西兰</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">新西兰</a></span>
+                    </div>
+                </div>
+                <div class="guojias">
+                    <img src="__INDEX__/images/筛选-位置.png"><span>亚洲</span>
+                    <div class="guojia_contess">
+                        <span><a target="_blank" href="javascript:void(0)">日本</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">马来西亚</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">新加坡</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">韩国</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">泰国</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">阿联酋</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">菲律宾</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">柬埔寨</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">中国台湾</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">越南</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">哈萨克斯坦</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">哈萨克斯坦</a></span>
+                        <span><a target="_blank" href="javascript:void(0)">哈萨克斯坦</a></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--            -->
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">州/省</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">威尔士</a>
+            <a target="_blank" href="javascript:void(0)">苏格兰</a>
+            <a target="_blank" href="javascript:void(0)">北爱尔兰</a>
+            <a target="_blank" href="javascript:void(0)">英格兰</a>
+        </div>
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">热门城市</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">威尔士</a>
+            <a target="_blank" href="javascript:void(0)">苏格兰</a>
+            <a target="_blank" href="javascript:void(0)">北爱尔兰</a>
+            <a target="_blank" href="javascript:void(0)">英格兰</a>
+        </div>
+
+
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">状态</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">在售</a>
+            <a target="_blank" href="javascript:void(0)">出租</a>
+            <a target="_blank" href="javascript:void(0)">拍卖/可议价</a>
+        </div>
+
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">户型</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">新建房源</a>
+            <a target="_blank" href="javascript:void(0)">商业房源</a>
+            <a target="_blank" href="javascript:void(0)">住宅房源</a>
+            <a target="_blank" href="javascript:void(0)">工业地产</a>
+            <a target="_blank" href="javascript:void(0)">Luxe豪宅</a>
+        </div>
+
+
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">户型</span></div>
+            <a href="javascript:void(0)" class="buxian" target="_blank">不限</a>
+            <a href="javascript:void(0)" target="_blank">100万以下</a>
+            <a href="javascript:void(0)" target="_blank">100-300万</a>
+            <a href="javascript:void(0)" target="_blank">500-700万</a>
+            <a href="javascript:void(0)" target="_blank">700-900万</a>
+            <a href="javascript:void(0)" target="_blank">900万以上</a>
+            <div class="shizhou_a">￥</div>
+            -
+            <div class="shizhou_b">￥</div>
+            <div class="queren">确定</div>
+        </div>
+
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">卧室数量</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">1卧</a>
+            <a target="_blank" href="javascript:void(0)">2卧</a>
+            <a target="_blank" href="javascript:void(0)">3卧</a>
+            <a target="_blank" href="javascript:void(0)">4卧</a>
+            <a target="_blank" href="javascript:void(0)">5卧</a>
+            <a target="_blank" href="javascript:void(0)">6卧</a>
+            <a target="_blank" href="javascript:void(0)">7卧</a>
+            <a target="_blank" href="javascript:void(0)">8卧</a>
+            <a target="_blank" href="javascript:void(0)">9卧</a>
+        </div>
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">建筑面积</span></div>
+            <a href="javascript:void(0)" class="buxian" target="_blank">不限</a>
+            <a href="javascript:void(0)" target="_blank">200平方以下</a>
+            <a href="javascript:void(0)" target="_blank">200-300平方</a>
+            <a href="javascript:void(0)" target="_blank">300-400平方</a>
+            <a href="javascript:void(0)" target="_blank">400-500平方</a>
+            <a href="javascript:void(0)" target="_blank">500-600平方</a>
+            <a href="javascript:void(0)" target="_blank">700平方以上</a>
+        </div>
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">土地面积</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">500平方以下</a>
+            <a target="_blank" href="javascript:void(0)"> 500-1000平方</a>
+            <a target="_blank" href="javascript:void(0)">1000-1500平方</a>
+            <a target="_blank" href="javascript:void(0)">1500-2000平方</a>
+            <a target="_blank" href="javascript:void(0)">2000-2500平方</a>
+            <a target="_blank" href="javascript:void(0)">2500平方以上</a>
+        </div>
+
+
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">房龄</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">1年</a>
+            <a target="_blank" href="javascript:void(0)">2年</a>
+            <a target="_blank" href="javascript:void(0)">3年</a>
+            <a target="_blank" href="javascript:void(0)">4年</a>
+            <a target="_blank" href="javascript:void(0)">5年</a>
+            <a target="_blank" href="javascript:void(0)">6年</a>
+            <a target="_blank" href="javascript:void(0)">7年</a>
+            <a target="_blank" href="javascript:void(0)">8年</a>
+            <a target="_blank" href="javascript:void(0)">9年</a>
+            <a target="_blank" href="javascript:void(0)">10年</a>
+            <a target="_blank" href="javascript:void(0)">10年以上</a>
+        </div>
+
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">朝向</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">东</a>
+            <a target="_blank" href="javascript:void(0)">南</a>
+            <a target="_blank" href="javascript:void(0)">西</a>
+            <a target="_blank" href="javascript:void(0)">北</a>
+            <a target="_blank" href="javascript:void(0)">东北</a>
+            <a target="_blank" href="javascript:void(0)">东南</a>
+            <a target="_blank" href="javascript:void(0)">西南</a>
+            <a target="_blank" href="javascript:void(0)">西北</a>
+            <a target="_blank" href="javascript:void(0)">南北</a>
+            <a target="_blank" href="javascript:void(0)">东西</a>
+
+        </div>
+
+        <div class="diqulist">
+            <div class="shizhoubox">
+                <span target="_blank" class="shizhou" href="javascript:void(0)">景观</span></div>
+            <a target="_blank" class="buxian" href="javascript:void(0)">不限</a>
+            <a target="_blank" href="javascript:void(0)">城市景观</a>
+            <a target="_blank" href="javascript:void(0)">深林景观</a>
+            <a target="_blank" href="javascript:void(0)">草地景观</a>
+            <a target="_blank" href="javascript:void(0)">湖泊景观</a>
+            <a target="_blank" href="javascript:void(0)">河景观</a>
+            <a target="_blank" href="javascript:void(0)">海景观</a>
+            <a target="_blank" href="javascript:void(0)">高尔夫球场</a>
+            <a target="_blank" href="javascript:void(0)">滑雪场</a>
+            <a target="_blank" href="javascript:void(0)">海港</a>
+            <a target="_blank" href="javascript:void(0)">沙漠</a>
+        </div>
+        <div class="diqulists">
+            <div></div>
+            <a target="_blank" href="javascript:void(0)">
+                <div class="queding">确定</div>
+            </a>
+            <div class="quedings"><a target="_blank" href="javascript:void(0)"><img src="__INDEX__/images/筛选-重置条件.png"></a></div>
+        </div>
+
+    </div>
+
+    <div class="containe">
+    {if condition="$keywords neq ''"}
+        {volist name="serRes" id="homes" key="k"}
+        <div class="containe_content_boxs">
+            <div class="qiehuan">
+                <div class="lxfscroll1">
+                    <ul>
+                        <li><a href="javascript:void(0)" target="_blank"> <img
+                                src="__INDEX__/images/30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                width="600"></a></li>
+                        <li><a href="javascript:void(0)"> <img
+                                src="__INDEX__/images/c69741dbdea0cb9d-b563ff2637c6e532-cf4f847a0f1dd8eb6e6aa9244572d024.jpg"
+                                width="600"></a></li>
+                        <li><a href="javascript:void(0)"> <img
+                                src="__INDEX__/images/30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                width="600"></a></li>
+                        <li><a href="javascript:void(0)"> <img
+                                src="__INDEX__/images/c69741dbdea0cb9d-b563ff2637c6e532-cf4f847a0f1dd8eb6e6aa9244572d024.jpg"
+                                width="600"></a></li>
+                        <li><a href="javascript:void(0)"> <img
+                                src="__INDEX__/images/30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                width="600"></a></li>
+                        <li><a href="javascript:void(0)"> <img
+                                src="__INDEX__/images/c69741dbdea0cb9d-b563ff2637c6e532-cf4f847a0f1dd8eb6e6aa9244572d024.jpg"
+                                width="600"></a></li>
+                        <li><a href="javascript:void(0)"> <img
+                                src="__INDEX__/images/30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                width="600"></a></li>
+                        <li><a href="javascript:void(0)"> <img
+                                src="__INDEX__/images/c69741dbdea0cb9d-b563ff2637c6e532-cf4f847a0f1dd8eb6e6aa9244572d024.jpg"
+                                width="600"></a></li>
+                    </ul>
+                </div>
+                <a class="button_shang1" onClick="lxfLast1()" href="javascript:void(0) "><img
+                        src="__INDEX__/images/f142a73ec277316e88d51c7b30b0fdbc.png" width="30px"> </a>
+
+                <div class="containe_content_img">
+                    <div class="images_shade">
+                        <div class="images_shade_new"><span>new</span></div>
+                        <div class="images_shade_right">
+                            <div><img src="__INDEX__/images/banner-相片集.png"><span class="photo_cout">1/6</span></div>
+                            <a href="javascript:void(0)" class="shoucang"><img src="__INDEX__/images/收藏.png">
+                                <div>收藏</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="button_xia1" href="javascript:void(0)  " onClick="lxfNext1()"><img
+                        src="__INDEX__/images/f142a73ec277316e88d51c7b30b0fdbc1.png" width="30px"></a>
+            </div>
+
+            <div class="containe_content">
+                <div>
+                    <a href="javascript:void(0)">
+                        <div class="containe_content_titile">{$homes.project_name}</div>
+                    </a>
+                    <a href="javascript:void(0)">
+                        <div class="containe_content_price">¥{$homes.project_price}</div>
+                    </a>
+                    <div class="containe_content_univalence">
+                        <a href="javascript:void(0)">
+                            <div>约2340万～4340万泰铢</div>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <div>单价：{$homes.price_per_meter}元/平米</div>
+                        </a>
+                    </div>
+                    <a href="javascript:void(0)">
+                        <div class="containe_content_state ">国家：{$homes.location2}-{$homes.location3}-{$homes.location4}
+
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)">
+                        <div class="containe_content_browse  ">187人看过 / 共7次咨询 / 3个月以前发布</div>
+                    </a>
+                </div>
+                <div class="containe_content_footer_left">
+                    <div class="content_footer_right">
+                        <a href="javascript:void(0)">  <img class="weitus" src="{$publisherhomes[$k-1]['head_img_url']}" width="82" height="82"></a>
+                        <div class="weitu"></div>
+                        <div class="content_footer_center">
+                            <span class="content_footer_texta">{$publisherhomes[$k-1]['name']}</span>
+                            <span class="content_footer_textb">{$publisherhomes[$k-1]['languages']}</span>
+                            <span class="content_footer_textc">{$publisherhomes[$k-1]['tel']}</span>
+                            <span><img src="__INDEX__/images/在线.png"></span>
+                        </div>
+                    </div>
+                    <div class="containe_content_footer_right">
+                        <div class="containe_content_developers ">
+                            <span>开发商</span>
+                            <a href="javascript:void(0)">   <div class="renzheng">
+                                <div class="yirenzheng">已认证</div>
+                                <img src="{$homes.logo_url}" width="114"></div></a>
+                        </div>
+                        <div class="containe_content_poto">
+                            <img src="__INDEX__/images/配备-床.png"><span>1</span>
+                            <img src="__INDEX__/images/浴缸.png"><span>1</span>
+                            <img src="__INDEX__/images/沙发%20(1).png"><span>1</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="content_footer_left">
+                    {$homes.new_or_old} | {$homes.property_type} | {$homes.square_meter}m² | {$homes.property_built_time||date='Y年m月d日',###} 交房 | {$homes.years_for_hold}
+                </div>
+            </div>
+        </div>
+    {/volist}
+     {else}
+    没有搜索关键词
+     {/if} 
+    {if condition="$keywords neq ''"}
+    {$serRes->render()}
+    {/if}  
+    </div>
+    <div class="load">
+        <span>加载更多</span>
+    </div>
+
+
+</div>
+
+
+</body>
+<script src="__INDEX__/style/lanHu.js" type="text/javascript"></script>
+<script>
+    $(".search_condition_s").click(function () {
+        $(".shizhoulist").slideToggle("slow");
+    });
+    $(".containe_content a").not(".containe_content_footer_right").click(function () {
+        open("housingDetails.html")
+    });
+
+</script>
+
+</html>

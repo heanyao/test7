@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detail</title>
+
+    <link rel="stylesheet" href="__INDEX__/style/c_detail.css">
+    <script src="__INDEX__/style/vue.min.js"></script>
+    <link rel="stylesheet" href="__INDEX__/style/element-ui.css">
+    <script src="__INDEX__/style/element-ui.js"></script>
+    <link rel="stylesheet" href="__INDEX__/style/bootstrap.css">
+    <script src="__INDEX__/style/bootstrap.js"></script>
+
+</head>
+<body style="background:rgba(242, 242, 242, 1);">
+<!--头部-->
+{include file="public/header"}
+<!--内容-->
+<div class="content">
+    <!--展示部分-->
+    <div class="banner d_col" style="background: url(__INDEX__/images/banner@2x.png) center no-repeat;background-size: cover">
+        <div class="logo_content d_row">
+            <div class="logo">
+                <img src="{$companyinfo.logo_url}" alt="logo">
+            </div>
+            <div class="logo_title d_col">
+                <div class="d_row">
+                    <label class="title_logo" for="">
+                        {$companyinfo.company_name_en}
+                    </label>
+                    <label class="title_logo2 d_row" for="">
+                    {if condition="$companyinfo.type eq '1'"}开发商
+                    {elseif condition="$companyinfo.type eq 2"/}代理商
+                    {else /} 其它
+                    {/if}
+                    </label>
+                </div>
+                <div class="d_row logo_text" style="margin-top: 21px">
+                    <label for="">服务区域：{$companyinfo.biz_scope}</label>
+                    <label for="">电话：{$companyinfo.company_tel}</label>
+                </div>
+                <div class="d_row logo_text">
+                    <label for="">网址：{$companyinfo.company_web}</label>
+                    <label for="">地址：{$companyinfo.company_address}</label>
+                </div>
+            </div>
+        </div>
+        <div class="text_content">
+        {$companyinfo.company_intro}
+        </div>
+    </div>
+    <!--面包屑-->
+    <div class="bread d_row">
+        <label>居外</label><label>&nbsp;>&nbsp;</label>
+        <label>意大利中介</label><label>&nbsp;>&nbsp;</label>
+        <label>Associati R.E. S.r.l</label><label>&nbsp;>&nbsp;</label>
+        <label>公司团队</label>
+    </div>
+    <!--内容和评论左右结构-->
+    <div class="detailAndcomment d_row">
+        <div class="detail d_col">
+            <!--详情部分-->
+            <div class="detail_top d_col">
+                <div class="detail_top_title d_col">
+                    <span for="">
+                        共<label for="">{$company_counts.workers}</label>位团队成员
+                    </span>
+                </div>
+                <div class="detail_top_list d_row">
+                    <!--循环渲染-->
+                    {volist name="company_workers" id="workers"}
+                    <div class="detail_top_item d_row">
+                    <a href="/profiledetails/{$workers.id}">
+                    <div class="items_details">
+                         <img src="{$workers.head_img_url}" alt="">
+                    </div>
+                       
+                    </a>
+                        
+                        <div class="d_col">
+                            <p class="detail_items_title" style="font-size: 16px;font-weight: 600;margin-top: 19px">
+                                {$workers.name}
+                            </p>
+                            <p class="detail_items_title d_row">
+                                总评分
+                                <span class="star d_row" style="margin-left: 7px">
+                                    <img src="__INDEX__/images/teams_start@2x.png" alt="">
+                                    <img src="__INDEX__/images/teams_start@2x.png" alt="">
+                                    <img src="__INDEX__/images/teams_start@2x.png" alt="">
+                                    <img src="__INDEX__/images/teams_start@2x.png" alt="">
+                                    <img src="__INDEX__/images/teams_start@2x.png" alt="">
+                                </span>
+                            </p>
+                            <p class="detail_items_title">
+                                {$workers.nationality}
+                            </p>
+                            <p class="detail_items_title">
+                                能说{$workers.languages}
+                            </p>
+                            <p class="detail_items_title">
+                                共有{$workers.propertycounts}套房产
+                            </p>
+
+                        </div>
+                    </div>
+                    {/volist}
+
+                </div>
+
+            </div>
+
+            <div class="detail_bottom">
+                <div class="detail_top_title d_col">
+                    <span for="">
+                        <label for="">{$companyinfo.company_name_en}</label>
+                        共租售房产<label for="">{$company_counts.properties}</label>套
+                    </span>
+                </div>
+                <div class="detail_top_list d_row" style="padding-bottom:0">
+                    <!--循环渲染-->
+                    {volist name="company_properties" id="cproperties"}
+                    <div class="detail_bottom_item d_col">
+                    <a href="/propertydetail/{$cproperties.id}">
+                    <img src="{$cproperties.property_pics_url[0]}" alt=""></a>
+                        <div class="detail_bottom_content d_row">
+                            <div class="detail_bt_left d_col">
+                                <span class="bt_title">{$cproperties.location2}·{$cproperties.location4}-{$cproperties.project_name}</span>
+                                <span class="bt_title_text d_row">
+                                    <img src="__INDEX__/images/seat.png" alt="seat">
+                                    <label for="">{$cproperties.location2}·{$cproperties.location3}·{$cproperties.location4}</label>
+                                </span>
+                            </div>
+                            <div class="detail_bt_right d_col">
+                                <span class="bt_money">￥{$cproperties.project_price}万</span>
+                                <span class="bt_span">查看更多 <img src="__INDEX__/images/mouse_not_more@2x.png" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                     {/volist}
+                </div>
+                <div class="bt_page d_row">
+                    <!--占位-->
+                    <div></div>
+                    <div class="pages">
+                        <!--分页-->
+                        {$company_properties->render()}
+                       <!--  <div class="tcdPageCode"></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--评论部分-->
+        <div id="b_container" class="comment d_col">
+            <div class="detail_top_title d_col">
+                <span>该公司所有评价</span>
+            </div>
+            <div class="comment_content">
+                <div class="comment_label d_row">
+                    <label @click="change_p_type($event,0)" class="active_label">全部</label>
+                    <label @click="change_p_type($event,1)">推荐({$company_counts.support1})</label>
+                    <label @click="change_p_type($event,2)">一般({$company_counts.support2})</label>
+                    <label @click="change_p_type($event,3)">不推荐({$company_counts.support3})</label>
+                </div>
+                <!--评论列表-->
+                <div class="comment_list">
+                    <div class="b_rating_list">
+                        <div class="b_rating_item" v-for="(item, index) in messageList" :key="index">
+                            <div class="b_rating_top">
+                                <div class="b_rt_avatar">
+                                    <img :src="imgToUrl(item.head_img_url)" alt="avatar"/>
+                                </div>
+                                <div class="b_rt_box">
+                                    <div class="b_rt_name">
+                                        <span class="b_rt_txt">{{item.name}}</span>
+                                        <div>
+                                            <img v-for="items in parseInt(item.star)" src="__INDEX__/images/started@2x.png"
+                                                 alt="star"/>
+                                        </div>
+                                    </div>
+                                    <span class="b_rt_txt">{{item.create_time | formatDate}}</span>
+                                </div>
+                            </div>
+                            <div class="b_rating_bottom">
+                                <div class="b_rbt_txt">
+                                    <div class="b_message_content">
+                                        <span v-if="activeIndex != index">{{ getMsg(item.msg) }}<img
+                                                v-if="item.msg.length > 45" @click="showOpenCli(index)"
+                                                style="width: 14px;height: 8px;margin-left: 6px;"
+                                                src="__INDEX__/images/open@2x.png" alt="">
+                                                <div class="b_rating_bao">
+                                                <a class="b_rb_span" @click="huifu_box(index)">回复</a>
+                                                <a>举报</a>
+                                                </div>
+                                        </span>
+                                        <span v-if="activeIndex == index">{{item.msg}}<img
+                                                style="width: 14px;height: 8px;margin-left: 6px;" @click="showUpCli()"
+                                                src="__INDEX__/images/up@2x.png" alt="">
+                                            <div class="b_rating_bao">
+                                            <a class="b_rb_span" @click="huifu_box(index)">回复</a>
+                                            <a>举报</a>
+                                            </div>
+                                        </span>
+
+                                        <!--<a class="b_rb_span">回复</a>-->
+                                        <!--<a>举报</a>-->
+                                    </div>
+
+                                </div>
+                                <div class="MGuestReplyText">
+                                    <div readonly style="cursor: default" v-for="(hf,idx) in item.children" :key="idx"
+                                         v-if="idx<max_hf">
+                                        <label class="hf_name">{{hf.name}}</label>的回答：{{hf.msg}}
+                                    </div>
+                                    <div readonly class="hidden_hf div_hidden" :hf_open="index"
+                                         style="cursor: default"
+                                         v-for="(hf,idx) in item.children" :key="idx"
+                                         v-if="idx>=max_hf">
+                                        <label class="hf_name">{{hf.name}}</label>的回答：{{hf.msg}}
+                                    </div>
+                                    <div readonly style="cursor: default" v-for="(hf,idx) in item.children" :key="idx"
+                                         v-if="idx<max_hf && hf.name==''">
+                                        <label class="hf_name">匿名用户</label>的回答：{{hf.msg}}
+                                    </div>
+                                    <div readonly class="hidden_hf div_hidden" :hf_open="index"
+                                         style="cursor: default"
+                                         v-for="(hf,idx) in item.children" :key="idx"
+                                         v-if="idx>=max_hf && hf.name==''">
+                                        <label class="hf_name">匿名用户</label>的回答：{{hf.msg}}
+                                    </div>
+                                    <p class="more_hf"
+                                       v-if="item.children!== undefined && item.children!== null &&item.children.length > max_hf">
+                                        <img @click="more_hf($event)" :hf_arrow="index" class="down"
+                                             src="__INDEX__/images/open@2x.png"
+                                             alt="more">
+                                    </p>
+                                </div>
+                                <div class="MGuestInput hf_box" style="display: none">
+                                    <textarea placeholder="给楼主说点什么..." class="c_huifu"></textarea>
+                                    <a @click="hf_sub($event,item.id,index)" class="MGuestBtn">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b_left_right_btn">
+                            <img @click="lastPage" src="__INDEX__/images/light@2x.png" alt="left">
+                            <img @click="nextPage" src="__INDEX__/images/right@2x.png" alt="right">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 留言板 -->
+                <div>
+                    <div class="MGuestbook" id="_j_msgboard_wrap">
+                        <div class="MGuestTitle">留言板
+                        </div>
+                        <div class="MGuestInput">
+                            <textarea class="b_textarea" placeholder="给楼主留个脚印，说点什么..."></textarea>
+                            <div class="b_ratings">
+                                <span class="b_s_txt">对他的评价</span>
+                                <img v-for="(item, index) in xingList" :key="index" :src="xing > index ? stard : stara"
+                                     alt="star" @click="clickStars(index)"/>
+                            </div>
+
+                            <div class="support_box d_row">
+                                <label @click="change_support($event,1)">推荐</label>
+                                <label @click="change_support($event,2)">一般</label>
+                                <label @click="change_support($event,3)">不推荐</label>
+                            </div>
+                            <a @click="b_submit" class="MGuestBtn">留言</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--弹出提示-->
+            <el-dialog
+                    :title="dialog_title"
+                    :visible.sync="dialogVisible"
+                    width="30%">
+                <span class="dialog_br">{{dialog_content}}</span>
+                <span slot="footer" class="dialog-footer">
+    <el-button type="warning" @click="dialogVisible = false">关闭</el-button>
+  </span>
+            </el-dialog>
+
+        </div>
+    </div>
+</div>
+<!--尾部-->
+{include file="public/footer"}
+
+<script src="__INDEX__/style/d_detail.js"></script>
+<script src="__INDEX__/style/d_jquery.page.js"></script>
+<script>
+    $(".tcdPageCode").createPage({
+        pageCount: 100,
+        current: 1,
+        backFn: function (p) {
+
+        }
+    });
+</script>
+
+<script>
+
+    $(function () {
+        var vm = new Vue({
+            el: '#b_container',
+            data() {
+                return {
+                    max_hf: 1,
+                    messageList: [],
+                    newListTotal: 0,
+                    currentPage: 1,
+                    company_id: {$companyinfo.id},
+                    max_number: 5,
+                    type_num: 0,
+                    suppout: 0,
+                    stara: '__INDEX__/images/start@2x.png',
+                    stard: '__INDEX__/images/started@2x.png',
+                    xing: 0,
+                    xingList: [0, 1, 2, 3, 4],
+                    showUp: false,
+                    showOpen: true,
+                    activeIndex: -1,
+                    dialog_title: '提示',
+                    rooturl:getApi(),
+                    dialog_content: '',
+                    dialogVisible: false,
+                }
+            },
+            mounted: function () {
+                this._getMessageList();
+            },
+            computed: {
+                imgToUrls: function (urls) {
+                    return function (urls) {
+                        return this.rooturl+ urls.split(',')[0]
+                    }
+                },
+                imgToUrl: function (url) {
+                    return function (url) {
+                        return this.rooturl + url
+                    }
+                },
+                getMsg(msg) {
+                    return function (msg) {
+                        return msg.length > 45 ? msg.substr(0, 45) + "..." : msg
+                    }
+                }
+            },
+            filters: {
+                formatDate: function (val) {
+                    var value = new Date(val * 1000);
+                    var year = value.getFullYear();
+                    var month = (value.getMonth() + 1) < 10 ? '0' + (value.getMonth() + 1) : (value.getMonth() + 1);
+                    var day = value.getDate() < 10 ? '0' + value.getDate() : value.getDate();
+                    var hour = value.getHours() < 10 ? '0' + value.getHours() : value.getHours();
+                    var minutes = value.getMinutes() < 10 ? '0' + value.getMinutes() : value.getMinutes();
+                    var second = value.getSeconds() < 10 ? '0' + value.getSeconds() : value.getSeconds();
+                    return year + '-' + month + '-' + day + ' ' + hour + ':' + minutes + ':' + second;
+                }
+            },
+            methods: {
+                more_hf: function (e) {
+                    if ($(e.currentTarget).prop('class') == 'down') {
+                        $(e.currentTarget).prop('src', '__INDEX__/images/close@2x.png');
+                        $(e.currentTarget).prop('class', 'up');
+                        $(e.currentTarget).parents().siblings('.hidden_hf').removeClass('div_hidden');
+
+                    } else {
+                        $(e.currentTarget).prop('src', '__INDEX__/images/open@2x.png');
+                        $(e.currentTarget).prop('class', 'down');
+                        $(e.currentTarget).parents().siblings('.hidden_hf').addClass('div_hidden');
+                    }
+
+                },
+                hf_sub: function (evnet, id, index) {
+                    let msg = $(evnet.currentTarget).siblings('.c_huifu').val();
+                    let self = this;
+                    let Companyid = self.company_id;
+                    if (msg != '') {
+                        $.ajax({
+                             url: self.rooturl+'/companyinfo/subcomments',
+                            type: 'post',
+                            data: {'companyid': Companyid, 'msg': msg, 'commentid': id},
+                            success: function (data) {
+                                console.log(data);
+                                if (data.code === 200) {
+                                    self.dialog_content = '回复成功';
+                                    self.dialogVisible = true;
+                                    self._getMessageList();
+                                    $(".hf_box").css('display', 'none');
+                                    $("img[hf_arrow=" + index + "]").prop('src', '__INDEX__/images/close@2x.png');
+                                    $("img[hf_arrow=" + index + "]").prop('class', 'up');
+                                    $("div[hf_open=" + index + "]").removeClass('div_hidden');
+                                }
+                                else{
+                                    self.dialog_content = data.msg;
+                                    self.dialogVisible = true;
+                                }
+                            }, error(e) {
+                                console.log('请求错误');
+                            }
+                        });
+                    }
+                    else {
+                        self.dialog_content = '请输入回复内容！';
+                        self.dialogVisible = true;
+
+                    }
+
+
+                },
+                huifu_box: function (idx) {
+                    let hf_box = $(".hf_box")[idx];
+                    let is_show = $(hf_box).css('display');
+                    if (is_show == 'none') {
+                        $(hf_box).css('display', 'block');
+                    } else {
+                        $(hf_box).css('display', 'none');
+                    }
+                    if ($("img[hf_arrow=" + idx + "]").attr('class') == 'up') {
+                        $("img[hf_arrow=" + idx + "]").prop('src', '__INDEX__/images/open@2x.png');
+                        $("img[hf_arrow=" + idx + "]").prop('class', 'down');
+                        $("div[hf_open=" + idx + "]").addClass('div_hidden');
+                    }
+
+
+                },
+                change_support: function (event, sup) {
+                    let self = this;
+                    self.support = sup;
+                    $(event.currentTarget).siblings('label').removeClass('support_active');
+                    $(event.currentTarget).addClass('support_active');
+
+                },
+                change_p_type: function (event, type_num) {
+                    let self = this;
+                    self.type_num = type_num;
+                    self.currentPage = 1;
+                    $(event.currentTarget).siblings('label').removeClass('active_label');
+                    $(event.currentTarget).addClass('active_label');
+                    self._getMessageList();
+
+                },
+                showUpCli() {
+                    this.activeIndex = -1
+                },
+                showOpenCli(index) {
+                    this.activeIndex = index
+                },
+                clickStars: function (index) {
+                    this.xing = index + 1
+                },
+                b_submit: function () {
+                    let self = this;
+                    let Companyid = self.company_id;
+                    let star = self.xing;
+                    let sup = self.support;
+                    let text = $('.b_textarea').val();
+                    $(".support_box").find('label').removeClass('support_active');
+                    $($(".support_box").find('label')[sup-1]).addClass('support_active');
+
+                    if (text != '') {
+                        $.ajax({
+                            url: self.rooturl+'/companyinfo/comments',
+                            type: 'post',
+                            data: {'companyid': Companyid, 'star': star, 'support': sup, 'msg': text},
+                            success: function (data) {
+                                if (data.code === 200) {
+                                    self.dialog_content = '留言成功';
+                                    self.dialogVisible = true;
+                                    self.support = 0;
+                                    self.xing = 0;
+                                    $('.b_textarea').val('');
+                                    self.currentPage = Math.ceil(self.newListTotal / self.max_number);
+                                    self._getMessageList();
+                                    $(".hf_box").css('display', 'none');
+                                    $(".support_box").find('label').removeClass('support_active');
+                                } else {
+                                    self.dialog_content = data.msg;
+                                    self.dialogVisible = true;
+                                }
+
+                            }, error() {
+                                console.log('请求错误');
+                            }
+                        });
+                    }
+                    else {
+                        self.dialog_content = '请填写留言内容!';
+                        self.dialogVisible = true;
+                    }
+
+
+                },
+                lastPage: function () {
+                    this.currentPage -= 1;
+                    if (this.currentPage < 1) {
+                        this.currentPage = 1;
+                    }
+                    this._getMessageList();
+                },
+                nextPage: function () {
+                    var that = this;
+                    this.currentPage += 1;
+                    if (this.currentPage > Math.ceil(that.newListTotal / that.max_number)) {
+                        this.currentPage = Math.ceil(that.newListTotal / that.max_number);
+                    }
+                    this._getMessageList();
+                },
+                // 留言列表
+                _getMessageList: function () {
+                    var self = this;
+                    let company_id = self.company_id;
+                    let max = self.max_number;
+                    let now_page = self.currentPage;
+                    let type_num = self.type_num;
+                    $.ajax({
+                        type: 'get',
+                        url: self.rooturl+'/companyinfo/comments/' + company_id + '/' + max + '/' + now_page + '/' + type_num,
+                        success: function (res) {
+                            if (res.code == 200) {
+                                self.messageList = res.data.leavemsg;
+                                self.newListTotal = res.data.total_num;
+                            }
+                        }
+                    })
+                }
+            }
+        })
+
+
+    })
+
+</script>
+</body>
+</html>

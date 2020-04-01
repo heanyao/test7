@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="__INDEX__/style/reset.css">
+    <link rel="stylesheet" href="__INDEX__/style/jquery.sPage.css">
+    <link rel="stylesheet" href="__INDEX__/style/home.css">
+    <script>
+    {if condition="$user_head neq ''"}
+	{php}
+	$photo_url = str_replace("\\", "/", $user_head['head_img_url']);
+	{/php}
+    var photo_url = "{$photo_url}";
+    {else /}
+    var photo_url = "/uploads/20190826/51aec157750ba42ac103de0da051d67e.jpg";
+    {/if}
+    </script>
+
+</head>
+
+<body>
+    <!-- 放大的图片 -->
+    <div id="yulantupian1-1">
+        <img src="__INDEX__/images/abc.png" alt="">
+    </div>
+    <div id="yulantupian2-1">
+        <img src="__INDEX__/images/abc.png" alt="">
+    </div>
+
+
+    {include file="public/header"}
+
+    <!-- 标题背景 -->
+    <div class="f-biaotibg">
+        <div class="contenrts">
+            <div style="display: flex;">
+                <!-- 用户头像 -->
+                <a href="/profiledetails/{$artinfo.publisher_id}">
+                <div class="f-userphoto"><img src="{$artinfo.head_img_url}" alt=""></div>
+                </a>
+                <!-- 标题 -->
+                <h2 class="f-biaoti">{$artinfo.title}</h2>
+            </div>
+            <!-- 加关注 -->
+            <div class="f-addinterest" id="follow">
+                十关注
+            </div>
+        </div>
+    </div>
+    <!-- 当前页面信息 -->
+    <div class="f-pagemsg">
+        <div style="display: flex;padding-left: 130px;">
+            <!-- 用户名字 -->
+            <div class="f-username">
+            {$artinfo.name}
+            </div>
+            <!-- 用户id -->
+            <div style="display: none;" id="user_Id">{$artinfo.publisher_id}</div>
+            <!-- 时间 -->
+            <div class="f-time">
+            {$artinfo.time|date='Y-m-d H:i:s',###}
+            </div>
+            <!-- 分隔 -->
+            <div class="f-stop"></div>
+            <!-- 浏览次数 -->
+            <div class="f-looked">
+                <img src="__INDEX__/images/yanjing.png" alt="">
+            </div>
+            <div class="f-lookedtime">
+                {$artinfo.views}/{$artinfo.comments_sum}
+            </div>
+            <!-- 顶的次数 -->
+            <div class="f-puttime">
+               {$artinfo.ding_sum}
+            </div>
+            <div class="f-putimg" id="carry">
+                <!-- 这里需要你去做一个判断 判断是否已经顶做相应的渲染img就好了 -->
+                {if condition="$artinfo.is_ding eq null"}
+                <img src="__INDEX__/images/ding.png" num="1" alt="">
+                {else /}
+                <img src="__INDEX__/images/dinged.png" num="2" alt="">
+                {/if}
+            </div>
+        </div>
+        <div style="display: flex;">
+            <!-- 收藏 -->
+            <div class="f-collect">
+                <!-- 这里需要你去做一个判断 判断是否已经收藏做相应的渲染img就好了和顶一样 -->
+                {if condition="$artinfo.is_keep eq null"}
+                <div class="f-xingxing" num="1" id="f-xingxing"></div>
+                {else /}
+                <div class="f-xingxing f-xingxing1" num="2"></div>
+                {/if}
+                <div class="f-xingxingtime"><span id="keepchange">{$artinfo.keep_sum}</span>收藏</div>
+            </div>
+            <!-- 分隔 -->
+            <div class="f-stoplong"></div>
+            <!-- 转发 -->
+            <div class="f-transmit">
+                <div class="f-transmitcont"></div>
+                <div class="f-transmittime">8人分享</div>
+            </div>
+            <!-- 分隔 -->
+        </div>
+    </div>
+    <!-- 主体 -->
+    <div class="f-body">
+        <div class="contenrts">
+            <!-- 内容 -->
+            <div class="f-content">
+                <div class="bContent">
+                    <!-- 文章id -->
+                    <div style="display: none;" id="articleId">{$artinfo.id}</div>
+                    <div class="f-contenttop">{$artinfo.content}
+                    </div>
+<!--                     <div class="f-contentimg">
+                        <img src="__INDEX__/images/erol-ahmed-FTy5VSGIfiQ-unsplash.png" alt="">
+                    </div>
+                    <div class="f-contentdown">文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容
+                    </div> -->
+                    <!-- 举报按钮 -->
+                    <div class="felxe">
+                        <div class="f-report">
+                            举报
+                        </div>
+                    </div>
+                    <div class="f-stop3"></div>
+                    <!-- 评论 -->
+                    <div id="comments"></div>
+                    <div id="myPage1" class="demo"></div>
+                    <!-- 回复文本 -->
+                    <div class="f-reply">
+                        <div class="f-reply-title">
+                            回复文本
+                        </div>
+                        <div class="f-reply-stop">
+
+                        </div>
+                    </div>
+                    <!-- 回复的文本内容 -->
+                    <div class="f-reply-textbox">
+                        <div class="f-reply-textbox-photo">
+                        {if condition="$user_head neq ''"}
+                            <img src="{$user_head.head_img_url}" alt="">
+                         {else /}
+                            <img src="/uploads/20190826/51aec157750ba42ac103de0da051d67e.jpg" alt="">
+                         {/if}
+                        </div>
+                        <!-- 表情和图片 -->
+                        <div class="f-reply-emoji">
+                            <img src="__INDEX__/images/emoji.png" alt="" class="emojiIcon">
+                            <!--表情列表-->
+                            <div class="emojiContent">
+                                <!--图片内容-->
+                                <ul class="emojiList"></ul>
+                            </div>
+                            <span class="emojiTriangle"></span>
+                            <div id="f-inputBox"><input type="file" title=" " id="f-file" multiple
+                                    accept="image/png,image/jpg,image/gif,image/JPEG" /></div>
+                        </div>
+                        <div class="f-reply-words">
+                            <!-- 这里限定了只能输入10个字符，按照需求在进行更改 -->
+                            <textarea name="" id="f-words" cols="30" maxlength="80" rows="10"
+                                placeholder="这个问题你有什么看法，发表看看"></textarea>
+                        </div>
+                        <div id="imgBox"></div>
+                    </div>
+                    <button class="f-btn" id="f-btn">提交回答</button>
+                </div>
+
+            </div>
+            <!-- 相关文章 -->
+            <div class="f-related">
+                <div class="f-title">相关文章</div>
+                <!-- 分隔 -->
+                <div class="f-stop1"></div>
+                <!-- 获取数据渲染 -->
+                <div class="f-relatedtitle">
+                   {volist name="promote_arts" id="artlist"}
+                    <div class="paddings">
+                    <a href="/article/{$artlist.id}">
+                        <div class="f-relatedtext">{$artlist.title}</div>
+                     </a>
+                        <div class="flex">
+                            <div class="onFlex">
+                                <div class="f-relatedphoto">
+                                    <img src="{$artlist.head_img_url}" alt="">
+                                </div>
+                                <div class="f-relatedname">{$artlist.name}</div>
+                            </div>
+                            <div class="f-relatedtime">{$artlist.time|date='Y-m-d',###}</div>
+                        </div>
+                        <div class="f-stop2"></div>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{include file="public/footer"}
+
+    <div id="outerdiv"
+        style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+        <div id="innerdiv" style="position:absolute;">
+            <img id="bigimg" style="border:5px solid #fff;" src="" />
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="__INDEX__/style/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    var urls = "__ROOTURL__";
+    var index_url = "__INDEX__";
+</script>
+<script type="text/javascript" src="__INDEX__/style/uploadImg.js"></script>
+<script type="text/javascript" src="__INDEX__/style/upload.js"></script>
+<script type="text/javascript" src="__INDEX__/style/home.js"></script>
+<script type="text/javascript" src="__INDEX__/style/api.js"></script>
+<script type="text/javascript" src="__INDEX__/style/jquery.sPage.min.js"></script>
+<script src="__INDEX__/style/MiniDialog-es5.min.js"></script>
+
+</html>

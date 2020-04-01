@@ -1,0 +1,26 @@
+ .videoAlbumContent video{
+   	width: 240px;
+    height: 112px;
+   	border: solid 1px #000000;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    padding: 0.5px 0px 0.5px 0px;
+ }
+ 
+ .videoAlbumContent div {
+   	position: relative;
+    float: left;
+ }
+
+ .videoAlbumContent span {
+    position: absolute;
+    top: 120px;
+    left: 40px;
+    cursor: pointer;
+ }
+
+ .videoAlbumContent a {
+    color: #2A72C5;
+    text-decoration: none;
+    margin-left: 70px;
+ }

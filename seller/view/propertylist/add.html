@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>ThinkPHP5.0</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
+    <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
+    <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <!-- 上传视频添加 -->
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/exts/webuploader/webuploader.css">
+
+
+    <!-- 上传视频添加 -->
+    <style>
+        #upload-container, #upload-list{width: 500px; margin: 0 auto; }
+        #upload-container{cursor: pointer; border-radius: 15px; background: #EEEFFF; height: 200px;}
+        #upload-list{height: 800px; border: 1px solid #EEE; border-radius: 5px; margin-top: 10px; padding: 10px 20px;}
+        #upload-container>span{widows: 100%; text-align: center; color: gray; display: block; padding-top: 15%;}
+        .upload-item{margin-top: 5px; padding-bottom: 5px; border-bottom: 1px dashed gray;}
+        .percentage{height: 5px; background: green;}
+        .btn-delete, .btn-retry{cursor: pointer; color: gray;}
+        .btn-delete:hover{color: orange;}
+        .btn-retry:hover{color: green;}
+    </style>
+</head>
+<body>
+    {include file="public/top" /} 
+    <!-- /头部 -->
+    
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            <!-- Page Sidebar -->
+         
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content" style="margin-left:6px">
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">新增房源</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                 <!--    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" > -->
+                    <form class="form-horizontal" role="form" action="" method="post" >
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">项目名字</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="project_name"  required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">国家与地区</label>
+                            <div class="col-sm-6" id="select-box">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right"> 项目总价格</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="project_price"  type="text">
+                                <span class="help-block" class="text">万元</span>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right"> 每平米单价</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="price_per_meter"  type="text">
+                                <span class="help-block" class="text">元/平方米</span>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">项目详细地址</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="project_location"  type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房源新旧</label>
+                            <div class="col-sm-6">
+                            {volist name="confres[0]" id="v" key="k"}
+                             <label style="margin-right:15px;">
+                                <input type="radio" name="new_or_old" value= {$k}>
+                                <span class="text">{$v}</span>
+                             </label>
+                            {/volist}
+
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房源类型</label>
+                            <div class="col-sm-6">
+                            {volist name="confres[1]" id="v" key="k"}
+                             <label style="margin-right:15px;">
+                                <input type="radio" name="property_type" value= {$k}>
+                                <span class="text">{$v}</span>
+                             </label>
+                            {/volist}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房子面积</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="square_meter"  type="text">
+                                <span class="help-block" class="text">平方米</span>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">交房时间</label>
+                            <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd" placeholder="" name="property_built_time">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">产权情况</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="years_for_hold"  type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">装修情况</label>
+                            <div class="col-sm-6">
+                            {volist name="confres[2]" id="v" key="k"}
+                             <label style="margin-right:15px;">
+                                <input type="radio" name="decoration" value= {$k}>
+                                <span class="text">{$v}</span>
+                             </label>
+                            {/volist}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right"> 房子首付</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="down_payment"  type="text">
+                                <span class="help-block" class="text">%</span>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房子属性</label>
+                            <div class="col-sm-6">
+                            {volist name="confres[3]" id="v" key="k"}
+                             <label>
+                                <input type="checkbox" name="property_usage" value= {$k}>
+                                <span class="text">{$v}</span>
+                             </label>
+                            {/volist}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username"  required="" class="col-sm-2 control-label no-padding-right">基本描述信息</label>
+                            <div class="col-sm-6">
+                                <textarea id="basic_info" name="basic_info"></textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username"  required="" class="col-sm-2 control-label no-padding-right">项目特色</label>
+                            <div class="col-sm-6">
+                                <textarea id="content" name="content"></textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房源图片</label>
+                            <div class="col-sm-6">
+                                 提交后请在 “操作”--“图片” 处添加 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房源视频</label>
+                            <div class="col-sm-6">
+                                 提交后请在 “操作”--“视频” 处添加
+                            </div>
+                        </div>
+                        <input type="hidden" name="property_pics_url" id="property_pics_url" value="">
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" class="btn btn-primary" id="submit">确定提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <!--下拉框必须有的js版本，删后日期才可用，有bug-->
+    <script src="__ADMIN__/style/jquery-2.0.3.min.js"></script>
+    <script src="__ADMIN__/style/bootstrap-datepicker.js"></script>
+    <!--下拉框部分-->
+    <script src="__ADMIN__/style/select-search-extra.js"></script>
+    <!--我把datepicker-extra.js放到 select2.js里面了 日期及下拉共用之js-->
+    <script src="__ADMIN__/style/select2.js"></script>
+    <!--上传视频添加-->
+    <script src="__ADMIN__/exts/webuploader/webuploader.js"></script>
+
+    <script src="__INDEX__/style/MiniDialog-es5.min.js"></script>
+    <script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
+    UE.getEditor('basic_info',{initialFrameWidth:800,initialFrameHeight:400,});
+
+
+        // 以下为选择框 数据
+        let selectData = [
+          {id:null,data:[],leven:1},
+          {id:null,data:[],leven:2},
+          {id:null,data:[],leven:3},
+          {id:null,data:[],leven:4},
+        ]
+
+    // let arr = [
+    //   {id:1,name:"亚洲",pid:0,level:0},
+    //   {id:2,name:"中国",pid:1,level:1},
+    //   {id:3,name:"广东省",pid:2,level:2},
+    //   {id:4,name:"深圳市",pid:3,level:3},
+    // ]
+
+    let arr = {$countries};
+    // console.log(arr);
+
+    // 渲染选择框函数
+        let selectRander = function () {
+          let str = ''
+          for (let i=0; i < selectData.length;i++){
+            let item = selectData[i]
+            str += '<select class="leven-select" index="'+ i +'" name="location'+item.leven +'">'
+            if(!item.id){
+              str += "<option value=''>请选择</option>"
+            }
+            if(item.data.length){
+              for(let n =0;n<item.data.length;n++){
+                str += '<option '
+                if(Number(item.id) === Number(item.data[n].id)){
+                  str += 'selected'
+                }
+                str += ' value="'+ item.data[n].id +'">' + item.data[n].name + '</option>'
+              }
+            }
+            str += '</select>'
+          }
+          $('#select-box').html(str)
+        }
+
+        // 按等级来获取数据       当前选中的等级 和 code
+        let getSelectData = function (leven,id) {
+          selectData[leven + 1].data = arr.filter(v=> Number(v.pid) === Number(id))
+          // 获取数据后重新渲染选择框 ， 调用接口获取数据，需要在拿到数据后在调用此函数
+          selectRander()
+        }
+
+        // 处理选择框数据 选中某一级时，保存当前选中的值 ， 清空下级所有数据
+        let selectChangeHandle = function(leven,id){
+          for (let i = 0; i < selectData.length; i++) {
+            let item = selectData[i]
+            // 保存当前选中的值
+            if(i === leven){
+              item.id = id
+            }
+            //清空下级所有数据
+            if(i > leven){
+              item.id = null
+              item.data = []
+            }
+          }
+        }
+
+        //监听选择框change事件
+        $(document).on('change','.leven-select',function (e,r) {
+          let id = e.target.value, index = $(this).index()
+          selectChangeHandle(index,id)
+          getSelectData(index,id)
+        })
+
+        selectData[0].data = arr.filter(v=> Number(v.pid) === 0)
+        selectRander()
+    </script>
+        
+    <script>
+        var fang={
+            'project_name':'',
+            'project_price':0,
+            'price_per_meter':0,
+            'project_location':'',
+        
+            'new_or_old':'',
+            'property_type':'',
+            'square_meter':0,
+            'property_built_time':'',
+            'years_for_hold':'',
+            'decoration':'',
+            'down_payment':0,
+            'property_usage':[],
+            'location1':'',
+            'location2':'',
+            'location3':'',
+            'location4':'',
+            'content':0,
+            'basic_info':0,
+            'property_pics_url':[],
+            'video':[],
+        };
+    </script>
+    <script>
+        var  get=window.get ||{};
+        //项目名字
+        get.project_name=function(){
+            fang.project_name=$("input[name='project_name']").val()
+        }
+
+        //项目总价格
+        get.project_price=function(){
+            fang.project_price=$("input[name='project_price']").val()
+        }
+        //每平米单价
+
+        get.price_per_meter=function(){
+            fang.price_per_meter= $("input[name='price_per_meter']").val()
+
+
+        }
+
+       
+            //项目详细地址
+        get.project_location=function(){
+            fang.project_location=$("input[name='project_location']").val()
+        }
+
+
+        get.location=function(){
+          
+            
+            var loc=$("#select-box").find("select");
+            fang.location1=$(loc[0]).val();
+            fang.location2=$(loc[1]).val();
+            fang.location3=$(loc[2]).val();
+            fang.location4=$(loc[3]).val();
+      
+
+        }
+
+        //房源新旧
+        get.new_or_old=function(){
+            fang.new_or_old=$("input[name='new_or_old']:checked").val()
+        }
+        //房源类型
+        get.property_type=function(){
+            fang.property_type=$("input[name='property_type']:checked").val()
+        }
+
+        //面积
+        get.square_meter=function(){
+            fang.square_meter=$("input[name='square_meter']").val()
+        }
+        //交房时间
+        get.property_built_time=function(){
+            // fang.id_date_picker_1=$("input[name='id_date_picker_1']").val()
+            fang.property_built_time=$("#id-date-picker-1").val()
+        }
+        //产权情况
+        get.years_for_hold=function(){
+            fang.years_for_hold=$("input[name='years_for_hold']").val()
+        }
+        //装修情况
+        get.decoration=function(){
+            fang.decoration=$("input[name='decoration']:checked").val()
+        }
+     
+        //房子首付
+        get.down_payment=function(){
+            fang.down_payment=$("input[name='down_payment']").val()
+        }
+        //房子属性
+        get.property_usage=function(){
+            fang.property_usage=[];
+            $("input[name='property_usage']").each(function(){
+
+                var status=$(this).prop('checked');
+                if(status){
+                    fang.property_usage.push($(this).val())
+                }
+            })
+
+        }
+
+        get.content=function(){
+            fang.content=$("textarea[name='content']").val();
+        }
+        get.basic_info=function(){
+            fang.basic_info=$("textarea[name='basic_info']").val();
+        }
+ 
+    </script>
+
+    
+    <script>
+        $("#submit").on("click",function(){
+            get.project_name();
+            get.project_price();
+            get.price_per_meter();
+            get.project_location();
+
+            get.location();
+            get.new_or_old();
+            get.property_type();
+            //面积
+            get.square_meter();
+            get.property_built_time();
+            get.years_for_hold();
+            get.decoration();
+            get.down_payment();
+            get.property_usage();
+     
+ 
+            get.content();
+            get.basic_info();
+
+   
+            $.post("/seller/propertylist/add.html",{fang:fang},function(data){
+
+                if(data.code ===1){
+                Dialog.success("温馨提示", data.msg);
+                $('.mini-dialog-footer').css('height','64px');
+                setTimeout(function(){
+                    window.location.href= data.url;
+                }, 2000);
+                }else{
+                Dialog.warn("温馨提示", data.msg);
+                $('.mini-dialog-footer').css('height','64px');
+                }
+
+
+            })
+            // console.log("11111");
+            // console.table(fang);
+        });
+    </script>
+</body></html>

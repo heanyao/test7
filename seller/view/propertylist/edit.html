@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>ThinkPHP5.0</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
+    <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
+    <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    
+</head>
+<body>
+    {include file="public/top" /} 
+    <!-- /头部 -->
+    
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            <!-- Page Sidebar -->
+         
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content" style="margin-left:6px">
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">修改房源</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" >
+                    <input type="hidden" name="id" value="{$arts.id}">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">项目名字</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="project_name"  required="" value="{$arts.project_name}" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+ 
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">国家与地区</label>
+                            <div class="col-sm-6" id="select-box">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right"> 项目总价格</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="project_price"  type="text" value="{$arts.project_price}">
+                                <span class="help-block" class="text">万元</span>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right"> 每平米单价</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="price_per_meter"  type="text" value="{$arts.price_per_meter}">
+                                <span class="help-block" class="text">元/平方米</span>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">项目详细地址</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="project_location"  type="text" value="{$arts.project_location}">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+ 
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房源新旧</label>
+                            <div class="col-sm-6">
+                            {volist name="confres[0]" id="v" key="k"}
+                             <label style="margin-right:15px;">
+                                <input {if condition = "$k==$arts['new_or_old']"} checked="checked" {/if} type="radio" name="new_or_old" value= {$k}>
+                                <span class="text">{$v}</span>
+                             </label>
+                            {/volist}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房源类型</label>
+                            <div class="col-sm-6">
+                            {volist name="confres[1]" id="v" key="k"}
+                             <label style="margin-right:15px;">
+                                <input {if condition = "$k==$arts['property_type']"} checked="checked" {/if} type="radio" name="property_type" value= {$k}>
+                                <span class="text">{$v}</span>
+                             </label>
+                            {/volist}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房子面积</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="square_meter"  type="text" value="{$arts.square_meter}">
+                                <span class="help-block" class="text">平方米</span>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">交房时间</label>
+                            <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd" placeholder="" name="property_built_time" value="{$arts.property_built_time|date="Y-m-d",###}">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+ 
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">产权情况</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="years_for_hold"  type="text" value="{$arts.years_for_hold}">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">装修情况</label>
+                            <div class="col-sm-6">
+                            {volist name="confres[2]" id="v" key="k"}
+                             <label style="margin-right:15px;">
+                                <input {if condition = "$k==$arts['decoration']"} checked="checked" {/if} type="radio" name="decoration" value= {$k}>
+                                <span class="text">{$v}</span>
+                             </label>
+                            {/volist}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right"> 房子首付</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="down_payment"  type="text" value="{$arts.down_payment}">
+                                <span class="help-block" class="text">%</span>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">房子属性</label>
+                            <div class="col-sm-6">
+                            {volist name="confres[3]" id="v" key="k"}
+                             <label>
+                                <input {if condition = "in_array($k, $arts['property_usage'])"} checked="checked" {/if} type="checkbox" name="property_usage[]" value= {$k}>
+                                <span class="text">{$v}</span>
+                             </label>
+                            {/volist}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username"  required="" class="col-sm-2 control-label no-padding-right">基本信息</label>
+                            <div class="col-sm-6">
+                                <textarea id="basic_info" name="basic_info">{$content_info['basic_info']}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username"  required="" class="col-sm-2 control-label no-padding-right">项目特色</label>
+                            <div class="col-sm-6">
+                                <textarea id="content" name="content">{$content_info['content']}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">确定提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <!--下拉框必须有的js版本，删后日期才可用，有bug-->
+    <script src="__ADMIN__/style/jquery-2.0.3.min.js"></script>
+    <script src="__ADMIN__/style/bootstrap-datepicker.js"></script>
+    <!--下拉框部分-->
+    <script src="__ADMIN__/style/select-search-extra.js"></script>
+    <!--我把datepicker-extra.js放到 select2.js里面了 日期及下拉共用之js-->
+    <script src="__ADMIN__/style/select2.js"></script>
+
+
+    <script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
+    UE.getEditor('basic_info',{initialFrameWidth:800,initialFrameHeight:400,});
+
+        // 以下为选择框 数据
+        let selectData = [
+          {id:null,data:[],leven:1},
+          {id:null,data:[],leven:2},
+          {id:null,data:[],leven:3},
+          {id:null,data:[],leven:4},
+        ]
+
+    // let arr = [
+    //   {id:1,name:"亚洲",pid:0,level:0},
+    //   {id:2,name:"中国",pid:1,level:1},
+    //   {id:3,name:"广东省",pid:2,level:2},
+    //   {id:4,name:"深圳市",pid:3,level:3},
+    // ]
+
+    let arr = {$countries};
+    // console.log(arr);
+
+
+    // 渲染选择框函数
+        let selectRander = function () {
+          let str = ''
+          for (let i=0; i < selectData.length;i++){
+            let item = selectData[i]
+            str += '<select class="leven-select" index="'+ i +'" name="location'+item.leven +'">'
+            if(!item.id){
+              str += "<option value=''>请选择</option>"
+            }
+            if(item.data.length){
+              for(let n =0;n<item.data.length;n++){
+                str += '<option '
+                if(Number(item.id) === Number(item.data[n].id)){
+                  str += 'selected'
+                }
+                str += ' value="'+ item.data[n].id +'">' + item.data[n].name + '</option>'
+              }
+            }
+            str += '</select>'
+          }
+          $('#select-box').html(str)
+        }
+
+        // 按等级来获取数据       当前选中的等级 和 code
+        let getSelectData = function (leven,id) {
+          selectData[leven + 1].data = arr.filter(v=> Number(v.pid) === Number(id))
+          // 获取数据后重新渲染选择框 ， 调用接口获取数据，需要在拿到数据后在调用此函数
+          selectRander()
+        }
+
+        // 处理选择框数据 选中某一级时，保存当前选中的值 ， 清空下级所有数据
+        let selectChangeHandle = function(leven,id){
+          for (let i = 0; i < selectData.length; i++) {
+            let item = selectData[i]
+            // 保存当前选中的值
+            if(i === leven){
+              item.id = id
+            }
+            //清空下级所有数据
+            if(i > leven){
+              item.id = null
+              item.data = []
+            }
+          }
+        }
+
+        //监听选择框change事件
+        $(document).on('change','.leven-select',function (e,r) {
+          let id = e.target.value, index = $(this).index()
+          selectChangeHandle(index,id)
+          getSelectData(index,id)
+        })
+
+        let selectedArr = [{$arts.location1},{$arts.location2},{$arts.location3},{$arts.location4}]
+        selectedArr.forEach((v, i)=>{
+          selectData[i].id = v
+          selectData[i].data = arr.filter(b=> Number(b.pid) === (i===0?0:selectedArr[i-1]))
+        })
+        selectRander()
+
+        // selectData[0].data = arr.filter(v=> Number(v.pid) === 0)
+        // selectRander()
+    </script>
+
+</body></html>

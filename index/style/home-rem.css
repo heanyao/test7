@@ -1,0 +1,372 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html {
+    font-size: calc(100vw/19.2);
+}
+
+body {
+    font-size: 0.24rem;
+}
+
+.f-header {
+    width: 100%;
+    height: 0.89rem;
+    background-color: #c5c5c5;
+    text-align: center;
+    line-height: 0.89rem;
+}
+
+.f-footer {
+    width: 100%;
+    height: 0.89rem;
+    background-color: #c5c5c5;
+    text-align: center;
+    line-height: 0.89rem;
+}
+
+.f-biaotibg {
+    width: 100%;
+    height: 2rem;
+    background-image: url(../images/jesse-roberts-561igiTyvSk-unsplash.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+}
+
+.f-biaoti {
+    width: 5.89rem;
+    height: 0.37rem;
+    margin-left: 0.19rem;
+    margin-top: 1.38rem;
+    color: white;
+    font-size: 0.26rem;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.f-userphoto {
+    width: 1.2rem;
+    height: 1.2rem;
+    /* display: inline-block; */
+    background-color: blue;
+    border-radius: 50%;
+    margin-left: 3.6rem;
+    margin-top: 1.19rem;
+}
+
+.f-addinterest {
+    width: 0.9rem;
+    height: 0.32rem;
+    background: rgba(255, 168, 0, 1);
+    border-radius: 2px;
+    margin-left: 3.23rem;
+    margin-top: 1.44rem;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.32rem;
+    font-weight: 600;
+}
+
+.f-addsymbol {
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0.1rem;
+}
+
+.f-interest {
+    width: 0.28rem;
+    height: 0.2rem;
+    font-size: 0.2rem;
+    /* font-family: PingFangSC-Semibold, PingFang SC; */
+    font-style: normal;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 0.2rem;
+    text-align: center;
+}
+
+.f-pagemsg {
+    width: 100%;
+    height: 0.8rem;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+.f-username {
+    width: 1.39rem;
+    height: 0.2rem;
+    font-size: 0.14rem;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(60, 42, 99, 1);
+    line-height: 0.2rem;
+    margin-left: 4.99rem;
+    margin-top: 0.16rem;
+}
+
+.f-time {
+    width: 1.49rem;
+    height: 0.21rem;
+    font-size: 0.15rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 0.21rem;
+    margin-left: 0.3rem;
+    margin-top: 0.16rem;
+}
+
+.f-stop {
+    width: 0.01rem;
+    height: 0.18rem;
+    margin-left: 0.18rem;
+    margin-top: 0.17rem;
+    background-color: #dddddd;
+}
+
+.f-looked {
+    width: 0.24rem;
+    height: 0.24rem;
+    margin-left: 0.2rem;
+    margin-top: 0.08rem;
+}
+
+.f-looked img {
+    width: 0.22rem;
+    height: 0.14rem;
+    margin-top: 0.05rem;
+}
+
+.f-lookedtime {
+    width: 0.58rem;
+    height: 0.21rem;
+    font-size: 0.15rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 0.21rem;
+    margin-left: 0.02rem;
+    margin-top: 0.15rem;
+}
+
+.f-puttime {
+    width: 0.29rem;
+    height: 0.25rem;
+    font-size: 0.18rem;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 168, 0, 1);
+    line-height: 0.25rem;
+    margin-left: 0.29rem;
+    margin-top: 0.14rem;
+}
+
+.f-putimg {
+    width: 0.33rem;
+    height: 0.28rem;
+    margin-left: 0.08rem;
+    margin-top: 0.13rem;
+}
+
+.f-putimg img {
+    width: 100%;
+    height: 100%;
+}
+
+.f-collect {
+    width: 0.55rem;
+    height: 0.58rem;
+    margin-left: 3rem;
+    margin-top: 0.12rem;
+
+}
+
+.f-xingxing {
+    width: 0.32rem;
+    height: 0.32rem;
+    background-image: url(../images/shoucang.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-left: 0.11rem;
+}
+
+.f-xingxingtime {
+    width: 0.55rem;
+    height: 0.2rem;
+    font-size: 0.12rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 0.2rem;
+    margin-top: 0.04rem;
+    text-align: center;
+}
+.f-stoplong{
+    width:0.01rem;
+    height:0.66rem;
+    margin-left: 0.4rem;
+    margin-top: 0.07rem;
+    background-color: #dddddd;
+}
+.f-transmit{
+    width: 0.55rem;
+    height: 0.58rem;
+    margin-left: 0.4rem;
+    margin-top: 0.12rem;
+}
+.f-transmitcont{
+    width: 0.32rem;
+    height: 0.32rem;
+    background-image: url(../images/fenxiang.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-left: 0.11rem;
+}
+.f-transmittime{
+    width: 0.55rem;
+    height: 0.2rem;
+    font-size: 0.12rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 0.2rem;
+    margin-top: 0.04rem;
+    text-align: center;
+}
+.f-body{
+    width: 100%;
+    background:rgba(242,242,242,1);
+    display: flex;
+    
+}
+.f-content{
+    width: 9rem;
+    height: 17.66rem;
+    background:rgba(255,255,255,1);
+    margin-left: 3.63rem;
+    margin-top: 0.2rem;
+    margin-bottom: 2.15rem;
+}
+.f-related{
+    width:2.8rem;
+    height:10.13rem;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(221,221,221,1);
+    margin-left: 0.17rem;
+    margin-top: 0.2rem;
+}
+.f-title{
+    width:0.72rem;
+    height:0.25rem;
+    font-size:0.18rem;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(52,35,92,1);
+    line-height:0.25rem;
+    margin-left: 0.25rem;
+    margin-top: 0.28rem;
+}
+.f-stop1{
+    width:2.78rem;
+    height:0.01rem;
+    background-color: #dddddd;
+    margin-top: 0.17rem;
+}
+
+.f-relatedtext{
+    width:2.27rem;
+    height:0.4rem;
+    font-size:0.14rem;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:0.2rem;
+    margin-left: 0.27rem;
+    margin-top: 0.17rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.f-relatedphoto{
+    width: 0.18rem;
+    height: 0.18rem;
+    border-radius: 50%;
+    float: left;
+    margin-left:0.28rem ;
+    margin-top:0.09rem ;
+    background-color: blue;
+}
+.f-relatedphoto img{
+    width: 100%;
+    height: 100%;
+}
+.f-relatedname{
+    width:0.56rem;
+    height:0.17rem;
+    font-size:0.12rem;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:0.17rem;
+    margin-left:0.08rem ;
+    float: left;
+    margin-top:0.1rem ;
+}
+.f-relatedtime{
+    width:0.42rem;
+    height:0.17rem;
+    font-size:0.12rem;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:0.17rem;
+    margin-left:1rem ;
+    float: left;
+    margin-top:0.1rem ;
+
+}
+.f-stop2{
+    width:2.23rem;
+    height:0.01rem;
+    background-color: #dddddd;
+    margin-top: 0.47rem;
+    margin-left: 0.29rem;
+}
+.f-contenttop{
+    width:8.32rem;
+    height:0.44rem;
+    font-size:0.16rem;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:0.22rem;
+    margin-top: 0.26rem;
+    margin-left:0.29rem ;
+}
+.f-contentdown{
+    width:8.32rem;
+    height:0.44rem;
+    font-size:0.16rem;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:0.22rem;
+    margin-top: 0.07rem;
+    margin-left:0.29rem ;
+}
+.f-contentimg{
+    width:8.42rem;
+    height:2.6rem;
+    margin-top:0.08rem ;
+    margin-left:0.29rem ;
+}
+.f-contentimg img{
+    width: 100%;
+    height: 100%;
+}

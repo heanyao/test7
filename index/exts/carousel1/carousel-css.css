@@ -1,0 +1,244 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#warp{
+    width: 100%;
+    height: 100%;
+    background: #1e293d;
+}
+
+#warp .big-photos .close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 24px;
+    color: #fff;
+    background-color: transparent;
+    border: 0;
+    padding: 16px;
+    outline: none;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.domain-icon.is-regular{
+    width: 24px;
+    height: 24px;
+}
+#warp .big-photos{
+    height: 85%;
+    position: relative;
+}
+#warp .big-photos ul{
+    position: absolute;
+    left: -100vw;
+    top: 0;
+    height: 95%;
+    transition: 0.5s left;
+    list-style: none;
+}
+#warp .big-photos ul li{
+    width: 100vw;
+    height: 100%;
+    position: relative;
+    float: left;
+
+}
+#warp .big-photos ul li .carousel-image{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+
+
+#warp .big-photos .carousel-nav-button{
+    display: flex;
+    position: absolute;
+    top: 40%;
+    z-index: 10000;
+    background-color: rgba(0,0,0,.1);
+    color: #fafbfc;
+    border: 2px solid #fff;
+    border-radius: 100px;
+    width: 56px;
+    height: 56px;
+    outline: none;
+    cursor: pointer;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#warp .big-photos .carousel-nav-button .domain-icon{
+    width: 24px;
+    height: 24px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill: none;
+    vertical-align: middle;
+}
+
+#warp .big-photos  .left-btn{
+    left: 0;
+    margin-left: 150px;
+ }
+#warp  .big-photos  .right-btn{
+    right: 0;
+    margin-right: 150px;
+}
+#warp .big-photos  .left-btn:hover,
+#warp .big-photos .right-btn:hover{
+    background: rgba(255,255,255,0.2);
+}
+#warp  .big-photos .photosNum{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    margin-top: 2px;
+    overflow: hidden;
+}
+#warp  .big-photos .number {
+    display: inline-block;
+    font-family: Source Sans Pro,sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fafbfc;
+    float: right;
+    margin-right: 48px;
+    font-weight: 400;
+}
+
+.mask{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    z-index:99;
+}
+.mask .domain-icon{
+    width: 48px;
+    height: 48px;
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.videoPar{
+    width:100%;
+    height: 100%;
+}
+.video-js{
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: relative;
+}
+
+/*图片集*/
+#warp .photoAlbum{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding:0 100px;
+    box-sizing: border-box;
+}
+#warp .photoAlbum .album{
+    display: inline-block;
+    max-width:11%;
+    margin:0 10px ;
+}
+#warp .photoAlbum .photos-list-label{
+    text-align: left;
+    padding:2px 0 ;
+    color: #515b6e;
+}
+#warp .photoAlbum  .slider-frame{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden !important;
+    height: 80%;
+    box-sizing: border-box;
+}
+
+#warp .photoAlbum .slider-frame ul{
+    position: relative;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+#warp .photoAlbum .slider-frame ul li{
+    display: inline-block;
+    list-style-type: none;
+    vertical-align: top;
+    width: 54px;
+    height: 54px;
+    box-sizing: border-box;
+    margin: auto 0px;
+    border: 1px solid transparent;
+    position: relative;
+    /* margin-right:3px;  */
+}
+#warp .photoAlbum .slider-frame ul li:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width:54px;
+    height: 54px;
+    background: rgba(0,0,0,0.5);
+
+}
+
+#warp .photoAlbum .slider-frame ul li img {
+    width: 52px;
+    height: 52px;
+    border-radius: 2px;
+}
+#warp .photoAlbum .slider-frame ul li.photos-active{
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+}
+#warp .photoAlbum .slider-frame ul .photos-active:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 54px ;
+    height: 54px;
+    background: none;
+}
+@media (max-width: 624px) {
+    #warp .big-photos .carousel-nav-button{
+        display: none;
+    }
+
+    #warp .photoAlbum{
+        display: none;
+    }
+
+}

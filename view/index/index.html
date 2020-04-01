@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport">
+    <title>首页</title>
+    <link rel="stylesheet" href="__INDEX__/style/index_a.css">
+    
+</head>
+<body class="index_body_a" onload="init()">
+{include file="public/header"}
+<div class="container_a">
+    <!--轮播容器-->
+    <div class="rollBox">
+        <div class="countryHouseContainer">
+            <div class="countryList">
+                <ul>
+                    <li class="countryItem" name="globalFlag">
+                        <img src="__INDEX__/images/bitMap.png" alt="" class="countryFlag_a">
+                        <div class="countryMsgCon">
+                            <div class="countryName">全球</div>
+                            <div class="countryCityName"_>
+                                <span>亚洲</span>
+                                <span>北美</span>
+                                <span>欧洲</span>
+                                <span>大洋洲</span>
+                            </div>
+                        </div>
+                        <i class="rightArrIcon"></i>
+                    </li>
+                    <li class="countryItem" name="10001" data-flag="5">
+                        <img src="__INDEX__/images/usa.png" alt="" class="countryFlag_a">
+                        <div class="countryMsgCon">
+                            <div class="countryName">泰国</div>
+                            <div class="countryCityName">
+                                <span>佛山</span>
+                                <span>深圳</span>
+                                <span>东莞</span>
+                                <span>广州</span>
+                            </div>
+                        </div>
+                        <i class="rightArrIcon"></i>
+                    </li>
+                    <li class="countryItem" name="10002" data-flag="5">
+                        <img src="__INDEX__/images/vitname.png" alt="" class="countryFlag_a">
+                        <div class="countryMsgCon">
+                            <div class="countryName">日本</div>
+                            <div class="countryCityName">
+                                <span>亚洲</span>
+                                <span>北美</span>
+                                <span>欧洲</span>
+                                <span>大洋洲</span>
+                            </div>
+                        </div>
+                        <i class="rightArrIcon"></i>
+                    </li>
+                    <li class="countryItem" name="10003" data-flag="5">
+                        <img src="__INDEX__/images/thailand.png" alt="" class="countryFlag_a">
+                        <div class="countryMsgCon">
+                            <div class="countryName">美国</div>
+                            <div class="countryCityName">
+                                <span>佛山</span>
+                                <span>北美</span>
+                                <span>欧洲</span>
+                                <span>大洋洲</span>
+                            </div>
+                        </div>
+                        <i class="rightArrIcon"></i>
+                    </li>
+                    <li class="countryItem" name="10004" data-flag="5">
+                        <img src="__INDEX__/images/japan.png" alt="" class="countryFlag_a">
+                        <div class="countryMsgCon">
+                            <div class="countryName">马来国</div>
+                            <div class="countryCityName">
+                                <span>亚洲</span>
+                                <span>北美</span>
+                                <span>欧洲</span>
+                                <span>大洋洲</span>
+                            </div>
+                        </div>
+                        <i class="rightArrIcon"></i>
+                    </li>
+                    <li class="countryItem" name="10005" data-flag="5">
+                        <img src="__INDEX__/images/filipin.png" alt="" class="countryFlag_a">
+                        <div class="countryMsgCon">
+                            <div class="countryName">泰国</div>
+                            <div class="countryCityName">
+                                <span>亚洲</span>
+                                <span>北美</span>
+                                <span>欧洲</span>
+                                <span>大洋洲</span>
+                            </div>
+                        </div>
+                        <i class="rightArrIcon"></i>
+                    </li>
+                    <li class="countryItem" name="10006" data-flag="5">
+                        <img src="__INDEX__/images/greese.png" alt="" class="countryFlag_a">
+                        <div class="countryMsgCon">
+                            <div class="countryName">韩国</div>
+                            <div class="countryCityName">
+                                <span>亚洲</span>
+                                <span>北美</span>
+                                <span>欧洲</span>
+                                <span>大洋洲</span>
+                            </div>
+                        </div>
+                        <i class="rightArrIcon"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="thisCountryHouseCon">
+                <div class="thisCountryHouseDetail">
+                    <div class="tableCountryTitle">
+                        <div class="tableHeadTitle">
+                            <div class="textTitle">
+                                <p>房产</p>
+                                <p>总价</p>
+                            </div>
+                            <div class="titleGap"></div>
+                            <div class="textTitle">
+                                <p>国家</p>
+                                <p>地区</p>
+                            </div>
+                        </div>
+                        <a class="moreCountryOrCity" href="#">
+                            更多
+                        </a>
+                    </div>
+                    <div class="firstColumn">
+                        <ul>
+                            <li class="priceFirstRow">(CNY)</li>
+                            <li class="priceRange" data-range="50">50万以内</li>
+                            <li class="priceRange" data-range="100">50~100万</li>
+                            <li class="priceRange" data-range="200">100~200万</li>
+                            <li class="priceRange" data-range="400">200~400万</li>
+                            <li class="priceRange" data-range="600">400~600万</li>
+                            <li class="priceRange" data-range="800">600~800万</li>
+                            <li class="priceRange" data-range="1000">800~1000万</li>
+                            <li class="priceRange" data-range="1001">1000万以上</li>
+                        </ul>
+                    </div>
+                    <div class="secondColumn">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="rollContent clearFix">
+            <a href="#" class="rollImageItem" data-index="1">
+                <img src="__INDEX__/images/test/1.jpeg" alt="">
+            </a>
+            <a href="#" class="rollImageItem" data-index="2">
+                <img src="__INDEX__/images/test/2.jpg" alt="">
+            </a>
+            <a href="#" class="rollImageItem" data-index="3">
+                <img src="__INDEX__/images/test/3.jpg" alt="">
+            </a>
+            <a href="#" class="rollImageItem" data-index="4">
+                <img src="__INDEX__/images/test/4.jpg" alt="">
+            </a>
+            <a href="#" class="rollImageItem" data-index="5">
+                <img src="__INDEX__/images/test/5.jpg" alt="">
+            </a>
+        </div>
+        <div class="switchBtnContent">
+            <span class="switchBtn selectedSwitchBtn" data-index="1">1</span>
+            <span class="switchBtn" data-index="2">2</span>
+            <span class="switchBtn" data-index="3">3</span>
+            <span class="switchBtn" data-index="4">4</span>
+            <span class="switchBtn" data-index="5">5</span>
+        </div>
+    </div>
+    <!--搜索-->
+    <div class="searchContainer">
+        <div class="searchInputContent">
+            <div class="searchInput_a">
+            <form  name="formsearch" action="{:url('index/search/index')}" method="get">
+                <div class="conditionSelect">
+                    <input type="radio" name="hotKeyS" id="hotKey1" value="fy" checked>
+                    <label for="hotKey1" class="mr10">房源</label>
+                    <input type="radio" name="hotKeyS" id="hotKey2" value="zx">
+                    <label for="hotKey2">资讯</label>
+                </div>
+                <input type="text" class="hotKeyInput" name="key" placeholder="请输入国家/城市/项目名/学校名/找房">
+                </form>
+                <div class="moreCondition">
+                    <img src="__INDEX__/images/search2.png" alt="更多筛选条件" title="更多筛选条件" class="moreChoose">
+                </div>
+                <a onclick="subForm1()" class="searchBtn_a" style="cursor: pointer;">搜索</a>
+            </div>
+            <div class="hotKey">
+                <span class="hotKeyTitle">热门关键词：</span>
+                <span class="keyItem" data-value="china">中国</span>
+                <span class="keyItem" data-value="hongkong">香港</span>
+                <span class="keyItem" data-value="kalada">加拿大</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="listContainer">
+        <!--推荐房源-->
+        <div class="list_a recommendHouseSources">
+            <div class="pageChangeCon">
+                <div class="gapTitle">
+                    <span class="titleDesc">本周推荐房源</span>
+                    <a href="/propertylist/29" class="moreDetail">更多<i class="moreIcon"></i></a>
+                </div>
+                <div class="listContent">
+                {volist name="recprop" id="recprops"}
+                    <a class="listItem_a" href="propertydetail/{$recprops.id}">
+                        <div class="houseThumbnail_a">
+                            <img src="{$recprops.property_pics_url[0]}" alt="">
+                            <div class="houseDynamicMsg">
+                             {if condition="$recprops['hot_or_new'] eq 1"}
+                                <span class="houseFlag_new">NEW</span>
+                                {elseif condition="$recprops['hot_or_new'] eq 2"/}
+                                <span class="houseFlag_hot">HOT</span>
+                                {else /} 
+                                {/if}
+                                <div class="houseIconList">
+                                <span>
+                                    <i class="sofaIcon"></i>
+                                    {$recprops.bedroom}
+                                </span>
+                                    <span>
+                                   <i class="bathIcon"></i>
+                                    {$recprops.bathroom}
+                                </span>
+                                    <span>
+                                     <i class="sofa2Icon"></i>
+                                    {$recprops.livingroom}
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="houseShortMsg">
+                            <div class="textMsg">
+                                <div class="houseName_a">{$recprops.location2}·{$recprops.location4}-{$recprops.project_name}</div>
+                                <div class="housePrice_a">￥{$recprops.project_price}万</div>
+                                <div class="houseAddress_a">
+                                    <i class="positionIcon"></i>{$recprops.location2}·{$recprops.location3}·{$recprops.location4}
+                                </div>
+                            </div>
+                            <div class="logoMsg">
+                                <object>
+                                    <a class="companyLogo" href="{:url('index/companyprofile/index',['id'=>$recprops.company_id,])}">
+                                        <img src="{$recprops.logo_url}" alt="">
+                                    </a>
+                                </object>
+                                <div class="detailAddress">{$recprops.company_name_en}</div>
+                            </div>
+                        </div>
+                    </a>
+                    {/volist}
+                </div>
+            </div>
+            <a class="prePageBtn" onclick="bindPrePageBtn(0)">
+                <img src="__INDEX__/images/leftarc.png" alt="">
+            </a>
+            <a class="nextPageBtn" onclick="bindNextPageBtn(0)">
+                <img src="__INDEX__/images/rightarc.png" alt="">
+            </a>
+        </div>
+        <!--最新上线房源-->
+        <div class="list_a lastOnlineHouse">
+            <div class="pageChangeCon">
+                <div class="gapTitle marTop108">
+                    <span class="titleDesc">最新上线房源</span>
+                    <a href="/propertylist/25" class="moreDetail">更多<i class="moreIcon"></i></a>
+                </div>
+                <div class="listContent">
+                {volist name="newres" id="newplist"}
+                    <a class="listItem_a" href="propertydetail/{$newplist.id}">
+                        <div class="houseThumbnail_a">
+                            <img src="{$newplist.property_pics_url[0]}" alt="">
+                            <div class="houseDynamicMsg">
+                             {if condition="$newplist['hot_or_new'] eq 1"}
+                                <span class="houseFlag_new">NEW</span>
+                                {elseif condition="$newplist['hot_or_new'] eq 2"/}
+                                <span class="houseFlag_hot">HOT</span>
+                                {else /} 
+                                {/if}
+                                <div class="houseIconList">
+                                <span>
+                                    <i class="sofaIcon"></i>
+                                    {$newplist.bedroom}
+                                </span>
+                                    <span>
+                                   <i class="bathIcon"></i>
+                                    {$newplist.bathroom}
+                                </span>
+                                    <span>
+                                     <i class="sofa2Icon"></i>
+                                    {$newplist.livingroom}
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="houseShortMsg">
+                            <div class="textMsg">
+                                <div class="houseName_a">{$newplist.location2}·{$newplist.location4}-{$newplist.project_name}</div>
+                                <div class="housePrice_a">￥{$newplist.project_price}万</div>
+                                <div class="houseAddress_a">
+                                    <i class="positionIcon"></i>{$newplist.location2}·{$newplist.location3}·{$newplist.location4}
+                                </div>
+                            </div>
+                            <div class="logoMsg">
+                                <object>
+                                    <a class="companyLogo" href="{:url('index/companyprofile/index',['id'=>$newplist.company_id,])}">
+                                        <img src="{$newplist.logo_url}" alt="">
+                                    </a>
+                                </object>
+                                <div class="detailAddress">{$newplist.company_name_en}</div>
+                            </div>
+                        </div>
+                    </a>
+                    {/volist}
+                </div>
+            </div>
+            <a class="prePageBtn" onclick="bindPrePageBtn(1)">
+                <img src="__INDEX__/images/leftarc.png" alt="">
+            </a>
+            <a class="nextPageBtn" onclick="bindNextPageBtn(1)">
+                <img src="__INDEX__/images/rightarc.png" alt="">
+            </a>
+        </div>
+    </div>
+    <!--推荐房源视频-->
+    <div class="recommendVideo">
+        <div class="list_a">
+            <div class="pageChangeCon">
+                <div class="gapTitle">
+                    <span class="titleDesc">推荐房源视频</span>
+                    <a href="#" class="moreDetail">更多<i class="moreIcon"></i></a>
+                </div>
+                <div class="listContent">
+                {volist name="videores" id="videoress"}
+                    <a class="listItem_a" href="propertydetail/{$videoress.id}">
+                        <div class="houseVideoThumbnail_a">
+                            <img src="{$videoress.property_pics_url[0]}" alt="" class="videoThumbnail">
+                            <img src="__INDEX__/images/runvideos.png" alt="" class="runVideoImg">
+                            <div class="houseVideoName_a">{$videoress.location2}·{$videoress.location4}-{$videoress.project_name}</div>
+                            <div class="houseVideoPrice_a">￥{$videoress.project_price}万</div>
+                        </div>
+                    </a>
+                {/volist}
+                </div>
+            </div>
+            <a class="prePageBtn" onclick="bindPrePageBtn(2)">
+                <img src="__INDEX__/images/leftarc.png" alt="">
+            </a>
+            <a class="nextPageBtn" onclick="bindNextPageBtn(2)">
+                <img src="__INDEX__/images/rightarc.png" alt="">
+            </a>
+        </div>
+    </div>
+    <!--热门资讯-->
+    <div class="hotNew">
+        <div class="list_a">
+            <div class="gapTitle">
+                <span class="titleDesc">热门资讯</span>
+                <a href="{:url('/article_list')}" class="moreDetail">更多<i class="moreIcon"></i></a>
+            </div>
+            <div class="listContent">
+                <a class="hotNewType1" href="article/{$artres[0]['id']}">
+                    <img src="{$artres[0]['thumb']}" alt="">
+                    <div class="newDesc">{$artres[0]['title']}</div>
+                </a>
+                <div class="hotNewType2">
+                {volist name="artres" id="artress" key="k"}
+                {if condition="$k neq 1"}
+                    <a class="hotNewList" href="article/{$artress.id}">
+                        <img src="{$artress.thumb}" alt="" class="hotNewThumbnail">
+                        <div class="hotNewDesc">
+                            <p class="textHotNewDesc">{$artress.title}</p>
+                        </div>
+                    </a>
+
+                {/if}
+                {/volist}
+                </div>
+                <div class="adPicture">
+                    <img src="__INDEX__/images/qrcode.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}
+<!--更多筛选条件-->
+<div class="popupContainer">
+    <div class="moreCondition_pop">
+        <div class="conditionItem" name="country">
+            <div class="conditionName">国家</div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn" >不限</a></div>
+                <div class="countryList_a">
+                    <div class="countryItem_a" name="country">
+                        <span class="countryPositionIcon"></span>
+                        <span class="countryArea">美洲</span>
+                        <div class="countryNameList">
+                            <a class="countryName_con" data-Super="2">美国</a>
+                            <a class="countryName_con"data-Super="1111">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国2</a>
+                            <a class="countryName_con">美国3</a>
+                            <a class="countryName_con">美国4</a>
+                            <a class="countryName_con">美国5</a>
+                            <a class="countryName_con">美国6</a>
+                            <a class="countryName_con">美国7</a>
+                            <a class="countryName_con">美国8</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con" data-Super="1321">美国</a>
+                            <a class="countryName_con"data-Super="1111">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国2</a>
+                            <a class="countryName_con">美国3</a>
+                            <a class="countryName_con">美国4</a>
+                            <a class="countryName_con">美国5</a>
+                            <a class="countryName_con">美国6</a>
+                            <a class="countryName_con">美国7</a>
+                            <a class="countryName_con">美国8</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con" data-Super="1321">美国</a>
+                            <a class="countryName_con"data-Super="1111">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国2</a>
+                            <a class="countryName_con">美国3</a>
+                            <a class="countryName_con">美国4</a>
+                            <a class="countryName_con">美国5</a>
+                            <a class="countryName_con">美国6</a>
+                            <a class="countryName_con">美国7</a>
+                            <a class="countryName_con">美国8</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                        </div>
+                    </div>
+                    <div class="countryItem_a">
+                        <span class="countryPositionIcon"></span>
+                        <span class="countryArea">拉丁美洲</span>
+                        <div class="countryNameList">
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                        </div>
+                    </div>
+                    <div class="countryItem_a">
+                        <span class="countryPositionIcon"></span>
+                        <span class="countryArea">美洲</span>
+                        <div class="countryNameList">
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--洲/省-->
+        <div class="conditionItem" name="continent">
+            <div class="conditionName">
+                洲/省
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList province">
+                    <a href="#" class="keyItem_a" data-Super="3333">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                </div>
+            </div>
+        </div>
+        <!--热门城市-->
+        <div class="conditionItem" name="hotCity2">
+            <div class="conditionName">
+                热门城市
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList hotCity">
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                </div>
+            </div>
+        </div>
+        <!--状态-->
+        <div class="conditionItem" name="status">
+            <div class="conditionName">
+                状态
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList status">
+                    <a href="#" class="keyItem_a" data-Super="88888">在售</a>
+                    <a href="#" class="keyItem_a">出租</a>
+                    <a href="#" class="keyItem_a">拍卖/可议价</a>
+                </div>
+            </div>
+        </div>
+        <!--户型1-->
+        <div class="conditionItem" name="houseType">
+            <div class="conditionName">
+                户型
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList apartment1">
+                    <a href="#" class="keyItem_a">新建房源</a>
+                    <a href="#" class="keyItem_a">商业房源</a>
+                    <a href="#" class="keyItem_a">住宅房源</a>
+                    <a href="#" class="keyItem_a">工业地产</a>
+                    <a href="#" class="keyItem_a">Luxe豪宅</a>
+                </div>
+            </div>
+        </div>
+        <!--户型2-->
+        <div class="conditionItem" name="price_rang">
+            <div class="conditionName">
+                价格范围
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList apartment2">
+                    <a href="#" class="keyItem_a" data-Super="100">100万以下</a>
+                    <a href="#" class="keyItem_a"data-Super="1321">100-300万</a>
+                    <a href="#" class="keyItem_a">500-700万</a>
+                    <a href="#" class="keyItem_a">700-900万</a>
+                    <a href="#" class="keyItem_a">900万以上</a>
+                </div>
+            </div>
+        </div>
+        <!--卧室数量-->
+        <div class="conditionItem " name="number">
+            <div class="conditionName">
+                卧室数量
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList bedroomNumber">
+                    <a href="#" class="keyItem_a">1卧</a>
+                    <a href="#" class="keyItem_a">2卧</a>
+                    <a href="#" class="keyItem_a">3卧</a>
+                    <a href="#" class="keyItem_a">4卧</a>
+                    <a href="#" class="keyItem_a">5卧</a>
+                    <a href="#" class="keyItem_a">6卧</a>
+                    <a href="#" class="keyItem_a">7卧</a>
+                    <a href="#" class="keyItem_a">8卧</a>
+                    <a href="#" class="keyItem_a">9卧</a>
+                </div>
+            </div>
+        </div>
+        <!--建筑面积-->
+        <div class="conditionItem more_hide" name="builtArea">
+            <div class="conditionName">
+                建筑面积
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList buildArea">
+                    <a href="#" class="keyItem_a">200平方以下</a>
+                    <a href="#" class="keyItem_a">200-300平方</a>
+                    <a href="#" class="keyItem_a">300-400平方</a>
+                    <a href="#" class="keyItem_a">400-500平方</a>
+                    <a href="#" class="keyItem_a">500-600平方</a>
+                    <a href="#" class="keyItem_a">700平以上</a>
+                </div>
+            </div>
+        </div>
+        <!--土地面积-->
+        <div class="conditionItem more_hide" name="landArea">
+            <div class="conditionName">
+                土地面积
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList landArea">
+                    <a href="#" class="keyItem_a">500平方以下</a>
+                    <a href="#" class="keyItem_a">500-1000平方</a>
+                    <a href="#" class="keyItem_a">1000-1500平方</a>
+                    <a href="#" class="keyItem_a">1500-2000平方</a>
+                    <a href="#" class="keyItem_a">2000-2500平方</a>
+                    <a href="#" class="keyItem_a">2500平方以上</a>
+
+                </div>
+            </div>
+        </div>
+        <!--房龄-->
+        <div class="conditionItem more_hide" name="age">
+            <div class="conditionName">
+                房龄
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList houseAge">
+                    <a href="#" class="keyItem_a">1年</a>
+                    <a href="#" class="keyItem_a">2年</a>
+                    <a href="#" class="keyItem_a">3年</a>
+                    <a href="#" class="keyItem_a">4年</a>
+                    <a href="#" class="keyItem_a">5年</a>
+                    <a href="#" class="keyItem_a">6年</a>
+                    <a href="#" class="keyItem_a">7年</a>
+                    <a href="#" class="keyItem_a">8年</a>
+                    <a href="#" class="keyItem_a">9年</a>
+                    <a href="#" class="keyItem_a">10年</a>
+                    <a href="#" class="keyItem_a">10年以上</a>
+
+                </div>
+            </div>
+        </div>
+        <!--朝向-->
+        <div class="conditionItem more_hide" name="direction">
+            <div class="conditionName">
+                朝向
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList direction">
+                    <a href="#" class="keyItem_a">东</a>
+                    <a href="#" class="keyItem_a">南</a>
+                    <a href="#" class="keyItem_a">西</a>
+                    <a href="#" class="keyItem_a">北</a>
+                    <a href="#" class="keyItem_a">东北</a>
+                    <a href="#" class="keyItem_a">东南</a>
+                    <a href="#" class="keyItem_a">西南</a>
+                    <a href="#" class="keyItem_a">西北</a>
+                    <a href="#" class="keyItem_a">南北</a>
+                    <a href="#" class="keyItem_a">东西</a>
+                </div>
+            </div>
+        </div>
+        <!--景观-->
+        <div class="conditionItem more_hide" name="scenery">
+            <div class="conditionName">
+                景观
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList scenery">
+                    <a href="#" class="keyItem_a">城市景观</a>
+                    <a href="#" class="keyItem_a">森林景观</a>
+                    <a href="#" class="keyItem_a">草地景观</a>
+                    <a href="#" class="keyItem_a">湖泊景观</a>
+                    <a href="#" class="keyItem_a">河景观</a>
+                    <a href="#" class="keyItem_a">海景观</a>
+                    <a href="#" class="keyItem_a">高尔夫球场</a>
+                    <a href="#" class="keyItem_a">滑雪场</a>
+                    <a href="#" class="keyItem_a">海港</a>
+                    <a href="#" class="keyItem_a">沙漠</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="btnContainer">
+            <div>
+                <button class="moreConditionBtn">更多选项<i class="moreConditionIcon"></i></button>
+            </div>
+            <div>
+                <button class="submitBtn">确认</button>
+            </div>
+            <button class="resetBtn"><i class="deleteIcon"></i>重置条件</button>
+        </div>
+    </div>
+</div>
+<div class="wrapBackground"></div>
+<script src="__INDEX__/style/index_a.js"></script>
+ <script>
+ function subForm1()
+ {
+
+ formsearch.submit();
+ //form1为form的id
+ }
+ </script>
+</body>
+</html>

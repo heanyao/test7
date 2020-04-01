@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+    <link rel="stylesheet" type="text/css" href="__INDEX__/style/lanHu.css">
+    <link rel="stylesheet" type="text/css" href="__INDEX__/style/bootstrap.css">
+    <script src="__INDEX__/style/bootstrap.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script>
+    var __INDEXURL__ = "__INDEX__";
+    </script>
+</head>
+<body>
+<div id="box">
+{include file="public/header"}
+    <div class="header">
+        <img src="\uploads\20200309\c4da306754d57532344dc226e6a3978c.jpg" width="100%" height="100%">
+       <!--  开始 -->
+       <div class="path"><a href='{:url('/')}'>主页</a> >
+        {volist name="posArr" id="posCate"} 
+        <a href='{:url('index/propertylist/index',['cateid'=>$posCate["id"],])}'>{$posCate.catename}</a> > 
+        {/volist}
+        <!--  删除 -->
+        </div>
+    </div>
+    <div class="search">
+        <div class="search_hader">
+            <div class="anniu" onclick="say('请输入国家/城市/项目名/学校名/找房')">
+                <a><input type="radio" name="fangyu" value="fy" checked></a>
+                <a>房源</a>
+            </div>
+            <div class="anniu"  onclick="say('请输入资讯关键字')">
+                <a> <input type="radio" value="zx" name="fangyu"> </a>
+                <a>资讯</a>
+            </div>
+        </div>
+        <div class="search_search">
+            <input type="text" id="keyword" placeholder="请输入国家/城市/项目名/学校名 找房">
+        </div>
+        <div class="search_condition" style="cursor:pointer">
+            <div class="search_condition_s">
+                <a><img src="__INDEX__/images/fangdajing.png"></a>
+            </div>
+            <input class="search_s" onmouseover="this.style.cursor='hand'" type="button" onclick="shousuo()" value="搜索">
+        </div>
+    </div>
+
+    <div class="containe">
+{volist name="companyhomes" id="homes" key="k"}
+        <div class="containe_content_box" data-home-id="{$homes.id}">
+            <!-- 图片-->
+            <div class="qiehuan">
+                <div class="lxfscroll">
+                    <div class="swiper-container" style="height: 380px;z-index: 1">
+                        <div class="swiper-wrapper">
+                        {volist name="homes.property_pics_url" id="p_item"}
+                            <div class="swiper-slide" style="background: blue"><a href="/propertydetail/{$homes.id}"><img style="width: 100%;height:100%" src="{$p_item}" alt=""></a></div>
+                        {/volist}
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- 如果需要导航按钮 -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <div class="containe_content_img">
+                    <div class="images_shade">
+                        <div class="images_shade_new"><span>new</span></div>
+                        <div class="images_shade_right">
+                            <a id="exp_save_{$homes.id}" href="javascript:void(0)" class="shoucang" data-save-type="0" onclick="exp_save(this,{$homes.id})">
+									<img src="__INDEX__/images/collection_a.png">
+                                <div>收藏</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 图片右边文字-->
+            <div class="containe_content">
+
+                    <a href="/propertydetail/{$homes.id}">
+                        <div class="containe_content_titile">{$homes.location2} · {$homes.location4} · {$homes.project_name}</div>
+                    </a>
+                    <a href="/propertydetail/{$homes.id}">
+                        <div class="containe_content_price">¥ {$homes.project_price}万</div>
+                    </a>
+                    <div class="containe_content_univalence">
+                        <a href="/propertydetail/{$homes.id}">
+                            <div>约万泰铢</div>
+                        </a>
+                        <a href="/propertydetail/{$homes.id}">
+                            <div>单价：{$homes.price_per_meter}元/平米</div>
+                        </a>
+                    </div>
+                    <a href="/propertydetail/{$homes.id}">
+                        <div class="containe_content_state ">国家：{$homes.location2} · {$homes.location3} · {$homes.location4}</div>
+                    </a>
+                    <a href="/propertydetail/{$homes.id}">
+                        <div class="containe_content_browse  ">187人看过 / 共7次咨询 / 3个月以前发布</div>
+                    </a>
+                    <div class="containe_content_footer_left">
+                        <div class="content_footer_right">
+                           <a href="/profiledetails/{$homes['publisher_id']}"><div><img class="weitus" src="{$publisherhomes[$k-1]['head_img_url']}" width="82" height="82"></div></a>
+                            <div class="weitu"></div>
+                            <div class="content_footer_center">
+                                <span class="content_footer_texta">{$publisherhomes[$k-1]['name']}</span>
+                                <span class="content_footer_textb">{$publisherhomes[$k-1]['languages']}</span>
+                                <span class="content_footer_textc">{$publisherhomes[$k-1]['tel']}</span>
+                                <span><img src="__INDEX__/images/online_a.png"></span>
+                            </div>
+                        </div>
+                        <div class="containe_content_footer_right">
+                            <div class="containe_content_developers ">
+                                <span>开发商</span>
+                                <a href="/companyprofile/{$homes['company_id']}">    <div class="renzheng">
+                                    <div class="yirenzheng">已认证</div>
+                                    <img src="{$homes.logo_url}" width="114"></div></a>
+                            </div>
+                            <div class="containe_content_poto">
+                            <img src="__INDEX__/images/bed.png"><span>1</span>
+                            <img src="__INDEX__/images/bath.png"><span>1</span>
+                            <img src="__INDEX__/images/sofa_a.png"><span>1</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="content_footer_left">
+                    {if condition="$homes['new_or_old'] eq 1"}
+                    新房
+                    {elseif condition="$homes['new_or_old'] eq 2"/}
+                    二手房
+                    {/if}|
+                    {if condition="$homes['property_type'] eq 1"}
+                    住宅
+                    {elseif condition="$homes['property_type'] eq 2"/}
+                    公寓
+                    {elseif condition="$homes['property_type'] eq 3"/}
+                    写字楼
+                    {elseif condition="$homes['property_type'] eq 4"/}
+                    地皮
+                    {/if}
+                    | {$homes.square_meter}m² | {$homes.property_built_time||date='Y年m月',###} 交房 | {$homes.years_for_hold}
+                    </div>
+
+            </div>
+        </div>
+{/volist} 
+    </div>
+    <div class="load">
+    <div id="pagination" style="font-size:21px;z-index: 9999;">
+    {$companyhomes->render()}
+   </div>
+    </div>
+ {include file="public/footer"}
+</div>
+<!--更多筛选条件-->
+<div class="popupContainer">
+    <div class="moreCondition_pop">
+        <div class="conditionItem" name="country">
+            <div class="conditionName">国家</div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn" >不限</a></div>
+                <div class="countryList_a">
+                    <div class="countryItem_a" name="country">
+                        <span class="countryPositionIcon"></span>
+                        <span class="countryArea">美洲</span>
+                        <div class="countryNameList">
+                            <a class="countryName_con" data-Super="2">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                        </div>
+                    </div>
+                    <div class="countryItem_a">
+                        <span class="countryPositionIcon"></span>
+                        <span class="countryArea">拉丁美洲</span>
+                        <div class="countryNameList">
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                        </div>
+                    </div>
+                    <div class="countryItem_a">
+                        <span class="countryPositionIcon"></span>
+                        <span class="countryArea">美洲</span>
+                        <div class="countryNameList">
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">加拿大</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">美国</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                            <a class="countryName_con">尼加拉瓜</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--洲/省-->
+        <div class="conditionItem" name="continent">
+            <div class="conditionName">
+                洲/省
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList province">
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                </div>
+            </div>
+        </div>
+        <!--热门城市-->
+        <div class="conditionItem" name="hotCity2">
+            <div class="conditionName">
+                热门城市
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList hotCity">
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                    <a href="#" class="keyItem_a">威尔士</a>
+                </div>
+            </div>
+        </div>
+        <!--状态-->
+        <div class="conditionItem" name="status">
+            <div class="conditionName">
+                状态
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList status">
+                    <a href="#" class="keyItem_a">在售</a>
+                    <a href="#" class="keyItem_a">出租</a>
+                    <a href="#" class="keyItem_a">拍卖/可议价</a>
+                </div>
+            </div>
+        </div>
+        <!--户型1-->
+        <div class="conditionItem" name="houseType">
+            <div class="conditionName">
+                户型
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList apartment1">
+                    <a href="#" class="keyItem_a">新建房源</a>
+                    <a href="#" class="keyItem_a">商业房源</a>
+                    <a href="#" class="keyItem_a">住宅房源</a>
+                    <a href="#" class="keyItem_a">工业地产</a>
+                    <a href="#" class="keyItem_a">Luxe豪宅</a>
+                </div>
+            </div>
+        </div>
+        <!--户型2-->
+        <div class="conditionItem" name="price_rang">
+            <div class="conditionName">
+                价格范围
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList apartment2">
+                    <a href="#" class="keyItem_a" data-Super="100">100万以下</a>
+                    <a href="#" class="keyItem_a">100-300万</a>
+                    <a href="#" class="keyItem_a">500-700万</a>
+                    <a href="#" class="keyItem_a">700-900万</a>
+                    <a href="#" class="keyItem_a">900万以上</a>
+                </div>
+            </div>
+        </div>
+        <!--卧室数量-->
+        <div class="conditionItem " name="number">
+            <div class="conditionName">
+                卧室数量
+            </div>
+            <div class="conditionDesc">
+                <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                <div class="conditionList bedroomNumber">
+                    <a href="#" class="keyItem_a">1卧</a>
+                    <a href="#" class="keyItem_a">2卧</a>
+                    <a href="#" class="keyItem_a">3卧</a>
+                    <a href="#" class="keyItem_a">4卧</a>
+                    <a href="#" class="keyItem_a">5卧</a>
+                    <a href="#" class="keyItem_a">6卧</a>
+                    <a href="#" class="keyItem_a">7卧</a>
+                    <a href="#" class="keyItem_a">8卧</a>
+                    <a href="#" class="keyItem_a">9卧</a>
+                </div>
+            </div>
+        </div>
+        <div class="more_hide">
+            <!--建筑面积-->
+            <div class="conditionItem" name="builtArea">
+                <div class="conditionName">
+                    建筑面积
+                </div>
+                <div class="conditionDesc">
+                    <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                    <div class="conditionList buildArea">
+                        <a href="#" class="keyItem_a">200平方以下</a>
+                        <a href="#" class="keyItem_a">200-300平方</a>
+                        <a href="#" class="keyItem_a">300-400平方</a>
+                        <a href="#" class="keyItem_a">400-500平方</a>
+                        <a href="#" class="keyItem_a">500-600平方</a>
+                        <a href="#" class="keyItem_a">700平以上</a>
+                    </div>
+                </div>
+            </div>
+            <!--土地面积-->
+            <div class="conditionItem" name="landArea">
+                <div class="conditionName">
+                    土地面积
+                </div>
+                <div class="conditionDesc">
+                    <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                    <div class="conditionList landArea">
+                        <a href="#" class="keyItem_a">500平方以下</a>
+                        <a href="#" class="keyItem_a">500-1000平方</a>
+                        <a href="#" class="keyItem_a">1000-1500平方</a>
+                        <a href="#" class="keyItem_a">1500-2000平方</a>
+                        <a href="#" class="keyItem_a">2000-2500平方</a>
+                        <a href="#" class="keyItem_a">2500平方以上</a>
+
+                    </div>
+                </div>
+            </div>
+            <!--房龄-->
+            <div class="conditionItem" name="age">
+                <div class="conditionName">
+                    房龄
+                </div>
+                <div class="conditionDesc">
+                    <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                    <div class="conditionList houseAge">
+                        <a href="#" class="keyItem_a">1年</a>
+                        <a href="#" class="keyItem_a">2年</a>
+                        <a href="#" class="keyItem_a">3年</a>
+                        <a href="#" class="keyItem_a">4年</a>
+                        <a href="#" class="keyItem_a">5年</a>
+                        <a href="#" class="keyItem_a">6年</a>
+                        <a href="#" class="keyItem_a">7年</a>
+                        <a href="#" class="keyItem_a">8年</a>
+                        <a href="#" class="keyItem_a">9年</a>
+                        <a href="#" class="keyItem_a">10年</a>
+                        <a href="#" class="keyItem_a">10年以上</a>
+
+                    </div>
+                </div>
+            </div>
+            <!--朝向-->
+            <div class="conditionItem" name="direction">
+                <div class="conditionName">
+                    朝向
+                </div>
+                <div class="conditionDesc">
+                    <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                    <div class="conditionList direction">
+                        <a href="#" class="keyItem_a">东</a>
+                        <a href="#" class="keyItem_a">南</a>
+                        <a href="#" class="keyItem_a">西</a>
+                        <a href="#" class="keyItem_a">北</a>
+                        <a href="#" class="keyItem_a">东北</a>
+                        <a href="#" class="keyItem_a">东南</a>
+                        <a href="#" class="keyItem_a">西南</a>
+                        <a href="#" class="keyItem_a">西北</a>
+                        <a href="#" class="keyItem_a">南北</a>
+                        <a href="#" class="keyItem_a">东西</a>
+                    </div>
+                </div>
+            </div>
+            <!--景观-->
+            <div class="conditionItem" name="scenery">
+                <div class="conditionName">
+                    景观
+                </div>
+                <div class="conditionDesc">
+                    <div class="unSelected"><a href="javascript:void(0)" class="unSelectBtn">不限</a></div>
+                    <div class="conditionList scenery">
+                        <a href="#" class="keyItem_a">城市景观</a>
+                        <a href="#" class="keyItem_a">森林景观</a>
+                        <a href="#" class="keyItem_a">草地景观</a>
+                        <a href="#" class="keyItem_a">湖泊景观</a>
+                        <a href="#" class="keyItem_a">河景观</a>
+                        <a href="#" class="keyItem_a">海景观</a>
+                        <a href="#" class="keyItem_a">高尔夫球场</a>
+                        <a href="#" class="keyItem_a">滑雪场</a>
+                        <a href="#" class="keyItem_a">海港</a>
+                        <a href="#" class="keyItem_a">沙漠</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btnContainer">
+            <div>
+                <button class="moreConditionBtn">更多选项<i class="moreConditionIcon"></i></button>
+            </div>
+            <div>
+                <button class="submitBtn">确认</button>
+            </div>
+            <button class="resetBtn"><i class="deleteIcon"></i>重置条件</button>
+        </div>
+    </div>
+</div>
+<div class="wrapBackground"></div>
+</body>
+<script src="__INDEX__/style/lanHu.js" type="text/javascript"></script>
+<script src="__INDEX__/style/MiniDialog-es5.min.js"></script>
+<script>
+    // 轮播
+    var mySwiper = new Swiper ('.swiper-container', {
+        onTouchEnd: function(mySwiper){
+            alert(1)
+        },
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction',
+            renderFraction: function (currentClass, totalClass) {
+                return '<div style="float: right;margin-right: 15%;color: white;margin-top: 15px;">' +
+                    '<img src="__INDEX__/images/pics_a.png" style="margin-right: 10px;margin-top:-3px;vertical-align: middle"><span class="' + currentClass + '"></span>' +
+                    ' / ' +
+                    '<span class="' + totalClass + '"></span>'+'</div>';
+            },
+        },
+        on:{
+            touchEnd: function(event){
+                if(this.isEnd){
+                    // 此删除
+		}
+            },
+        },
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // 如果需要滚动条
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+    })
+    $(".search_condition_s").click(function () {
+        $(".shizhoulist").slideToggle("slow");
+    });
+ // 此删除
+    function say(i) {
+       $('#keyword').attr("placeholder",i);
+    }
+    $('.moreConditionBtn').click(function () {
+        $('.more_hide').toggle(500)
+    })
+    // 切换弹窗
+    $('.search_condition_s').click(function () {
+        $('.wrapBackground').show()
+        $('.popupContainer').show()
+    })
+    $('.wrapBackground').click(function () {
+        $('.wrapBackground').hide()
+        $('.popupContainer').hide()
+    })
+    /*为除国家条件之外项，添加选择事件*/
+    $(".keyItem_a").click(function () {
+        $(this).parents(".conditionList").find(".keyItem_a").removeClass("selectedCondition");
+        $(this).addClass("selectedCondition");
+    });
+
+    /*国家选择*/
+    $(".countryName_con").click(function () {
+        $(".countryName_con").removeClass("selectedCondition");
+        $(this).addClass("selectedCondition");
+    });
+
+    /*点击不限取消选择*/
+    $(".unSelectBtn").click(function () {
+        var item1 = $(this).parents(".conditionItem").find(".countryName_con");
+        var item2 = $(this).parents(".conditionItem").find(".keyItem_a");
+        var item = item1.length ? item1 : item2;
+        item.removeClass("selectedCondition");
+    })
+
+    /*重置条件*/
+    $(".resetBtn").click(function () {
+        $(".countryName_con,.keyItem_a").removeClass("selectedCondition");
+    });
+    var baseurl;
+    /*确认*/
+    $(".submitBtn").click(function () {
+        var selectList = $(".moreCondition_pop").find(".selectedCondition");
+        var url = "";
+        //没有选择
+        if (selectList.length === 0) {
+            console.log("没有选择");
+            window.location.href = "/propertylist/25"
+        }
+        if (selectList.length > 0) {
+            let str = "";
+            selectList.each(function () {
+                var key = $(this).parents('.conditionItem').attr('name');
+                str += key + "=" + $(this).context.dataset.super + "&";
+            });
+            baseurl= str.slice(0, str.length - 1)
+            window.location.href="/propertylist/30"+"?"+baseurl
+        }
+        $(".popupContainer").hide();
+        $(".popupContainer").find(".keyItem_a,.countryName_con").removeClass("selectedCondition");
+        $(".wrapBackground").hide();
+        $("body").css("overflow", "auto");
+    })
+    //搜索
+  // function shousuo(){
+  //     var province = $("input[name='fangyu']:checked").val();
+  //     var hotKeyS = $.trim($('#keyword').val());
+  //     if(baseurl!=undefined){
+  //         window.location.href='/propertylist/28'+"?key="+hotKeyS+"&hotKeyS="+province+baseurl
+  //     }else {
+  //         window.location.href='/propertylist/28'+"?key="+hotKeyS+"&hotKeyS="+province
+  //     }
+  //   }
+
+	function exp_save(e,id){
+		var type = $(e).attr('data-save-type');
+		if(type==0){
+			Dialog.warn("提示",'未登录');
+		}
+		else{
+			$.ajax({
+				url:'/property_keep/'+id+'/'+type,
+				type:'get',
+				dataType:'json',
+				success:function(data){
+					if(data.code=='add200'){
+                         Dialog.success("提示",'已收藏');
+                         $('.mini-dialog-footer').css('height','64px');
+						 $(e).attr('data-save-type',2);
+						 $(e).find('img').attr('src','/static/index/images/save_yellow_a.png');
+						 $(e).find('div').text('已收藏').css({"color":"rgb(247, 181, 0)"});
+						
+					}else if(data.code=='delete200'){
+                         Dialog.warn("提示",'取消收藏');
+                         $('.mini-dialog-footer').css('height','64px');
+						 $(e).attr('data-save-type',1);
+						 $(e).find('img').attr('src','/static/index/images/save_a.png');
+						 $(e).find('div').text('未收藏').css({"color":"white"});						
+					}else{
+						Dialog.warn("提示",data.msg);
+						$('.mini-dialog-footer').css('height', '64px');
+					}
+				},
+				error:function(){
+					  console.log('请求错误');
+				}
+				
+			});
+		}				
+	}
+	
+	function set_save_type(id){
+		$.ajax({
+			url:'/property_keep/'+id+'/0',
+			type:'get',
+			dataType:'json',
+			success:function(data){
+				if(data.code ==200){
+					$("#exp_save_"+id+"").attr('data-save-type',2);
+					$("#exp_save_"+id+"").find('img').attr('src','/static/index/images/save_yellow_a.png');
+					$("#exp_save_"+id+"").find('div').text('已收藏').css({"color":"rgb(247, 181, 0)"});
+				}
+				else{
+					$("#exp_save_"+id+"").attr('data-save-type',1);
+					$("#exp_save_"+id+"").find('img').attr('src','/static/index/images/save_a.png');
+					$("#exp_save_"+id+"").find('div').text('未收藏').css({"color":"white"});
+				}
+			},
+			error:function(){
+				 return 0;
+			}
+		});
+	}
+
+    function shousuo(){
+      var province = $("input[name='fangyu']:checked").val();
+      var hotKeyS = $.trim($('#keyword').val());
+      if(province ==='fy') {
+          window.location.href = '/propertylist/28' + "?key=" + hotKeyS + "&hotKeyS=" + province
+      }else {
+          window.location.href='https://www.baidu.com'+"?key="+hotKeyS+"&hotKeyS="+province
+      }
+    }
+
+	for(var i=0; i<$('.containe_content_box').size(); i++){
+		id = $('.containe_content_box').eq(i).attr('data-home-id');
+		set_save_type(id);
+	}
+
+</script>
+<style>
+    .swiper-pagination-current{
+        color: white;
+    }
+    .swiper-pagination-total{
+        color: white;
+    }
+    .swiper-container{
+        --swiper-navigation-color: #fff;/* 单独设置按钮颜色 */
+    }
+    .swiper-pagination{
+	height: 45px;
+	position: relative;
+	top: -46px;
+	background: rgba(0, 0, 0, 0.4);
+    }
+</style>
+</html>

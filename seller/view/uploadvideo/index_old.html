@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html><head>
+
+<link rel="stylesheet" type="text/css" href="__ADMIN__/style/uploadvideo.css" /> 
+<link rel="stylesheet" href="__ADMIN__/exts/layui/css/layui.css"  media="all">
+<script type="text/javascript" src="__ADMIN__/style/uploadvideo.js"></script>
+<script src="__ADMIN__/exts/layui/layui.js" charset="utf-8"></script>
+<script src="__INDEX__/style/jquery-1.8.3.min.js" charset="utf-8"></script>
+    
+</head>
+<body>
+
+<input type="file" name="files" style="display:none;" id="videoOneP" onchange="UpladFile()" accept="video/MP4,video/3GP,video/AVI,video/MKV,video/WMV,video/MPG,video/VOB,video/FLV,video/SWF,video/MOV,video/rmvb,video/mp3,video/wav,video/webm" />
+<div class="layui-form-item">
+   <div class="layui-input-inline">
+       <button class="layui-btn layui-btn-normal" onclick='$("#videoOneP").click();' type="button">上传视频</button>
+       <span id="videoName"></span>
+       <!--上传速度显示-->
+       <span id="time" style="display:inline-block;width:240px;"></span> 
+   </div>
+   <!--进度条-->
+   <div class="layui-input-inline line" style="margin-top:15px;display:none;">
+       <div class="layui-progress">
+           <div class="layui-progress-bar" lay-percent="0%"></div>
+       </div>
+       <div class="el-progress__text" style="font-size: 14.4px;">0%</div>
+   </div>
+</div>
+<div class="layui-form-item" id="videoOnePShow" style="display:none;">
+   <div id="videoOnePContent" class="layui-input-block videoAlbumContent">
+
+   </div>
+</div>
+</body></html>

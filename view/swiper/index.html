@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="__INDEX__/exts/carousel1/carousel-css.css">
+    <link rel="stylesheet" href="__INDEX__/exts/carousel1/swiper/swiper.min.css"> 
+</head>
+
+<body>
+    <div id="warp">
+        <!--大图-->
+        <div class="big-photos">
+            <button class="close">
+                <svg viewBox="0 0 24 24" class="domain-icon is-regular">
+                    <path fill="none" stroke="currentColor" stroke-width="2" d="M5 5l14 14m0-14L5 19"></path>
+                </svg>
+            </button>
+            <ul id="big-photos-ul">
+            </ul>
+
+            <div class="left-btn carousel-nav-button">
+                <svg viewBox="0 0 24 24" theme="allhomes"
+                    class="domain-icon allhomes-listing-photo-carousel__carousel-buttons-navicon is-regular">
+                    <path fill="none" stroke="currentColor" stroke-width="2" d="M15 5l-7 7 7 7"></path>
+                </svg>
+            </div>
+            <div class="right-btn carousel-nav-button">
+                <svg viewBox="0 0 24 24" theme="allhomes"
+                    class="domain-icon allhomes-listing-photo-carousel__carousel-buttons-navicon is-regular">
+                    <path fill="none" stroke="currentColor" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </div>
+            <div class="photosNum"> <span class="number">1/30</span> </div>
+        </div>
+        <!--图片集-->
+        <div class="photoAlbum">
+            <div class="album album1">
+                <div class="photos-list-label">
+                    视频<span>(1)</span>
+                </div>
+                <div class="slider-frame swiper-container1">
+                    <ul class="swiper-wrapper">
+                    {volist name="video_list" id="video"}
+                        <li class="swiper-slide viode">
+                            <img src=" {$video['img']}" />
+                        </li>
+                    {/volist}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="album album2">
+                <div class="photos-list-label">
+                    效果图<span>(1)</span>
+                </div>
+                <div class="slider-frame swiper-container2">
+                        <ul class="swiper-wrapper">
+                        {volist name="pics_list" id="pics"}
+                                {if condition="$pics['cate'] eq 1"}
+                                <li class="swiper-slide">
+                                    <img
+                                        src="{$pics['url']}" />
+                                </li>
+                                {/if}
+                        {/volist}
+                            </ul>
+                </div>
+            </div>
+
+            <div class="album album3">
+                <div class="photos-list-label">
+                    样板间<span>(1)</span>
+                </div>
+                <div class="slider-frame swiper-container3">
+                        <ul class="swiper-wrapper">       
+                        {volist name="pics_list" id="pics"}
+                                {if condition="$pics['cate'] eq 2"}
+                                <li class="swiper-slide">
+                                    <img
+                                        src="{$pics['url']}" />
+                                </li>
+                                {/if}
+                        {/volist}
+                            </ul>
+                </div>
+            </div>
+
+            <div class="album album4">
+                <div class="photos-list-label">
+                    交通图<span>(1)</span>
+                </div>
+                <div class="slider-frame swiper-container4">
+                    <ul class="swiper-wrapper">
+                        {volist name="pics_list" id="pics"}
+                                {if condition="$pics['cate'] eq 3"}
+                                <li class="swiper-slide">
+                                    <img
+                                        src="{$pics['url']}" />
+                                </li>
+                                {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="album album5">
+                    <div class="photos-list-label">
+                        周边配套<span>(1)</span>
+                    </div>
+                    <div class="slider-frame swiper-container5">
+                        <ul class="swiper-wrapper">
+                          
+                        {volist name="pics_list" id="pics"}
+                                {if condition="$pics['cate'] eq 4"}
+                                <li class="swiper-slide">
+                                    <img
+                                        src="{$pics['url']}" />
+                                </li>
+                                {/if}
+                        {/volist}
+                        </ul>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    <script src='__INDEX__/exts/carousel1/swiper/swiper.js'></script>
+    <script src="__INDEX__/exts/carousel1/carousel-js.js"></script>
+    <script >
+            var v_list = {$temp_array}; 
+           var OPEN_URL = "{$open_url}";
+           // console.log(OPEN_URL);
+    </script>
+    <script>
+        /*
+            先引入swiper再引入carousel-js
+            只需要在图片集里面的img放图片
+        */
+        //获取地址中的显示相片集合的参数初始化相片集合
+
+       // console.log(v_list);      
+       var url = window.location.href;
+       //console.log(url);http://bick2.io/static/index/exts/carousel1/carousel.html?id=0&prop=8
+       // var first = Number(url.substr(url.indexOf("=")+1,url.length))+1;
+         var first = Number({$id})+1;
+        // console.log(first);
+        carousel({
+            firstShow:first,　//　初始显示第１个相片集合
+            voide:v_list
+        })
+
+    </script>
+</body>
+
+</html>

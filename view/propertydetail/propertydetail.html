@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="__INDEX__/style/housingDetails.css">
+    <!--    <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>-->
+    <link rel="stylesheet" type="text/css" href="__INDEX__/exts/ys/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="__INDEX__/exts/ys/css/htmleaf-demo.css">
+    <link rel="stylesheet" type="text/css" href="__INDEX__/exts/ys/css/no.css">
+    <link rel="stylesheet" href="__INDEX__/exts/carousel1/swiper/swiper.min.css">
+    <script src="__INDEX__/exts/carousel1/swiper/swiper.js"> </script>
+
+</head>
+<body class="sssss">
+   <!--    // model弹窗-->
+    <div id="modeltip" style="position: fixed;z-index:1000;width: 100%;height: 100%;background: rgba(0,0,0,0.4);display: none">
+        <div style="width: 600px;padding: 20px 10px;background: white;margin: 0 auto;margin-top: 140px">
+            <img width="100%" src="" alt="" id="imgUrl"/>
+        </div>
+    </div>
+{include file="public/header"}
+<div id="box">
+
+    <!--        头部图片-->
+  <!--   <div class="header_photo_null"></div> -->
+    <div class="header_photo">
+        <div class="header_photo_clarity">
+            <img src="__INDEX__/images/90sheji_linggan_13359255.png" width="18px">
+            <a target="_blank" href="javascript:void(0)">首页</a>>
+            <a target="_blank" href="javascript:void(0)">全球房产</a>>
+            <a target="_blank" href="javascript:void(0)">泰国房产</a>>
+            <a target="_blank" href="javascript:void(0)">曼谷房产</a>>
+            <a target="_blank" href="javascript:void(0)">枫丹公馆</a>
+        </div>
+        <div class="htmleaf-container">
+            <div class="banner">
+        <div style="width: 100%;height: 777px">
+            <div class="swiper-container" style="height: 777px;z-index: 1">
+            <div class="swiper-wrapper">
+            {volist name="all_pics" id="pics" key="k"}
+                <div class="swiper-slide" style="background: white">
+                <img style="width: 100%;" src="{$pics['url']}" alt="">
+                </div>
+            {/volist}
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- 如果需要滚动条 -->
+            <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+                <!--            图片-->
+                <div class="content_photo_box" style="position: absolute; top: 0;z-index:9;right: 21.5%;margin-top:100px">
+            <div class="content_photo">
+                <a onclick="dianji(0,{$id})" target="_blank" href="javascript:void(0)"><img
+                        src="https://image1.ljcdn.com/newhouse-user-image/b51b1eaf73f1eb4117f9370a7eaa0e8a.png!m_fill,w_1000,l_rorate_logo"
+                        width="147px" height="90px"></a><span class="photo_text">项目视频(5)</span>
+                <a onclick="dianji(1,{$id})" target="_blank" href="javascript:void(0)"> <img
+                        src="__INDEX__/images/images/43a118c6d88f653e45c9e12c9dd7a85c_20190523174511840721.jpg-145x90"
+                        width="147px" height="90px"></a><span class="photo_text">效果图(4)</span>
+                <a onclick="dianji(2,{$id})" target="_blank" href="javascript:void(0)"> <img
+                        src="__INDEX__/images/images/de74d8aa1c28a0c99550dc56a68b2938_20190526171459830722.jpg-700x450x1"
+                        width="147px" height="90px"></a><span class="photo_text">样板间(12)</span>
+                <a onclick="dianji(3,{$id})" target="_blank" href="javascript:void(0)"> <img
+                        src="__INDEX__/images/images/c2069f104e190b4a94218ba7d45b0bf2_20190523175453548473.jpg-145x90"
+                        width="147px" height="90px"></a><span class="photo_text">交通图(1)</span>
+                <a onclick="dianji(4,{$id})" target="_blank" href="javascript:void(0)"> <img
+                        src="__INDEX__/images/images/6e3e001b4a1fc0dd0b7220c3ab7b5443_20190523174446943849.jpg-145x90"
+                        width="147px" height="90px"></a><span class="photo_text">周边配套(5)</span>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容-->
+    <div class="content">
+        <!--            按钮-->
+      <div class="content_button" style="position: relative;z-index: 99">
+            <div class="fangda" onclick="dianji(1,{$id})">
+                <div class="lubo"><img src="__INDEX__/images/pics_many_a.png"><span>效果图</span></div>
+                <div class="ssa"><img src="__INDEX__/images/bannerbigger_a.png"></div>
+            </div>
+            <div class="fangda" onclick="dianji(3,{$id})">
+                <div class="lubo"><img src="__INDEX__/images/map_a.png"><span>附近交通</span></div>
+                <div class="ssa"><img src="__INDEX__/images/bannerbigger_a.png"></div>
+            </div>
+            <div class="fangda">
+                <div class="lubo" onclick="dianji(4,{$id})"><img src="__INDEX__/images/streetview_a.png"><span>周边配套</span></div>
+                <div class="ssa"><img src="__INDEX__/images/bannerbigger_a.png"></div>
+            </div>
+            <div class="fangda" onclick="dianji(2,{$id})">
+                <div class="lubo"><img src="__INDEX__/images/floorplan_a.png"><span>样板户型</span></div>
+                <div class="ssa"><img src="__INDEX__/images/bannerbigger_a.png"></div>
+            </div>
+            <div class="fangda" onclick="dianji(0,{$id})">
+                <div class="lubo"><img src="__INDEX__/images/bannerbigger_a.png"><span>房源视频</span></div>
+                <div class="ssa"><img src="__INDEX__/images/bannerbigger_a.png"></div>
+            </div>
+        </div>
+        <div class="content_right">
+            <!--            内容-->
+            <div class="content_right_box">
+                <div class="content_header">
+                    <div class="content_header_left">
+                        <div class="content_header_lefttitile">{$property_info.location2}-{$property_info.project_name}</div>
+                        <div class="content_header_lc">
+                            <div class="content_header_cont">
+
+                                <div><img src="__INDEX__/images/housepic_a.png"><span>
+                                {if condition="$property_info['new_or_old'] eq 1"}
+                                新房
+                                {elseif condition="$property_info['new_or_old'] eq 2"/}
+                                二手房
+                                {/if}
+                                </span></div>
+                                <div><img src="__INDEX__/images/smallhouse_a.png"><span>{$property_info.years_for_hold}</span></div>
+                            </div>
+                            <div class="content_header_cont">
+                                <div><img src="__INDEX__/images/gongyu_a.png"><span>
+                                {if condition="$property_info['property_type'] eq 1"}
+                                住宅
+                                {elseif condition="$property_info['property_type'] eq 2"/}
+                                公寓
+                                {elseif condition="$property_info['property_type'] eq 3"/}
+                                写字楼
+                                {elseif condition="$property_info['property_type'] eq 4"/}
+                                地皮
+                                {/if}
+                                </span></div>
+                                <div><img src="__INDEX__/images/downpayment_a.png"><span>首付 {$property_info.down_payment}%</span></div>
+                            </div>
+                            <div class="content_header_cont">
+                                <div><img src="__INDEX__/images/jingzhuangxiu_a.png"><span>
+                                {if condition="$property_info['decoration'] eq 1"}
+                                精装修
+                                {elseif condition="$property_info['decoration'] eq 2"/}
+                                毛坯
+                                {/if}
+                                </span></div>
+                                <div><img src="__INDEX__/images/xuequfang_a.png"><span>
+                                {$property_info.property_usage}
+                                </span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="__INDEX__/images/onesale_a.png" style="margin-left: 20px">
+                    <div class="content_header_right">
+                        <div class="content_header_rightphoto">
+                            <img id="exp_save_{$property_info.id}" data-save-type="0" style="cursor: pointer;" src="__INDEX__/images/save_a.png" onclick="exp_save(this, {$property_info.id})">
+								<img src="__INDEX__/images/share.png"><span>举报</span>
+                        </div>
+                        <div class="content_header_text">
+                            <div class="content_header_text_x">
+                                    <span class="content_header_text_f">￥</span>
+                                    <span class="content_header_text_p">{$property_info.project_price}</span>
+                                    <span class="content_header_text_t">万</span></div>
+                            <div class="content_header_text_i">249万泰铢<img src="__INDEX__/images/why.png"></div>
+                            <div class="content_header_text_m">10000元/m²</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_box">
+                    <!--                    项目地址-->
+                    <div class="dizhi"><span>项目地址</span>
+                        <div>{$property_info.location2}{$property_info.location4} {$property_info.project_location}
+                        </div>
+                    </div>
+                    <!--                    <div class="xian"></div>-->
+                </div>
+
+                <div class="content_box_o">
+                    <div class="dizhi_o"><span>主力户型</span>
+                        <div> 小一居 (25m²) 大一居 (30m²) 两居室 (41m²) <a href="www.baidu.com" style="color: red">[全部户型]</a></div>
+                    </div>
+                </div>
+                <div class="content_header_message">
+                    <!--                    基本信息-->
+                    <div class="content_header_message_a">
+                        <div class="massage">
+                            <div>基本信息</div>
+                        </div>
+                        <div class="massage_so">
+                        {$basic_info_content['basic_info']}
+                            <div class="massage_xx">
+                                <div style="height: 40px">
+                                    <div>开发商</div>
+                                     <a href="/companyprofile/{$property_info['company_id']}">
+                                     <span style="display:inline-block;width: 160px">{$property_info['company_name_en']}</span>   
+                                    </a>
+                                    </div>
+                                <div>
+                                    <div>产权年限</div>
+                                    <span>{$property_info.years_for_hold}</span></div>
+                                <div>
+                                    <div>规划面积</div>
+                                    <span>10000平方米</span></div>
+                                <div>
+                                    <div>交房日期</div>
+                                    <span>{$property_info.property_built_time|date='Y-m-d',###}</span></div>
+                                <div>
+                                    <div>户数</div>
+                                    <span>38</span></div>
+                                <div>
+                                    <div>能否贷款</div>
+                                    <span>是</span></div>
+                                <div>
+                                    <div>平米单价</div>
+                                    <span>{$property_info.price_per_meter}人民币/平方米</span></div>
+                                <div>
+                                    <div>年代</div>
+                                    <span>{$property_info.property_built_time|date='Y',###}年</span></div>
+                                <div>
+                                    <div>建筑面积</div>
+                                    <span>857平方米</span></div>
+                                <div>
+                                    <div>土地面积</div>
+                                    <span>8570平方米</span></div>
+                                <div>
+                                    <div>楼层</div>
+                                    <span>共 2 层</span></div>
+                                <div>
+                                    <div>房龄（年）</div>
+                                    <span>37</span></div>
+                                <div>
+                                    <div>装修状态</div>
+                                    <span>
+                                {if condition="$property_info['decoration'] eq 1"}
+                                精装修
+                                {elseif condition="$property_info['decoration'] eq 2"/}
+                                毛坯
+                                {/if}
+                                    </span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                    项目 配套-->
+                    <div class="content_header_message_a">
+                        <div class="massage">
+                            <div>项目 配套</div>
+                        </div>
+                        <div class="massage_photo_box">
+                            <div class="massage_photo"><img src="__INDEX__/images/swimmingpool_a.png"><span>游泳池</span></div>
+                            <div class="massage_photo"><img src="__INDEX__/images/exces_a.png"><span>健身房</span></div>
+                            <div class="massage_photo"><img src="__INDEX__/images/businesscenter_a.png"><span>商务中心</span></div>
+                        </div>
+                    </div>
+                    <!--                    主力 户型-->
+    <!--                 <div class="content_header_message_a">
+                        <div class="massage">
+                            <div>主力 户型</div>
+                        </div>
+                        <div class="message_zhu">
+                            <div>
+                                <div class="message_zhu_a"><img
+                                        src="__INDEX__/images30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                        width="198px" height="140px"></div>
+                                <div class="message_zhu_t">一居室 30m²</div>
+                                <div class="message_zhu_s">
+                                    <div>参考总价 ￥56万<span>249万泰铢</span></div>
+                                    <div>参考总价 ￥56万<span>249万泰铢</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--                    周边 配套-->
+                    <div class="content_header_message_as">
+                        <div class="massage">
+                            <div>周边 配套</div>
+                        </div>
+                        <div class="massage_zhou">
+                <div style="width: 824px;height:456px;border:#ccc solid 1px;" class="contact-map" id="dituContent"> </div>
+                <div id="r-result"><input type="text" id="suggestId" size="20" value="百度" placeholder="搜地点、查公交、找路线" /></div>
+                <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+            </div>
+                    </div>
+                    <!--                    项目 特色-->
+                    <div class="content_header_message_a">
+                        <div class="massage">
+                            <div>项目 特色</div>
+                        </div>
+                        <div class="massage_xiang" id="bigImg">
+                            {$basic_info_content['content']}
+                        </div>
+                    </div>
+                    <!--                    投资 评估-->
+                    <div class="content_header_message_a">
+                        <div class="massage">
+                            <div>投资 评估</div>
+                        </div>
+                        <div class="massage_tou_box">
+                            <div class="massage_tou">
+                                3室2.5卫 186m² 总价￥20,600,000元
+                            </div>
+                            <div class="massage_tou_mf">
+                                <div class="massage_tou_mf-title">
+                                    <div>
+                                        <div class="quan">全款买房</div>
+                                        <div class="quan_xian"></div>
+                                    </div>
+                                    <div>
+                                        <div class="dai">贷款买房</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                            <!--                            图片-->
+                            <div class="massage_tou_mf-box">
+                                <div class="massage_tou_mf-boxl"><img src="__INDEX__/imagesM)%5DFL7)~%602@OMVLU%5DD85KWL.png"
+                                                                      width="353px" height="423px"></div>
+                                <div class="massage_tou_mf-boxr"><img src="__INDEX__/imagesSNJC%7DID2GBFF07X%5DV%7D~30~O.png"
+                                                                      width="353px" height="423px"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--                    购房 流程-->
+                    <div class="content_header_message_a">
+                        <div class="massage">
+                            <div>购房 流程</div>
+                        </div>
+                        <div class="massage_tou_box">
+                            <div class="massage_tou_mfs">
+                                <div class="massage_tou_mf-title">
+                                    <div>
+                                        <div class="quan">全款买房流程</div>
+                                    </div>
+                                    <div>
+                                        <div class="dai">贷款买房流程</div>
+                                    </div>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                            <!--                            图片-->
+                            <div class="massage_tou_mf-boxs">
+                                <img src="__INDEX__/imagesEAZ~5@275$6K@H1C2GUG9%60K.png"
+                                     width="765px" height="243px">
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--                    常见 问题-->
+                    <div class="content_header_message_a">
+                        <div class="massage">
+                            <div>常见 问题</div>
+                        </div>
+                        <div class="massage_wenti">
+                            <div class="massage_wen">
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <div class="massage_wen_i"></div>
+                                            <p>英国的硕士申请难吗？</p></div>
+                                        <div>
+                                            <div class="massage_wen_s"></div>
+                                            <p>看你的目标专业和学校了，门槛提高了，但是学校选择很多，所以不用担心。</p></div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="massage_wen_i"></div>
+                                            <p>听说英国留学比较困难，请问是真的吗？</p></div>
+                                        <div>
+                                            <div class="massage_wen_s"></div>
+                                            <p>什么企业家签证，就是说你投资我就给你签证，还不是永久的那种。</p></div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="massage_wen_i"></div>
+                                            <p>英国留学，专业和大学应该怎么选择，选择太多了挑眼花了。</p></div>
+                                        <div>
+                                            <div class="massage_wen_s"></div>
+                                            <p>选择一个自己感兴趣的肯定优先呀。</p></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="__INDEX__/images/morewenti_a.png">
+                            <div class="massage_wen_box">
+                                <span>我有问题</span>
+                                <input type="text" placeholder="请输入标题">
+                                <input type="text" placeholder="请详细描述问题，以方便得到准确回复">
+                            </div>
+                            <input class="tijiao" type="button" value="提交">
+                        </div>
+                    </div>
+                    <!--                    底部轮播-->
+                    <div class="content_header_message_ar">
+                        <div class="massages">
+                            <div class="xihuan">猜你喜欢</div>
+                        </div>
+                        <!--                        图片切换-->
+                        <div class="lxfscroll">
+                            <ul>
+                                <li>
+                                   <a class="massages_xi_as" target="_blank" href="javascript:void(0)"><div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-house-818493_3951975abf1a7cb5_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>唯有同舟共济方能化险为夷唯有同舟共济方能化险为夷</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">美国,华盛顿
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">   <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-apartments-417812_1507043a85ba0f91_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">     <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-apartments-714610_abb8cd1bd2e271da_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                        <a class="massages_xi_as" target="_blank" href="javascript:void(0)">      <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-apartments-782279_95ba03fd2f25c0e5_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                            <a class="massages_xi_as" target="_blank" href="javascript:void(0)">      <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-apartments-417812_1507043a85ba0f91_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                </li>
+                                <li>
+                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">         <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-apartments-714610_abb8cd1bd2e271da_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                        <a class="massages_xi_as" target="_blank" href="javascript:void(0)">         <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-house-693276_070576ca688cf5e2_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                            <a class="massages_xi_as" target="_blank" href="javascript:void(0)">              <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-single-family-home-714375_53290581b903cd1d_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                                <a class="massages_xi_as" target="_blank" href="javascript:void(0)">             <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-commercial-907054_b0c732c8b27b4b69_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">          <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-apartments-782279_95ba03fd2f25c0e5_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                </li>
+                                <li>
+                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">             <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-apartments-782279_95ba03fd2f25c0e5_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                        <a class="massages_xi_as" target="_blank" href="javascript:void(0)">           <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-single-family-home-827228_0db1242a523fc1f4_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                            <a class="massages_xi_as" target="_blank" href="javascript:void(0)">           <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-multi-family-850940_8a78ba444b8df7a9_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                                <a class="massages_xi_as" target="_blank" href="javascript:void(0)">             <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-single-family-home-829018_bd97c099ffdb3f41_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">             <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-commercial-907054_b0c732c8b27b4b69_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                </li>
+                                <li>
+                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">               <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-single-family-home-827228_0db1242a523fc1f4_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                        <a class="massages_xi_as" target="_blank" href="javascript:void(0)">                <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-house-898020_7e893242b73443c8_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                            <a class="massages_xi_as" target="_blank" href="javascript:void(0)">             <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-house-898020_7e893242b73443c8_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                                <a class="massages_xi_as" target="_blank" href="javascript:void(0)">              <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-house-818493_3951975abf1a7cb5_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">                <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-house-818493_3951975abf1a7cb5_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                </li>
+                                <li>
+                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">                  <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-multi-family-850940_8a78ba444b8df7a9_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                        <a class="massages_xi_as" target="_blank" href="javascript:void(0)">          <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-multi-family-850940_8a78ba444b8df7a9_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                            <a class="massages_xi_as" target="_blank" href="javascript:void(0)">                  <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-house-888389_fb5de7bb63b4137f_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                                <a class="massages_xi_as" target="_blank" href="javascript:void(0)">                  <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-apartments-417812_1507043a85ba0f91_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                                    <a class="massages_xi_as" target="_blank" href="javascript:void(0)">                   <div class="massages_xi_a">
+                                        <div class="massages_xi_a_photo"><img
+                                                src="__INDEX__/images/photo/international-property-single-family-home-827228_0db1242a523fc1f4_300X170.jpg"
+                                                width="169"></div>
+                                        <div class="massages_xi_a_title">
+                                            <div>Lot 15 Wallace Pate Drive</div>
+                                            <div class="massages_xi_a_title_p">￥20,600,000元</div>
+                                            <div class="massages_xi_a_title_w"><img src="__INDEX__/images/dingwei_a.png">Georgetown,South
+                                                Carolina
+                                            </div>
+                                        </div>
+                                    </div></a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="massage_di_box">
+                            <div onClick="lxfLast()" class="massage_zuo_jt"></div>
+                            <div class="massage_di_xiano"></div>
+                            <div class="index_color">
+                                <div class="massage_di_anniu" onclick="qiehuan(0)"></div>
+                                <div class="massage_di_anniu" onclick="qiehuan(1)"></div>
+                                <div class="massage_di_anniu" onclick="qiehuan(2)"></div>
+                                <div class="massage_di_anniu" onclick="qiehuan(3)"></div>
+                                <div class="massage_di_anniu" onclick="qiehuan(4)"></div>
+                            </div>
+                            <div class="massage_di_xiant"></div>
+                            <div onClick="lxfNext()" class="massage_zuo_jts"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--            内容右侧-->
+            <div class="content_header_right_photo">
+                <div style="width:100%;height: 106px">
+                <a href="/companyprofile/{$property_info['company_id']}">
+                    <img src="{$property_info['logo_url']}" width="100%" height="100%">
+                    {if condition="$property_info['is_identify'] eq 1"}
+                    <img src="__INDEX__/images/runtuijian.png" style="position: relative;top: -110px">
+                    {/if}
+                </div>
+                </a>
+                <!--                右侧第一个框-->
+                <div class="ss">
+                    <div class="content_header_right_title" style="text-transform:uppercase">
+                        开发商：{$property_info['company_name_en']}
+                    </div>
+                    <div class="content_header_right_c">
+                        <div class="content_header_right_p">
+                            <a href="/profiledetails/{$property_info['publisher_id']}">
+             <img width="100%" height="100%" src="{$property_info['publisher_info']["head_img_url"]}" alt="">       
+                            </a>
+                        </div>
+                        <!--                        个人信息-->
+                        <div class="content_header_right_message">
+                            <div class="content_header_right_message_t">{$property_info['publisher_info']["name"]}</div>
+                            <div class="content_header_right_message_p">{$property_info['publisher_info']["languages"]}</div>
+                            <div class="content_header_right_message_e">{$property_info['publisher_info']["tel"]}</div>
+                            <div class="content_header_right_message_s">评分
+                                <div class="content_header_right_message_star ">
+                                    <img src="__INDEX__/images/save_yellow_a.png" width="16px">
+                                    <img src="__INDEX__/images/save_yellow_a.png" width="16px">
+                                    <img src="__INDEX__/images/save_yellow_a.png" width="16px">
+                                    <img src="__INDEX__/images/save_yellow_a.png" width="16px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_header_right_images">
+                        <img src="__INDEX__/images/onlinechat_a.png">
+                        <img src="__INDEX__/images/emal_a.png">
+                    </div>
+                </div>
+                <!--                右侧第二个框-->
+                <div class="ss_two">
+                    <div class="ss_two_title">
+                        <span>相关美国洛杉矶指南</span><a target="_blank" href="javascript:void(0)">更多>></a>
+                    </div>
+                    <div class="ss_two_title_cnothe">
+                        <div class="ss_two_title_images"><img
+                                src="__INDEX__/images30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                width="66" height="50"></div>
+                        <a target="_blank" href="javascript:void(0)">
+                            <div class="ss_two_title_c">东盟峰会+G20：泰国频频亮相国际的背后，经济的腾飞经济的腾飞
+                            </div>
+                        </a>
+                    </div>
+                    <div class="ss_two_title_cnothe">
+                        <div class="ss_two_title_images"><img
+                                src="__INDEX__/images30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                width="66" height="50"></div>
+                        <a target="_blank" href="javascript:void(0)">
+                            <div class="ss_two_title_c">东盟峰会+G20：泰国频频亮相国际的背后，经济的腾飞</div>
+                        </a>
+                    </div>
+
+                    <div class="ss_two_title_cnothe">
+                        <div class="ss_two_title_images"><img
+                                src="__INDEX__/images30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                width="66" height="50"></div>
+                        <a target="_blank" href="javascript:void(0)">
+                            <div class="ss_two_title_c">东盟峰会+G20：泰国频频亮相国际的背后，经济的腾飞</div>
+                        </a>
+                    </div>
+
+                    <div class="ss_two_title_cnothe">
+                        <div class="ss_two_title_images"><img
+                                src="__INDEX__/images30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                                width="66" height="50"></div>
+                        <a target="_blank" href="javascript:void(0)">
+                            <div class="ss_two_title_c">东盟峰会+G20：泰国频频亮相国际的背后，经济的腾飞</div>
+                        </a>
+                    </div>
+
+                </div>
+                <!--                右侧视频-->
+                <div class="ss_video_title">
+                    <a target="_blank" href="javascript:void(0)">
+                        <div class="ss_video_shi"><img src="__INDEX__/images/7XC~W5B9TSG_SHHMXTVQGO3.png" width="33"></div>
+                        <span>英国房产视频</span>
+                        <div class="ss_video_bf"><img src="__INDEX__/images/]ZV6~0[S6}2GKFM4_@EV9MF.png"width="18"/></div>
+                    </a>
+                </div>
+                <div class="ss_video">
+                    <div><a target="_blank" href="javascript:void(0)">
+                        <img src="__INDEX__/images30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                            width="286px" height="171px"/>
+                        <img src="__INDEX__/images/runvideos.png"  class="palyVideos"/>
+                    </a>
+                    </div>
+                    <div><a target="_blank" href="javascript:void(0)"><img
+                            src="__INDEX__/images30b30b6c3013fff8-a807c704bd5a8c80-78a70177dd82ed4a372e8b0fb2faaaf4.jpg"
+                            width="286px" height="171px"/>
+                        <img src="__INDEX__/images/runvideos.png"  class="palyVideos"/>
+                    </a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}
+</body>
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('__INDEX__/exts/ys/js/jquery-1.8.3.min.js"><\/script>')</script>
+<script type="text/javascript" src="__INDEX__/style/housingDetails.js"></script>
+<script type="text/javascript" src="__INDEX__/exts/ys/js/no.js"></script>
+<script src="/static/index/style/MiniDialog-es5.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=OLV2W7QHEE9btblyddTkBQBWhjXw030h"></script>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        loop: true, // 循环模式选项
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        autoplay: {
+            delay: 3000,//1秒切换一次
+        },
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // 如果需要滚动条
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+    })
+</script>
+<script>
+    $('#bigImg img').click(function () {
+        console.log(this.src)
+        $('#modeltip').show()
+        $('#imgUrl').attr("src",this.src);
+    })
+    $('#modeltip').click(function () {
+        $('#modeltip').hide()
+    })
+</script>
+<script type="text/javascript">
+    var INDEX_URL_JS = "__INDEX__";
+    var IMAGES_FOR_BACKGROUND = [
+        INDEX_URL_JS+'/__INDEX__/images__INDEX__/images23b68c3e3502afaafdfd62060ddda68d_20190523152945182116.jpg',
+        INDEX_URL_JS+'/__INDEX__/images__INDEX__/images43a118c6d88f653e45c9e12c9dd7a85c_20190523174511840721.jpg-145x90',
+        INDEX_URL_JS+'/__INDEX__/images__INDEX__/imagesde74d8aa1c28a0c99550dc56a68b2938_20190526171459830722.jpg-700x450x1',
+        INDEX_URL_JS+'/__INDEX__/images__INDEX__/imagesc2069f104e190b4a94218ba7d45b0bf2_20190523175453548473.jpg-145x90',
+        INDEX_URL_JS+'/__INDEX__/images__INDEX__/images6e3e001b4a1fc0dd0b7220c3ab7b5443_20190523174446943849.jpg-145x90'
+    ];
+    // var HOUSINGDETAIL_URL_JS = "__HOUSINGDETAIL__";
+</script>
+<script>
+    $('#bigImg img').click(function () {
+        $('#modeltip').show()
+        $('#imgUrl').attr("src",this.src);
+    })
+    $('#modeltip').click(function () {
+        $('#modeltip').hide()
+    })
+    // 地图模块
+    //创建和初始化地图函数：
+    function initMap() {
+        createMap(); //创建地图
+        setMapEvent(); //设置地图事件
+        addMapControl(); //向地图添加控件
+        addMarker(); //向地图中添加marker
+    }
+
+    //创建地图函数：
+    function createMap() {
+        var map = new BMap.Map("dituContent"); //在百度地图容器中创建一个地图
+        var point = new BMap.Point(120.583755, 31.867661); //定义一个中心点坐标
+        map.centerAndZoom(point, 18); //设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map; //将map变量存储在全局
+    }
+
+    //地图事件设置函数：
+    function setMapEvent() {
+        map.enableDragging(); //启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom(true); //启用地图滚轮放大缩小
+        map.enableDoubleClickZoom(true); //启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard(); //启用键盘上下左右键移动地图
+    }
+
+    //地图控件添加函数：
+    function addMapControl() {
+        //向地图中添加缩略图控件
+        var ctrl_ove = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1 });
+        map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+        var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+        map.addControl(ctrl_sca);
+    }
+
+    //标注点数组
+    var markerArr = [{ title: "标题", content: "地址：", point: "经纬度", isOpen: 1, icon: { w: 21, h: 21, l: 0, t: 0, x: 6, lb: 5 } }];
+    //创建marker
+    function addMarker() {
+        for (var i = 0; i < markerArr.length; i++) {
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0, p1);
+            var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point, { icon: iconImg });
+            var iw = createInfoWindow(i);
+            var label = new BMap.Label(json.title, { "offset": new BMap.Size(json.icon.lb - json.icon.x + 10, -20) });
+            marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                borderColor: "#808080",
+                color: "#333",
+                cursor: "pointer"
+            });
+
+            (function() {
+                var index = i;
+                var _iw = createInfoWindow(i);
+                var _marker = marker;
+                _marker.addEventListener("click", function() {
+                    this.openInfoWindow(_iw);
+                });
+                _iw.addEventListener("open", function() {
+                    _marker.getLabel().hide();
+                })
+                _iw.addEventListener("close", function() {
+                    _marker.getLabel().show();
+                })
+                label.addEventListener("click", function() {
+                    _marker.openInfoWindow(_iw);
+                })
+                if (!!json.isOpen) {
+                    label.hide();
+                    _marker.openInfoWindow(_iw);
+                }
+            })()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i) {
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>" + json.content + "</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json) {
+        var icon = new BMap.Icon("http://api.map.baidu.com/img/markers.png", new BMap.Size(23, 25), {
+            offset: new BMap.Size(10, 23), // 指定定位位置
+            imageOffset: new BMap.Size(0, 0 - 10 * 25) // 设置图片偏移
+        });
+        return icon;
+    }
+
+    initMap(); //
+    //搜索
+    function G(id) { return document.getElementById(id); }
+    var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+        { "input": "suggestId", "location": map }); ac.addEventListener("onhighlight", function (e) { //鼠标放在下拉列表上的事件
+        var str = ""; var _value = e.fromitem.value; var value = "";
+        if (e.fromitem.index > -1) { value = _value.province + _value.city + _value.district + _value.street + _value.business; } str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value; value = ""; if (e.toitem.index > -1) { _value = e.toitem.value; value = _value.province + _value.city + _value.district + _value.street + _value.business; } str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value; G("searchResultPanel").innerHTML = str;
+    }); var myValue; ac.addEventListener("onconfirm", function (e) { //鼠标点击下拉列表后的事件
+        var _value = e.item.value; myValue = _value.province + _value.city + _value.district + _value.street + _value.business; G("searchResultPanel").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue; setPlace();
+    });
+    function setPlace() {
+        map.clearOverlays(); //清除地图上所有覆盖物
+        function myFun() {
+            var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+            map.centerAndZoom(pp, 18); map.addOverlay(new BMap.Marker(pp)); //添加标注
+        } var local = new BMap.LocalSearch(map, { //智能搜索
+            onSearchComplete: myFun
+        }); local.search(myValue);
+    }
+	
+	//收藏
+	function exp_save(e, id){
+		var type = $(e).attr('data-save-type');
+		if(type==0){
+			Dialog.warn("提示",'未登录');
+		}
+		else{
+			$.ajax({
+				url:'/property_keep/'+id+'/'+type,
+				type:'get',
+				dataType:'json',
+				success:function(data){
+					if(data.code=='add200'){
+                         Dialog.success("提示",'已收藏');
+                         $('.mini-dialog-footer').css('height', '64px');
+						 $(e).attr('data-save-type',2);
+						 $(e).attr('src','/static/index/images/save_yellow_a.png');
+						
+					}else if(data.code=='delete200'){
+                         Dialog.warn("提示",'取消收藏');
+                         $('.mini-dialog-footer').css('height', '64px');
+						 $(e).attr('data-save-type',1);
+						 $(e).attr('src','/static/index/images/save_a.png');
+					}else{
+						Dialog.warn("提示",data.msg);
+						$('.mini-dialog-footer').css('height', '64px');
+					}
+				},
+				error:function(){
+					  console.log('请求错误');
+				}
+				
+			});
+		}		
+	}
+	
+	function set_save_type(id){
+		$.ajax({
+			url:'/property_keep/'+id+'/0',
+			type:'get',
+			dataType:'json',
+			success:function(data){
+				if(data.code ===200){
+					$("#exp_save_"+id+"").attr('data-save-type',2);
+					$("#exp_save_"+id+"").attr('src','/static/index/images/save_yellow_a.png');
+				}
+				else{
+					$("#exp_save_"+id+"").attr('data-save-type',1);
+					$("#exp_save_"+id+"").attr('src','/static/index/images/save_a.png');
+				}
+			},
+			error:function(){
+				 return 0;
+			}
+		});
+	}
+	set_save_type({$property_info.id})
+</script>
+</html>

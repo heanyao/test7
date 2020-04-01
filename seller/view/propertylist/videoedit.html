@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>ThinkPHP5.0</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+   <script>
+
+    </script>
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+ 
+    <!-- 上传视频添加 -->
+
+</head>
+<body>
+    {include file="public/top" /} 
+    <!-- /头部 -->
+    
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            <!-- Page Sidebar -->
+         
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content" style="margin-left:6px">
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">更换视频</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post" >
+                        <input type="hidden" name="id" value="{$video.id}">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">上传所要更换的视频</label>
+                            <div class="col-sm-6">
+                                {include file="uploadvideo/index_old" /} 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">更改排序</label>
+                            <div class="col-sm-1">
+                                <input class="form-control"  placeholder=""  value="{$video.sort}" name="sort" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">更改封面图片</label>
+                            <div class="col-sm-6">
+                                <input style="float:left;"  placeholder="" name="img" type="file">
+                                {if condition="$video['img'] neq ''"}
+                                <img style="float:left;" src="{$video.img}" width="100">
+                                {else /}
+                                暂无缩略图
+                                {/if}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>  
+    </div>
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <!--下拉框必须有的js版本，删后日期才可用，有bug-->
+    <script src="__ADMIN__/style/jquery-2.0.3.min.js"></script>
+    <script src="__ADMIN__/style/bootstrap-datepicker.js"></script>
+    <!--下拉框部分-->
+    <script src="__ADMIN__/style/select-search-extra.js"></script>
+    <!--我把datepicker-extra.js放到 select2.js里面了 日期及下拉共用之js-->
+    <script src="__ADMIN__/style/select2.js"></script>
+ 
+
+
+
+    <script>
+            var fang={
+            'id':0,
+            'img':0,
+            'sort':0,
+            'video':[],
+        }
+        var  get=window.get ||{};
+        get.id=function(){
+            fang.id=$("input[name='id']").val()
+        }
+        get.id=function(){
+            fang.sort=$("input[name='sort']").val()
+        }
+        get.cate=function(){
+            fang.img=$("input[name='img']").val()
+        }
+
+    </script>
+
+    
+    <script>
+        $("#submit").on("click",function(){
+
+            get.img();
+            get.id();
+            get.sort();
+            console.log(fang.video);return;
+
+            $.post("/seller/propertylist/videoedit.html",{fang:fang},function(data){
+
+            　　　　//返回的JSON数据if
+            if(data.code==1){
+               alert("上传成功");
+               location.reload();
+            }
+
+            })
+            console.log("11111");
+            console.table(fang);
+        });
+    </script>
+
+</body></html>
